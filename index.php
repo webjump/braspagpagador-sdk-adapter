@@ -18,8 +18,6 @@ var_dump($response);
 echo '<hr />';
 
 $data = new CreditCard();
-
-$facade = new Facade();
 $response = $facade->sendCreditCard($data);
 
 var_dump($response);
