@@ -1,11 +1,9 @@
 <?php
 
-namespace Webjump\Braspag\Pagador;
+namespace Webjump\Braspag\Pagador\Transaction\Resource\Request;
 
 
 interface RequestInterface
 {
     public function prepareParams();
-
-    public function getParams();
 }

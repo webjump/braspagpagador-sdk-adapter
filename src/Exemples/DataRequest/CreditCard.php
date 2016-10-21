@@ -3,9 +3,10 @@
 namespace Webjump\Braspag\Exemples\DataRequest;
 
 
-use Webjump\Braspag\Pagador\Request\Data\BilletInterface;
+use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Send\RequestInterface;
+use Braspag\Model\Payment\Payment;
 
-class Billet implements BilletInterface
+class CreditCard implements RequestInterface
 {
     public function getMerchantId()
     {
@@ -129,12 +130,22 @@ class Billet implements BilletInterface
 
     public function getPaymentType()
     {
-        return 'Boleto';
+        return 'CreditCard';
     }
 
     public function getPaymentAmount()
     {
-        return 15700;
+        return 100;
+    }
+
+    public function getPaymentCurrency()
+    {
+        return 'BRL';
+    }
+
+    public function getPaymentCountry()
+    {
+        return 'BRA';
     }
 
     public function getPaymentProvider()
@@ -142,32 +153,74 @@ class Billet implements BilletInterface
         return 'Simulado';
     }
 
-    public function getPaymentBoletoNumber()
+    public function getPaymentServiceTaxAmount()
     {
-        return '2016060900';
+        return 0;
     }
 
-    public function getPaymentAssignor()
+    public function getPaymentInstallments()
     {
-        return 'Empresa Teste';
+        return 1;
     }
 
-    public function getPaymentDemonstrative()
+    public function getPaymentInterest()
     {
-        return 'Desmonstrative Teste';
+        return Payment::InterestByMerchant;
     }
 
-    public function getPaymentExpirationDate()
+    public function getPaymentCapture()
     {
-        return '2016-10-30';
+        return true;
     }
 
-    public function getPaymentIdentification()
+    public function getPaymentAuthenticate()
     {
-        return '11884926754';
+        return false;
     }
-    public function getPaymentInstructions()
+
+    public function getPaymentSoftDescriptor()
     {
-        return 'Aceitar somente até a data de vencimento, após essa data juros de 1% dia.';
+        return 'tst';
+    }
+
+    public function getPaymentCreditCardCardNumber()
+    {
+        return '4532117080573700';
+    }
+
+
+    public function getPaymentCreditCardHolder()
+    {
+        return 'Test T S Testando';
+    }
+
+    public function getPaymentCreditCardExpirationDate()
+    {
+        return '12/2021';
+    }
+
+    public function getPaymentCreditCardSecurityCode()
+    {
+        return '000';
+    }
+
+    public function getPaymentCreditCardSaveCard()
+    {
+        return false;
+    }
+
+    public function getPaymentCreditCardBrand()
+    {
+        return 'Visa';
+    }
+
+    public function getPaymentExtraDataCollection()
+    {
+        return [
+            [
+                'name' => 'NomeDoCampo',
+                'value' => '1234567'
+            ]
+        ];
     }
 }

@@ -3,9 +3,9 @@
 namespace Webjump\Braspag\Exemples\DataRequest;
 
 
-use Webjump\Braspag\Pagador\Request\Data\BilletInterface;
+use Webjump\Braspag\Pagador\Transaction\Api\Billet\Send\RequestInterface;
 
-class Billet implements BilletInterface
+class Billet implements RequestInterface
 {
     public function getMerchantId()
     {
@@ -142,11 +142,6 @@ class Billet implements BilletInterface
         return 'Simulado';
     }
 
-    public function getPaymentAddress()
-    {
-        return 'Rua Teste';
-    }
-
     public function getPaymentBoletoNumber()
     {
         return '2016060900';
@@ -164,7 +159,7 @@ class Billet implements BilletInterface
 
     public function getPaymentExpirationDate()
     {
-        return '2015-01-05';
+        return '2016-10-30';
     }
 
     public function getPaymentIdentification()

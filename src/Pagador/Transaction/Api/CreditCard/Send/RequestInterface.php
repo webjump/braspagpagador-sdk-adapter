@@ -1,9 +1,9 @@
 <?php
 
-namespace Webjump\Braspag\Pagador\Request\Data;
+namespace Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Send;
 
 
-interface BilletInterface
+interface RequestInterface
 {
     public function getMerchantId();
 
@@ -57,19 +57,35 @@ interface BilletInterface
 
     public function getPaymentAmount();
 
+    public function getPaymentCurrency();
+
+    public function getPaymentCountry();
+
     public function getPaymentProvider();
 
-    public function getPaymentAddress();
+    public function getPaymentServiceTaxAmount();
 
-    public function getPaymentBoletoNumber();
+    public function getPaymentInstallments();
 
-    public function getPaymentAssignor();
+    public function getPaymentInterest();
 
-    public function getPaymentDemonstrative();
+    public function getPaymentCapture();
 
-    public function getPaymentExpirationDate();
+    public function getPaymentAuthenticate();
 
-    public function getPaymentIdentification();
+    public function getPaymentSoftDescriptor();
 
-    public function getPaymentInstructions();
+    public function getPaymentCreditCardCardNumber();
+
+    public function getPaymentCreditCardHolder();
+
+    public function getPaymentCreditCardExpirationDate();
+
+    public function getPaymentCreditCardSecurityCode();
+
+    public function getPaymentCreditCardSaveCard();
+
+    public function getPaymentCreditCardBrand();
+
+    public function getPaymentExtraDataCollection();
 }

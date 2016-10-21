@@ -1,9 +1,9 @@
 <?php
 
-namespace Webjump\Braspag\Pagador\Request\Data;
+namespace Webjump\Braspag\Pagador\Transaction\Api\Billet\Send;
 
 
-interface BilletInterface
+interface RequestInterface
 {
     public function getMerchantId();
 
