@@ -1,0 +1,31 @@
+{
+  "name": "webjump/braspagpagador-sdk-adapter",
+  "type": "library",
+  "description": "Braspag API PHP SDK",
+  "keywords": [
+    "payment",
+    "credit-card",
+    "debit-card",
+    "boleto",
+    "anti-fraud",
+    "gateway",
+    "braspag",
+    "cielo"
+  ],
+  "license": "LGPL-3.0",
+  "authors": [
+    {
+      "name": "Webjump Core Team",
+      "email": "dev@webjump.com.br"
+    }
+  ],
+  "require": {
+    "php": ">=5.5",
+    "jotjunior/braspag-php-sdk": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "Webjump\\Braspag\\": "src"
+    }
+  }
+}
