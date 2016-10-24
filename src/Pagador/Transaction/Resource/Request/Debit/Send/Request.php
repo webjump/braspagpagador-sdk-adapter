@@ -57,7 +57,7 @@ class Request extends RequestAbstract
                 'provider' => $this->data->getPaymentProvider(),
                 'returnUrl' => $this->data->getPaymentReturnUrl(),
                 'debitCard' => [
-                    'CardNumber' => $this->data->getPaymentDebitCardNumber(),
+                    'CardNumber' => $this->data->getPaymentDebitCardCardNumber(),
                     'Holder' => $this->data->getPaymentDebitCardHolder(),
                     'ExpirationDate' => $this->data->getPaymentDebitCardExpirationDate(),
                     'SecurityCode' => $this->data->getPaymentDebitCardSecurityCode(),

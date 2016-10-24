@@ -61,7 +61,7 @@ interface RequestInterface
 
     public function getPaymentReturnUrl();
 
-    public function getPaymentDebitCardNumber();
+    public function getPaymentDebitCardCardNumber();
 
     public function getPaymentDebitCardHolder();
 

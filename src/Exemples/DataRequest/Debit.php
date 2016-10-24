@@ -148,7 +148,7 @@ class Debit implements RequestInterface
         return 'http://www.braspag.com.br';
     }
 
-    public function getPaymentDebitCardNumber()
+    public function getPaymentDebitCardCardNumber()
     {
         return '1234123412341231';
     }
