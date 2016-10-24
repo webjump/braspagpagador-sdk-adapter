@@ -3,14 +3,15 @@
 namespace Webjump\Braspag\Pagador\Transaction\Resource\Facade;
 
 
+use Webjump\Braspag\Factories\BilletRequestFactory;
+use Webjump\Braspag\Factories\CreditCadRequestFactory;
+use Webjump\Braspag\Factories\DebitRequestFactory;
+use Webjump\Braspag\Pagador\Transaction\Resource\Request\RequestAbstract;
 use Webjump\Braspag\Pagador\Transaction\Api\Billet\Send\RequestInterface as BilletRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Send\RequestInterface as CreditCardRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\Debit\Send\RequestInterface as DebitRequest;
-use Webjump\Braspag\Factories\CreditCadRequestFactory;
-use Webjump\Braspag\Factories\SaleFactory;
-use Webjump\Braspag\Factories\ApiServiceFactory;
-use Webjump\Braspag\Factories\BilletRequestFactory;
-use Webjump\Braspag\Factories\DebitRequestFactory;
+use Webjump\Braspag\Factories\AuthorizeCommandFactory as Authorize;
+
 
 class Facade implements FacadeInterface
 {
@@ -20,22 +21,8 @@ class Facade implements FacadeInterface
      */
     public function sendBillet(BilletRequest $request)
     {
-        $data = BilletRequestFactory::make($request);
-        $sale = SaleFactory::make($data->getParams());
-
-        $credentials = [
-            'merchantId' => $request->getMerchantId(),
-            'merchantKey' => $request->getMerchantKey(),
-        ];
-
-        $service = ApiServiceFactory::make($credentials);
-        $result = $service->authorize($sale);
-
-        if (! $result->isValid()) {
-            return $result->getMessages();
-        }
-
-        return $result->toArray();
+        $authorize = $this->authorize(BilletRequestFactory::make($request));
+        return $authorize;
     }
 
     /**
@@ -44,22 +31,8 @@ class Facade implements FacadeInterface
      */
     public function sendCreditCard(CreditCardRequest $request)
     {
-        $data = CreditCadRequestFactory::make($request);
-        $sale = SaleFactory::make($data->getParams());
-
-        $credentials = [
-            'merchantId' => $request->getMerchantId(),
-            'merchantKey' => $request->getMerchantKey(),
-        ];
-
-        $service = ApiServiceFactory::make($credentials);
-        $result = $service->authorize($sale);
-
-        if (! $result->isValid()) {
-            return $result->getMessages();
-        }
-
-        return $result->toArray();
+        $authorize = $this->authorize(CreditCadRequestFactory::make($request));
+        return $authorize;
     }
 
     /**
@@ -68,21 +41,22 @@ class Facade implements FacadeInterface
      */
     public function sendDebit(DebitRequest $request)
     {
-        $data = DebitRequestFactory::make($request);
-        $sale = SaleFactory::make($data->getParams());
+        $authorize = $this->authorize(DebitRequestFactory::make($request));
+        return $authorize;
+    }
 
-        $credentials = [
-            'merchantId' => $request->getMerchantId(),
-            'merchantKey' => $request->getMerchantKey(),
-        ];
+    /**
+     * @param RequestAbstract $request
+     * @return array
+     */
+    private function authorize(RequestAbstract $request)
+    {
+        $authorize = Authorize::make($request)->getResult();
 
-        $service = ApiServiceFactory::make($credentials);
-        $result = $service->authorize($sale);
-
-        if (! $result->isValid()) {
-            return $result->getMessages();
+        if (! $authorize->isValid()) {
+            return $authorize->getMessages();
         }
 
-        return $result->toArray();
+        return $authorize->toArray();
     }
 }

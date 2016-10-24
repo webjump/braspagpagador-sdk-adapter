@@ -17,4 +17,9 @@ abstract class RequestAbstract
     {
         return $this->params;
     }
+
+    public function getData()
+    {
+        return $this->data;
+    }
 }
