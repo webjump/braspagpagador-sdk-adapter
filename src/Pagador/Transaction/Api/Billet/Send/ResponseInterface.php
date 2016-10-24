@@ -33,8 +33,6 @@ interface ResponseInterface
 
     public function getPaymentAmount();
 
-    public function getPayment();
-
     public function getPaymentReceivedDate();
 
     public function getPaymentCurrency();

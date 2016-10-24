@@ -11,22 +11,7 @@ use Webjump\Braspag\Pagador\Transaction\Resource\Facade\Facade as Facade;
 $data = new Billet();
 
 $facade = new Facade();
+
+/** @var Webjump\Braspag\Pagador\Transaction\Api\Billet\Send\ResponseInterface $response */
 $response = $facade->sendBillet($data);
-
-var_dump($response);
-
-
-echo '<hr />';
-
-$data = new CreditCard();
-$response = $facade->sendCreditCard($data);
-
-var_dump($response);
-
-
-echo '<hr />';
-
-$data = new Debit();
-$response = $facade->sendDebit($data);
-
-var_dump($response);
+echo "<a target='_blank' href='{$response->getPaymentUrl()}'>Gerar Boleto</a>";
