@@ -3,14 +3,11 @@
 namespace Webjump\Braspag\Pagador\Transaction\Resource\Request\CreditCard\Send;
 
 
-use Webjump\Braspag\Pagador\Transaction\Resource\Request\RequestInterface;
+use Webjump\Braspag\Pagador\Transaction\Resource\Request\RequestAbstract;
 use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Send\RequestInterface as Data;
 
-class Request implements RequestInterface
+class Request extends RequestAbstract
 {
-    protected $data;
-    protected $params = [];
-    
     /**
      * @param Data $data
      */
@@ -19,19 +16,11 @@ class Request implements RequestInterface
         $this->data = $data;
         $this->prepareParams();
     }
-
-    /**
-     * @return array
-     */
-    public function getParams()
-    {
-        return $this->params;
-    }
-
+    
     /**
      * @return $this
      */
-    public function prepareParams()
+    protected function prepareParams()
     {
         $this->params = [
             'merchantOrderId' => $this->data->getMerchantOrderId(),

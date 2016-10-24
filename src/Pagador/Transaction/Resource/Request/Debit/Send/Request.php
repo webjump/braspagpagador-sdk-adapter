@@ -1,10 +1,10 @@
 <?php
 
-namespace Webjump\Braspag\Pagador\Transaction\Resource\Request\Billet\Send;
+namespace Webjump\Braspag\Pagador\Transaction\Resource\Request\Debit\Send;
 
 
 use Webjump\Braspag\Pagador\Transaction\Resource\Request\RequestAbstract;
-use Webjump\Braspag\Pagador\Transaction\Api\Billet\Send\RequestInterface as Data;
+use Webjump\Braspag\Pagador\Transaction\Api\Debit\Send\RequestInterface as Data;
 
 class Request extends RequestAbstract
 {
@@ -55,22 +55,14 @@ class Request extends RequestAbstract
                 'type' => $this->data->getPaymentType(),
                 'amount' => $this->data->getPaymentAmount(),
                 'provider' => $this->data->getPaymentProvider(),
-                'address' => [
-                    'street' => $this->data->getCustomerAddressStreet(),
-                    'number' => $this->data->getCustomerAddressNumber(),
-                    'complement' => $this->data->getCustomerAddressComplement(),
-                    'zipCode' => $this->data->getCustomerAddressZipCode(),
-                    'district' => $this->data->getCustomerAddressDistrict(),
-                    'city' => $this->data->getCustomerAddressCity(),
-                    'state' => $this->data->getCustomerAddressState(),
-                    'country' => $this->data->getCustomerAddressCountry(),
-                ],
-                'boletoNumber' => $this->data->getPaymentBoletoNumber(),
-                'assignor' => $this->data->getPaymentAssignor(),
-                'demonstrative' => $this->data->getPaymentDemonstrative(),
-                'expirationDate' => $this->data->getPaymentExpirationDate(),
-                'identification' => $this->data->getPaymentIdentification(),
-                'instructions' => $this->data->getPaymentInstructions()
+                'returnUrl' => $this->data->getPaymentReturnUrl(),
+                'debitCard' => [
+                    'CardNumber' => $this->data->getPaymentDebitCardNumber(),
+                    'Holder' => $this->data->getPaymentDebitCardHolder(),
+                    'ExpirationDate' => $this->data->getPaymentDebitCardExpirationDate(),
+                    'SecurityCode' => $this->data->getPaymentDebitCardSecurityCode(),
+                    'Brand' => $this->data->getPaymentDebitCardBrand(),
+                ]
             ]
         ];
 
