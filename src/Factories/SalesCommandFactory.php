@@ -3,17 +3,17 @@
 namespace Webjump\Braspag\Factories;
 
 
-use Webjump\Braspag\Pagador\Transaction\Resource\Command\AuthorizeCommand;
+use Webjump\Braspag\Pagador\Transaction\Resource\Command\SalesCommand;
 use Webjump\Braspag\Pagador\Transaction\Resource\Request\RequestAbstract;
 
-class AuthorizeCommandFactory
+class SalesCommandFactory
 {
     /**
      * @param RequestAbstract $request
-     * @return AuthorizeCommand
+     * @return SalesCommand
      */
     public static function make(RequestAbstract $request)
     {
-        return new AuthorizeCommand($request);
+        return new SalesCommand($request);
     }
 }

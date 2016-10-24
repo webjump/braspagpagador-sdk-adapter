@@ -5,6 +5,8 @@ namespace Webjump\Braspag\Pagador\Transaction\Resource\Request;
 
 abstract class RequestAbstract
 {
+    const CONTENT_TYPE_APPLICATION_JSON = 'application/json';
+    
     protected $data;
     protected $params = [];
 
