@@ -29,6 +29,6 @@ class CaptureCommand extends CommandAbstract
             exit($response);
         }
 
-        $this->result = ResponseFactory::make($response);
+        $this->result = ResponseFactory::make($response, 'captureCreditCard');
     }
 }

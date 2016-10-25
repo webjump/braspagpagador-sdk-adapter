@@ -170,7 +170,7 @@ class CreditCard implements RequestInterface
 
     public function getPaymentCapture()
     {
-        return 'true';
+        return 'false';
     }
 
     public function getPaymentAuthenticate()

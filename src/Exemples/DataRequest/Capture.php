@@ -21,7 +21,7 @@ class Capture implements RequestInterface
 
     public function getPaymentId()
     {
-        return '48c625bd-e561-4e8c-be9d-a4869f5e6d0e';
+        return '5eef0322-4ee2-4fa4-b137-9b7ff93d2293';
     }
 
     public function getCaptureRequest()

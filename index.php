@@ -43,4 +43,3 @@ $data = new Capture();
 $response = $facade->captureCreditCard($data);
 $result = getData($response);
 var_dump($result);
-
