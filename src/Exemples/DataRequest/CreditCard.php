@@ -10,12 +10,12 @@ class CreditCard implements RequestInterface
 {
     public function getMerchantId()
     {
-        return '00000000-0000-0000-0000-000000000000';
+        return '3c9afd87-adb5-4264-a9c2-73fe61df779a';
     }
 
     public function getMerchantKey()
     {
-        return '0000000000000000000000000000000000000000';
+        return 'UJITPIATNINTONQFHRYRLTHLCEGHHLHJWIZBLUZV';
     }
 
     public function getMerchantOrderId()
@@ -170,12 +170,12 @@ class CreditCard implements RequestInterface
 
     public function getPaymentCapture()
     {
-        return true;
+        return 'true';
     }
 
     public function getPaymentAuthenticate()
     {
-        return false;
+        return 'false';
     }
 
     public function getPaymentSoftDescriptor()
@@ -185,7 +185,7 @@ class CreditCard implements RequestInterface
 
     public function getPaymentCreditCardCardNumber()
     {
-        return '4532117080573700';
+        return '0000000000000001';
     }
 
 

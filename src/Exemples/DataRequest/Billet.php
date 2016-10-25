@@ -9,11 +9,13 @@ class Billet implements RequestInterface
 {
     public function getMerchantId()
     {
+//        return 'BC5D3432-527F-40C6-84BF-C549285536BE';
         return '3c9afd87-adb5-4264-a9c2-73fe61df779a';
     }
 
     public function getMerchantKey()
     {
+//        return 'WEEzLFrBegE1d4RoTjhWIxZHR0Eu1Jyf3ZXVGAaq';
         return 'UJITPIATNINTONQFHRYRLTHLCEGHHLHJWIZBLUZV';
     }
 
