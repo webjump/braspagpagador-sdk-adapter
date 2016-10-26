@@ -16,6 +16,6 @@ abstract class ResponseAbstract
     public function __construct(ResponseInterface $response)
     {
         $this->responseInstance = $response;
-        $this->response = \json_decode($response->getBody()->getContents(), true);
+        $this->response = \json_decode($this->responseInstance->getBody()->getContents(), true);
     }
 }

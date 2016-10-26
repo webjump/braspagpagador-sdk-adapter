@@ -1,6 +1,6 @@
 <?php
 
-namespace Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Capture;
+namespace Webjump\Braspag\Pagador\Transaction\Api\Actions\Capture;
 
 
 interface ResponseInterface

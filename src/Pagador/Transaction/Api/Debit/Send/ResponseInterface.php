@@ -5,33 +5,21 @@ namespace Webjump\Braspag\Pagador\Transaction\Api\Debit\Send;
 
 interface ResponseInterface
 {
-    public function getMerchantOrderId();
+    public function getPaymentAuthenticationUrl();
 
-    public function getCustomerName();
+    public function getPaymentAcquirerTransactionId();
 
-    public function PaymentUrl();
+    public function getPaymentPaymentId();
 
-    public function PaymentPaymentId();
+    public function getPaymentReceivedDate();
 
-    public function PaymentType();
+    public function getPaymentReasonCode();
 
-    public function PaymentAmount();
+    public function getPaymentReasonMessage();
 
-    public function PaymentReceivedDate();
+    public function getPaymentStatus();
 
-    public function PaymentCurrency();
+    public function getPaymentProviderReturnCode();
 
-    public function PaymentCountry();
-
-    public function PaymentProvider();
-
-    public function PaymentReturnUrl();
-
-    public function PaymentReasonCode();
-
-    public function PaymentReasonMessage();
-
-    public function PaymentStatus();
-
-    public function PaymentLinks();
+    public function getPaymentLinks();
 }

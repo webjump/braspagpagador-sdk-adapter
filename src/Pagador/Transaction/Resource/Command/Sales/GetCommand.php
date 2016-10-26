@@ -17,14 +17,35 @@ class GetCommand extends CommandAbstract
         $client = ClientHttpFactory::make();
 
         $params = $this->request->getParams();
-        $uriComplement = sprintf('%s/', $params['uriComplement']['payment_id']);
+        $uriComplement = $params['uriComplement']['payment_id'];
 
         $response = $client->request($sales, 'GET', $uriComplement);
 
         if(! ($response instanceof ResponseInterface)) {
-            exit($response);
+            var_dump($response);
+            return;
         }
 
-        $this->result = ResponseFactory::make($response);
+        $type = '';
+        if ($this->request->getType()) {
+            $type = $this->request->getType();
+        }
+
+        $this->result = ResponseFactory::make($response, $type);
+    }
+
+    protected function getType(array $data)
+    {
+        $type = '';
+
+        if ($data['Payment']['Type'] === 'CreditCard') {
+            $type = 'creditCard';
+        }
+
+        if ($data['Payment']['Type'] === 'Boleto') {
+            $type = 'billet';
+        }
+
+        return $type;
     }
 }

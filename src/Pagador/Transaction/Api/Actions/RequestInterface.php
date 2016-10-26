@@ -1,6 +1,6 @@
 <?php
 
-namespace Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Capture;
+namespace Webjump\Braspag\Pagador\Transaction\Api\Actions;
 
 
 interface RequestInterface
@@ -11,5 +11,5 @@ interface RequestInterface
 
     public function getPaymentId();
 
-    public function getCaptureRequest();
+    public function getAdditionalRequest();
 }

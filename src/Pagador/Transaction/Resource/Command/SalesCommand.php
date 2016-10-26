@@ -9,7 +9,7 @@ use Webjump\Braspag\Factories\SalesFactory;
 use \Psr\Http\Message\ResponseInterface;
 use Webjump\Braspag\Pagador\Transaction\Resource\Request\Billet\Send\Request as BilletRequest;
 use Webjump\Braspag\Pagador\Transaction\Resource\Request\CreditCard\Send\Request as CreditCardRequest;
-use Webjump\Braspag\Pagador\Transaction\Resource\Request\CreditCard\Capture\Request as CaptureCreditCardRequest;
+use Webjump\Braspag\Pagador\Transaction\Resource\Request\Debit\Send\Request as DebitRequest;
 
 
 class SalesCommand extends CommandAbstract
@@ -21,7 +21,8 @@ class SalesCommand extends CommandAbstract
         $response = $client->request($sales);
 
         if(! ($response instanceof ResponseInterface)) {
-            exit($response);
+            var_dump($response);
+            return;
         }
 
         $type = '';
@@ -32,6 +33,10 @@ class SalesCommand extends CommandAbstract
 
         if ($this->request instanceof CreditCardRequest) {
             $type = 'creditCard';
+        }
+
+        if ($this->request instanceof DebitRequest) {
+            $type = 'debitCard';
         }
 
         $this->result = ResponseFactory::make($response, $type);

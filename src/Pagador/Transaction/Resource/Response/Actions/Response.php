@@ -1,9 +1,9 @@
 <?php
 
-namespace Webjump\Braspag\Pagador\Transaction\Resource\Response\CreditCard\Capture;
+namespace Webjump\Braspag\Pagador\Transaction\Resource\Response\Actions;
 
 
-use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Capture\ResponseInterface;
+use Webjump\Braspag\Pagador\Transaction\Api\Actions\Capture\ResponseInterface;
 use Webjump\Braspag\Pagador\Transaction\Resource\Response\ResponseAbstract;
 
 class Response extends ResponseAbstract implements ResponseInterface
@@ -13,6 +13,7 @@ class Response extends ResponseAbstract implements ResponseInterface
         if (! isset($this->response['Status'])) {
             return '';
         }
+        
         return $this->response['Status'];
     }
 

@@ -9,7 +9,7 @@ use \Psr\Http\Message\ResponseInterface;
 use Webjump\Braspag\Factories\SalesFactory;
 use Webjump\Braspag\Pagador\Transaction\Resource\Command\CommandAbstract;
 
-class CaptureCommand extends CommandAbstract
+class VoidCommand extends CommandAbstract
 {
     protected function execute()
     {
@@ -17,7 +17,7 @@ class CaptureCommand extends CommandAbstract
         $client = ClientHttpFactory::make();
 
         $params = $this->request->getParams();
-        $uriComplement = sprintf('%s/capture', $params['uriComplement']['payment_id']);
+        $uriComplement = sprintf('%s/void', $params['uriComplement']['payment_id']);
 
         if (isset($params['uriComplement']['additional'])) {
             $uriComplement .= '?' . \http_build_query($params['uriComplement']['additional']);

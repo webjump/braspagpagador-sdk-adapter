@@ -29,6 +29,11 @@ class Client implements ClientInterface
         $params = $service->getRequest()->getParams();
 
         $uri = self::API_URI . $service->getEndPoint() . $uriComplement;
+
+        if ($method === 'GET') {
+            $uri = self::API_CONSULT_URI . $service->getEndPoint() . $uriComplement;
+        }
+
         $headers = isset($params['headers']) ? $params['headers'] : [];
         $body = isset($params['body']) ? $params['body'] : [];
         try {

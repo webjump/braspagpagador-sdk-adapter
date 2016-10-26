@@ -1,20 +1,32 @@
 <?php
 
-namespace Webjump\Braspag\Pagador\Transaction\Resource\Request\CreditCard\Capture;
+namespace Webjump\Braspag\Pagador\Transaction\Resource\Request\Actions;
 
 
 use Webjump\Braspag\Pagador\Transaction\Resource\Request\RequestAbstract;
-use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Capture\RequestInterface as Data;
+use Webjump\Braspag\Pagador\Transaction\Api\Actions\RequestInterface as Data;
 
 class Request extends RequestAbstract
 {
+    protected $type;
+
     /**
      * @param Data $data
+     * @param string $type
      */
-    public function __construct(Data $data)
+    public function __construct(Data $data, $type = '')
     {
+        $this->type = $type;
         $this->data = $data;
         $this->prepareParams();
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 
     /**
@@ -30,7 +42,7 @@ class Request extends RequestAbstract
             ],
             'uriComplement' => [
                 'payment_id' => $this->data->getPaymentId(),
-                'capture_request' => $this->data->getCaptureRequest()
+                'additional' => $this->data->getAdditionalRequest()
             ]
         ];
 
