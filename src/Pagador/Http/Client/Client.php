@@ -21,18 +21,25 @@ class Client implements ClientInterface
     /**
      * @param ServiceInterface $service
      * @param string $method
+     * @param string $uriComplement
      * @return mixed|\Psr\Http\Message\ResponseInterface
      */
-    public function request(ServiceInterface $service, $method = 'POST')
+    public function request(ServiceInterface $service, $method = 'POST', $uriComplement = '')
     {
         $params = $service->getRequest()->getParams();
+
+        $uri = self::API_URI . $service->getEndPoint() . $uriComplement;
+
+        if ($method === 'GET') {
+            $uri = self::API_CONSULT_URI . $service->getEndPoint() . $uriComplement;
+        }
 
         $headers = isset($params['headers']) ? $params['headers'] : [];
         $body = isset($params['body']) ? $params['body'] : [];
         try {
             return $this->client->request(
                 $method,
-                self::API_URI . $service->getEndPoint(),
+                $uri,
                 [
                     'headers' => $headers,
                     'body' => \json_encode($body)
@@ -41,6 +48,10 @@ class Client implements ClientInterface
         } catch (\Exception $e) {
             return $e->getMessage();
         }
+    }
 
+    public function getClient()
+    {
+        return $this->client;
     }
 }

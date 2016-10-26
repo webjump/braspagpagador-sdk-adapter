@@ -26,6 +26,12 @@ abstract class ServiceAbstract
         return $this->endPoint;
     }
 
+    public function setEndPoint($endPoint)
+    {
+        $this->endPoint = $endPoint;
+        return $this;
+    }
+
     /**
      * @return RequestAbstract
      */

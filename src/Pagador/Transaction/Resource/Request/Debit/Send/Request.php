@@ -20,48 +20,32 @@ class Request extends RequestAbstract
     /**
      * @return $this
      */
-    public function prepareParams()
+    protected function prepareParams()
     {
         $this->params = [
-            'merchantOrderId' => $this->data->getMerchantOrderId(),
-            'customer' => [
-                'name' => $this->data->getCustomerName(),
-                'identity' => $this->data->getCustomerIdentity(),
-                'identityType' => $this->data->getCustomerIdentityType(),
-                'email' => $this->data->getCustomerEmail(),
-                'birthDate' => $this->data->getCustomerBirthDate(),
-                'address' => [
-                    'street' => $this->data->getCustomerAddressStreet(),
-                    'number' => $this->data->getCustomerAddressNumber(),
-                    'complement' => $this->data->getCustomerAddressComplement(),
-                    'zipCode' => $this->data->getCustomerAddressZipCode(),
-                    'district' => $this->data->getCustomerAddressDistrict(),
-                    'city' => $this->data->getCustomerAddressCity(),
-                    'state' => $this->data->getCustomerAddressState(),
-                    'country' => $this->data->getCustomerAddressCountry(),
-                ],
-                'deliveryAddress' => [
-                    'street' => $this->data->getCustomerDeliveryAddressStreet(),
-                    'number' => $this->data->getCustomerDeliveryAddressNumber(),
-                    'complement' => $this->data->getCustomerDeliveryAddressComplement(),
-                    'zipCode' => $this->data->getCustomerDeliveryAddressZipCode(),
-                    'district' => $this->data->getCustomerDeliveryAddressDistrict(),
-                    'city' => $this->data->getCustomerDeliveryAddressCity(),
-                    'state' => $this->data->getCustomerDeliveryAddressState(),
-                    'country' => $this->data->getCustomerDeliveryAddressCountry(),
-                ]
+            'headers' => [
+                'Content-Type' => self::CONTENT_TYPE_APPLICATION_JSON,
+                'MerchantId' => $this->data->getMerchantId(),
+                'MerchantKey' => $this->data->getMerchantKey()
             ],
-            'payment' => [
-                'type' => $this->data->getPaymentType(),
-                'amount' => $this->data->getPaymentAmount(),
-                'provider' => $this->data->getPaymentProvider(),
-                'returnUrl' => $this->data->getPaymentReturnUrl(),
-                'debitCard' => [
-                    'CardNumber' => $this->data->getPaymentDebitCardCardNumber(),
-                    'Holder' => $this->data->getPaymentDebitCardHolder(),
-                    'ExpirationDate' => $this->data->getPaymentDebitCardExpirationDate(),
-                    'SecurityCode' => $this->data->getPaymentDebitCardSecurityCode(),
-                    'Brand' => $this->data->getPaymentDebitCardBrand(),
+            'body' => [
+                'MerchantOrderId' => $this->data->getMerchantOrderId(),
+                'Customer' => [
+                    'Name' => $this->data->getCustomerName(),
+                ],
+
+                'Payment' => [
+                    'Type' => $this->data->getPaymentType(),
+                    'Amount' => $this->data->getPaymentAmount(),
+                    'Provider' => $this->data->getPaymentProvider(),
+                    'ReturnUrl' => $this->data->getPaymentReturnUrl(),
+                    'DebitCard' => [
+                        'CardNumber' => $this->data->getPaymentDebitCardCardNumber(),
+                        'Holder' => $this->data->getPaymentDebitCardHolder(),
+                        'ExpirationDate' => $this->data->getPaymentDebitCardExpirationDate(),
+                        'SecurityCode' => $this->data->getPaymentDebitCardSecurityCode(),
+                        'Brand' => $this->data->getPaymentDebitCardBrand(),
+                    ]
                 ]
             ]
         ];

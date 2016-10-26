@@ -1,35 +1,27 @@
 <?php
 
-namespace Webjump\Braspag\Pagador\Transaction\Resource\Response\Billet\Send;
+namespace Webjump\Braspag\Pagador\Transaction\Resource\Response\Debit\Send;
 
 
-use Webjump\Braspag\Pagador\Transaction\Api\Billet\Send\ResponseInterface;
+use Webjump\Braspag\Pagador\Transaction\Api\Debit\Send\ResponseInterface;
 use Webjump\Braspag\Pagador\Transaction\Resource\Response\ResponseAbstract;
 
 class Response extends ResponseAbstract implements ResponseInterface
 {
-    public function getPaymentUrl()
+    public function getPaymentAuthenticationUrl()
     {
-        if (! isset($this->response['Payment']['Url'])) {
+        if (! isset($this->response['Payment']['AuthenticationUrl'])) {
             return '';
         }
-        return $this->response['Payment']['Url'];
+        return $this->response['Payment']['AuthenticationUrl'];
     }
 
-    public function getPaymentBoletoNumber()
+    public function getPaymentAcquirerTransactionId()
     {
-        if (! isset($this->response['Payment']['BoletoNumber'])) {
+        if (! isset($this->response['Payment']['AcquirerTransactionId'])) {
             return '';
         }
-        return $this->response['Payment']['BoletoNumber'];
-    }
-
-    public function getPaymentBarCodeNumber()
-    {
-        if (! isset($this->response['Payment']['BarCodeNumber'])) {
-            return '';
-        }
-        return $this->response['Payment']['BarCodeNumber'];
+        return $this->response['Payment']['AcquirerTransactionId'];
     }
 
     public function getPaymentPaymentId()
@@ -50,18 +42,18 @@ class Response extends ResponseAbstract implements ResponseInterface
 
     public function getPaymentReasonCode()
     {
-        if (! isset($this->response['Payment']['ReasonCode'])) {
+        if (! isset($this->response['Payment']['PaymentReasonCode'])) {
             return '';
         }
-        return $this->response['Payment']['ReasonCode'];
+        return $this->response['Payment']['PaymentReasonCode'];
     }
 
     public function getPaymentReasonMessage()
     {
-        if (! isset($this->response['Payment']['ReasonMessage'])) {
+        if (! isset($this->response['Payment']['PaymentReasonMessage'])) {
             return '';
         }
-        return $this->response['Payment']['ReasonMessage'];
+        return $this->response['Payment']['PaymentReasonMessage'];
     }
 
     public function getPaymentStatus()
@@ -70,6 +62,14 @@ class Response extends ResponseAbstract implements ResponseInterface
             return '';
         }
         return $this->response['Payment']['Status'];
+    }
+
+    public function getPaymentProviderReturnCode()
+    {
+        if (! isset($this->response['Payment']['ProviderReturnCode'])) {
+            return '';
+        }
+        return $this->response['Payment']['ProviderReturnCode'];
     }
 
     public function getPaymentLinks()
