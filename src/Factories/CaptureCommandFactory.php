@@ -10,8 +10,8 @@
 namespace Webjump\Braspag\Factories;
 
 
-use Webjump\Braspag\Pagador\Transaction\Resource\Command\Sales\CaptureCommand;
-use Webjump\Braspag\Pagador\Transaction\Resource\Request\RequestAbstract;
+use Webjump\Braspag\Pagador\Transaction\Command\Sales\CaptureCommand;
+use Webjump\Braspag\Pagador\Transaction\Resource\RequestAbstract;
 
 class CaptureCommandFactory
 {

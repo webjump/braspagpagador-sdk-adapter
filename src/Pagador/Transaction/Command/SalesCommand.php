@@ -7,16 +7,16 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Pagador\Transaction\Resource\Command;
+namespace Webjump\Braspag\Pagador\Transaction\Command;
 
 
 use Webjump\Braspag\Factories\ClientHttpFactory;
 use Webjump\Braspag\Factories\ResponseFactory;
 use Webjump\Braspag\Factories\SalesFactory;
 use \Psr\Http\Message\ResponseInterface;
-use Webjump\Braspag\Pagador\Transaction\Resource\Request\Billet\Send\Request as BilletRequest;
-use Webjump\Braspag\Pagador\Transaction\Resource\Request\CreditCard\Send\Request as CreditCardRequest;
-use Webjump\Braspag\Pagador\Transaction\Resource\Request\Debit\Send\Request as DebitRequest;
+use Webjump\Braspag\Pagador\Transaction\Resource\Billet\Send\Request as BilletRequest;
+use Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Send\Request as CreditCardRequest;
+use Webjump\Braspag\Pagador\Transaction\Resource\Debit\Send\Request as DebitRequest;
 
 
 class SalesCommand extends CommandAbstract

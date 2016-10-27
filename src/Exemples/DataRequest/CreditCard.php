@@ -234,7 +234,7 @@ class CreditCard implements RequestInterface
     public function getAntiFraudRequest()
     {
 //        if (! rand(0,1)) {
-//            return false;
+            return false;
 //        }
 
         return new AntiFraud();

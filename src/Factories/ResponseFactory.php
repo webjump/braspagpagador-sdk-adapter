@@ -10,10 +10,10 @@
 namespace Webjump\Braspag\Factories;
 
 
-use Webjump\Braspag\Pagador\Transaction\Resource\Response\Billet\Send\Response as BilletResponse;
-use Webjump\Braspag\Pagador\Transaction\Resource\Response\CreditCard\Send\Response as CreditCardResponse;
-use Webjump\Braspag\Pagador\Transaction\Resource\Response\Actions\Response as CaptureCreditCardResponse;
-use Webjump\Braspag\Pagador\Transaction\Resource\Response\Debit\Send\Response as DebitCardResponse;
+use Webjump\Braspag\Pagador\Transaction\Resource\Billet\Send\Response as BilletResponse;
+use Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Send\Response as CreditCardResponse;
+use Webjump\Braspag\Pagador\Transaction\Resource\Actions\Response as CaptureCreditCardResponse;
+use Webjump\Braspag\Pagador\Transaction\Resource\Debit\Send\Response as DebitCardResponse;
 
 use \Psr\Http\Message\ResponseInterface;
 

@@ -7,14 +7,14 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Pagador\Transaction\Resource\Command\Sales;
+namespace Webjump\Braspag\Pagador\Transaction\Command\Sales;
 
 
 use Webjump\Braspag\Factories\ClientHttpFactory;
 use Webjump\Braspag\Factories\ResponseFactory;
 use \Psr\Http\Message\ResponseInterface;
 use Webjump\Braspag\Factories\SalesFactory;
-use Webjump\Braspag\Pagador\Transaction\Resource\Command\CommandAbstract;
+use Webjump\Braspag\Pagador\Transaction\Command\CommandAbstract;
 
 class GetCommand extends CommandAbstract
 {

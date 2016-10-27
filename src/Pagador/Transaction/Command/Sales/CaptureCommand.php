@@ -7,16 +7,16 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Pagador\Transaction\Resource\Command\Sales;
+namespace Webjump\Braspag\Pagador\Transaction\Command\Sales;
 
 
 use Webjump\Braspag\Factories\ClientHttpFactory;
 use Webjump\Braspag\Factories\ResponseFactory;
 use \Psr\Http\Message\ResponseInterface;
 use Webjump\Braspag\Factories\SalesFactory;
-use Webjump\Braspag\Pagador\Transaction\Resource\Command\CommandAbstract;
+use Webjump\Braspag\Pagador\Transaction\Command\CommandAbstract;
 
-class VoidCommand extends CommandAbstract
+class CaptureCommand extends CommandAbstract
 {
     protected function execute()
     {
@@ -24,7 +24,7 @@ class VoidCommand extends CommandAbstract
         $client = ClientHttpFactory::make();
 
         $params = $this->request->getParams();
-        $uriComplement = sprintf('%s/void', $params['uriComplement']['payment_id']);
+        $uriComplement = sprintf('%s/capture', $params['uriComplement']['payment_id']);
 
         if (isset($params['uriComplement']['additional'])) {
             $uriComplement .= '?' . \http_build_query($params['uriComplement']['additional']);

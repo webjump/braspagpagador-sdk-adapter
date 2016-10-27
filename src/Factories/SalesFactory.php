@@ -11,7 +11,7 @@ namespace Webjump\Braspag\Factories;
 
 
 use Webjump\Braspag\Pagador\Http\Services\Sales;
-use Webjump\Braspag\Pagador\Transaction\Resource\Request\RequestAbstract;
+use Webjump\Braspag\Pagador\Transaction\Resource\RequestAbstract;
 
 class SalesFactory
 {

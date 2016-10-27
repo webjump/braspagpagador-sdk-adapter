@@ -7,10 +7,10 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Pagador\Transaction\Resource\Request\Billet\Send;
+namespace Webjump\Braspag\Pagador\Transaction\Resource\Billet\Send;
 
 
-use Webjump\Braspag\Pagador\Transaction\Resource\Request\RequestAbstract;
+use Webjump\Braspag\Pagador\Transaction\Resource\RequestAbstract;
 use Webjump\Braspag\Pagador\Transaction\Api\Billet\Send\RequestInterface as Data;
 
 class Request extends RequestAbstract

@@ -7,7 +7,7 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Pagador\Transaction\Resource\Facade;
+namespace Webjump\Braspag\Pagador\Transaction;
 
 
 use Webjump\Braspag\Factories\BilletRequestFactory;
@@ -22,13 +22,13 @@ use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Send\RequestInterface as 
 use Webjump\Braspag\Pagador\Transaction\Api\Actions\RequestInterface as ActionsPaymentRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\Debit\Send\RequestInterface as DebitRequest;
 use Webjump\Braspag\Factories\SalesCommandFactory;
-use Webjump\Braspag\Pagador\Transaction\Resource\Command\Sales\CaptureCommand;
-use Webjump\Braspag\Pagador\Transaction\Resource\Command\Sales\GetCommand;
-use Webjump\Braspag\Pagador\Transaction\Resource\Command\Sales\VoidCommand;
-use Webjump\Braspag\Pagador\Transaction\Resource\Command\SalesCommand;
+use Webjump\Braspag\Pagador\Transaction\Command\Sales\CaptureCommand;
+use Webjump\Braspag\Pagador\Transaction\Command\Sales\GetCommand;
+use Webjump\Braspag\Pagador\Transaction\Command\Sales\VoidCommand;
+use Webjump\Braspag\Pagador\Transaction\Command\SalesCommand;
 
 
-class Facade implements FacadeInterface
+class BraspagFacade implements FacadeInterface
 {
     /**
      * @param BilletRequest $request

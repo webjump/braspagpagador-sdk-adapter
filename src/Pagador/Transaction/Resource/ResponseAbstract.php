@@ -7,7 +7,7 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Pagador\Transaction\Resource\Response;
+namespace Webjump\Braspag\Pagador\Transaction\Resource;
 
 
 use \Psr\Http\Message\ResponseInterface;

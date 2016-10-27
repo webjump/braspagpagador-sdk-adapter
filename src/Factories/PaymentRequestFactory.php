@@ -10,7 +10,7 @@
 namespace Webjump\Braspag\Factories;
 
 
-use Webjump\Braspag\Pagador\Transaction\Resource\Request\Actions\Request;
+use Webjump\Braspag\Pagador\Transaction\Resource\Actions\Request;
 use Webjump\Braspag\Pagador\Transaction\Api\Actions\RequestInterface as Data;
 
 class PaymentRequestFactory

@@ -7,10 +7,10 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Pagador\Transaction\Resource\Command;
+namespace Webjump\Braspag\Pagador\Transaction\Command;
 
 
-use Webjump\Braspag\Pagador\Transaction\Resource\Request\RequestAbstract;
+use Webjump\Braspag\Pagador\Transaction\Resource\RequestAbstract;
 
 abstract class CommandAbstract
 {

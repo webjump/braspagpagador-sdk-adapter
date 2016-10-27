@@ -14,10 +14,10 @@ use Webjump\Braspag\Exemples\DataRequest\Billet;
 use Webjump\Braspag\Exemples\DataRequest\CreditCard;
 use Webjump\Braspag\Exemples\DataRequest\Actions;
 use Webjump\Braspag\Exemples\DataRequest\Debit;
-use Webjump\Braspag\Pagador\Transaction\Resource\Facade\Facade as Facade;
+use Webjump\Braspag\Pagador\Transaction\BraspagFacade;
 
 
-$facade = new Facade();
+$facade = new BraspagFacade();
 
 function getData($response)
 {

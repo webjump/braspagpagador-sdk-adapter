@@ -7,7 +7,7 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Pagador\Transaction\Resource\Request;
+namespace Webjump\Braspag\Pagador\Transaction\Resource;
 
 
 abstract class RequestAbstract

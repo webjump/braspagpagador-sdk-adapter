@@ -7,11 +7,11 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Pagador\Transaction\Resource\Response\Debit\Send;
+namespace Webjump\Braspag\Pagador\Transaction\Resource\Debit\Send;
 
 
 use Webjump\Braspag\Pagador\Transaction\Api\Debit\Send\ResponseInterface;
-use Webjump\Braspag\Pagador\Transaction\Resource\Response\ResponseAbstract;
+use Webjump\Braspag\Pagador\Transaction\Resource\ResponseAbstract;
 
 class Response extends ResponseAbstract implements ResponseInterface
 {

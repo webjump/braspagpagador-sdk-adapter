@@ -7,12 +7,12 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Pagador\Transaction\Resource\Request\CreditCard\Send;
+namespace Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Send;
 
 
 use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\AntiFraud\RequestInterface as AntiFraudRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\AntiFraud\Items\RequestInterface as AntiFraudItemsRequest;
-use Webjump\Braspag\Pagador\Transaction\Resource\Request\RequestAbstract;
+use Webjump\Braspag\Pagador\Transaction\Resource\RequestAbstract;
 use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Send\RequestInterface as Data;
 
 class Request extends RequestAbstract

@@ -10,7 +10,7 @@
 namespace Webjump\Braspag\Pagador\Http\Services;
 
 
-use Webjump\Braspag\Pagador\Transaction\Resource\Request\RequestAbstract;
+use Webjump\Braspag\Pagador\Transaction\Resource\RequestAbstract;
 
 abstract class ServiceAbstract
 {
