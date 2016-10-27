@@ -39,7 +39,7 @@ class Actions implements RequestInterface
     public function getAdditionalRequest()
     {
         return [
-            'amount' => 100
+            'amount' => 10
         ];
     }
 }

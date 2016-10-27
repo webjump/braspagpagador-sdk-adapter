@@ -14,6 +14,7 @@ use Webjump\Braspag\Factories\ClientHttpFactory;
 use Webjump\Braspag\Factories\ResponseFactory;
 use \Psr\Http\Message\ResponseInterface;
 use Webjump\Braspag\Factories\SalesFactory;
+use Webjump\Braspag\Pagador\Exception\DefaultException;
 use Webjump\Braspag\Pagador\Transaction\Command\CommandAbstract;
 
 class CaptureCommand extends CommandAbstract
@@ -31,11 +32,6 @@ class CaptureCommand extends CommandAbstract
         }
 
         $response = $client->request($sales, 'PUT', $uriComplement);
-
-        if(! ($response instanceof ResponseInterface)) {
-            var_dump($response);
-            return;
-        }
 
         $this->result = ResponseFactory::make($response, 'actions');
     }

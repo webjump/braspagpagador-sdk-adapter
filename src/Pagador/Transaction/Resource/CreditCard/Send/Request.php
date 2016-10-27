@@ -127,6 +127,7 @@ class Request extends RequestAbstract
     /**
      * @param array $items
      * @return array
+     * @throws \Exception
      */
     private function getItems(array $items = [])
     {
@@ -135,8 +136,7 @@ class Request extends RequestAbstract
         foreach ($items as $item) {
 
             if (! $item instanceof AntiFraudItemsRequest) {
-                var_dump('Tratar Erro em: ' . __CLASS__ . ' line: ' . __LINE__);
-                exit();
+                throw new \Exception ('items params not valid, is have must instance of "\Webjump\Braspag\Pagador\Transaction\Api\CreditCard\AntiFraud\Items\RequestInterface"');
             }
 
             $result[] = [

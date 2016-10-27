@@ -10,12 +10,10 @@
 namespace Webjump\Braspag\Pagador\Transaction\Api\Debit\Send;
 
 
-interface RequestInterface
+use Webjump\Braspag\Pagador\Transaction\Api\AuthRequestInterface;
+
+interface RequestInterface extends AuthRequestInterface
 {
-    public function getMerchantId();
-
-    public function getMerchantKey();
-
     public function getMerchantOrderId();
 
     public function getCustomerName();

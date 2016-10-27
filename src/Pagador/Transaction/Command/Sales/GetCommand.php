@@ -12,7 +12,6 @@ namespace Webjump\Braspag\Pagador\Transaction\Command\Sales;
 
 use Webjump\Braspag\Factories\ClientHttpFactory;
 use Webjump\Braspag\Factories\ResponseFactory;
-use \Psr\Http\Message\ResponseInterface;
 use Webjump\Braspag\Factories\SalesFactory;
 use Webjump\Braspag\Pagador\Transaction\Command\CommandAbstract;
 
@@ -27,11 +26,6 @@ class GetCommand extends CommandAbstract
         $uriComplement = $params['uriComplement']['payment_id'];
 
         $response = $client->request($sales, 'GET', $uriComplement);
-
-        if(! ($response instanceof ResponseInterface)) {
-            var_dump($response);
-            return;
-        }
 
         $type = '';
         if ($this->request->getType()) {
