@@ -1,14 +1,19 @@
 <?php
-
+/**
+ * @author      Webjump Core Team <dev@webjump.com>
+ * @copyright   2016 Webjump (http://www.webjump.com.br)
+ * @license     http://www.webjump.com.br  Copyright
+ *
+ * @link        http://www.webjump.com.br
+ *
+ */
 namespace Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Send;
 
 
-interface RequestInterface
+use Webjump\Braspag\Pagador\Transaction\Api\AuthRequestInterface;
+
+interface RequestInterface extends AuthRequestInterface
 {
-    public function getMerchantId();
-
-    public function getMerchantKey();
-
     public function getMerchantOrderId();
 
     public function getCustomerName();
@@ -88,4 +93,6 @@ interface RequestInterface
     public function getPaymentCreditCardBrand();
 
     public function getPaymentExtraDataCollection();
+
+    public function getAntiFraudRequest();
 }
