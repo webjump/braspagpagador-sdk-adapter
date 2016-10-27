@@ -1,43 +1,61 @@
 <?php
-
+/**
+ * @author      Webjump Core Team <dev@webjump.com>
+ * @copyright   2016 Webjump (http://www.webjump.com.br)
+ * @license     http://www.webjump.com.br  Copyright
+ *
+ * @link        http://www.webjump.com.br
+ *
+ */
 namespace Webjump\Braspag\Pagador\Transaction\Resource\Facade;
+
 
 
 use Webjump\Braspag\Pagador\Transaction\Api\Billet\Send\RequestInterface as BilletRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Send\RequestInterface as CreditCardRequest;
-use Webjump\Braspag\Pagador\Transaction\Api\Actions\RequestInterface as CapturePaymentRequest;
+use Webjump\Braspag\Pagador\Transaction\Api\Actions\RequestInterface as ActionsPaymentRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\Debit\Send\RequestInterface as DebitRequest;
+use Webjump\Braspag\Pagador\Transaction\Resource\Command\Sales\CaptureCommand;
+use Webjump\Braspag\Pagador\Transaction\Resource\Command\Sales\GetCommand;
+use Webjump\Braspag\Pagador\Transaction\Resource\Command\Sales\VoidCommand;
+use Webjump\Braspag\Pagador\Transaction\Resource\Command\SalesCommand;
 
 interface FacadeInterface
 {
     /**
      * @param BilletRequest $request
-     * @return BilletRequest
+     * @return SalesCommand
      */
     public function sendBillet(BilletRequest $request);
 
     /**
      * @param CreditCardRequest $request
-     * @return CreditCardRequest
+     * @return SalesCommand
      */
     public function sendCreditCard(CreditCardRequest $request);
 
     /**
-     * @param CapturePaymentRequest $request
-     * @return CapturePaymentRequest
+     * @param ActionsPaymentRequest $request
+     * @return CaptureCommand
      */
-    public function captureCreditCard(CapturePaymentRequest $request);
-
-    /**
-     * @param CapturePaymentRequest $request
-     * @param string $type
-     * @return CapturePaymentRequest
-     */
-    public function checkPaymentStatus(CapturePaymentRequest $request, $type);
+    public function captureCreditCard(ActionsPaymentRequest $request);
 
     /**
      * @param DebitRequest $request
-     * @return DebitRequest
+     * @return SalesCommand
      */
     public function sendDebit(DebitRequest $request);
+
+    /**
+     * @param ActionsPaymentRequest $request
+     * @param $type
+     * @return GetCommand
+     */
+    public function checkPaymentStatus(ActionsPaymentRequest $request, $type);
+
+    /**
+     * @param ActionsPaymentRequest $request
+     * @return VoidCommand
+     */
+    public function voidPayment(ActionsPaymentRequest $request);
 }

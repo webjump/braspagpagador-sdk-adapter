@@ -1,8 +1,17 @@
 <?php
-
+/**
+ * @author      Webjump Core Team <dev@webjump.com>
+ * @copyright   2016 Webjump (http://www.webjump.com.br)
+ * @license     http://www.webjump.com.br  Copyright
+ *
+ * @link        http://www.webjump.com.br
+ *
+ */
 namespace Webjump\Braspag\Pagador\Transaction\Resource\Request\CreditCard\Send;
 
 
+use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\AntiFraud\RequestInterface as AntiFraudRequest;
+use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\AntiFraud\Items\RequestInterface as AntiFraudItemsRequest;
 use Webjump\Braspag\Pagador\Transaction\Resource\Request\RequestAbstract;
 use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Send\RequestInterface as Data;
 
@@ -82,6 +91,79 @@ class Request extends RequestAbstract
             ]
         ];
 
+        /** @var AntiFraudRequest $antiFraudRequest */
+        if ($antiFraudRequest = $this->data->getAntiFraudRequest()) {
+            $this->params['body']['payment']['FraudAnalysis'] = [
+                'Sequence' => $antiFraudRequest->getSequence(),
+                'SequenceCriteria' =>$antiFraudRequest->getSequenceCriteria(),
+                'FingerPrintId' => $antiFraudRequest->getFingerPrintId(),
+                'CaptureOnLowRisk' => $antiFraudRequest->getCaptureOnLowRisk(),
+                'VoidOnHighRisk' => $antiFraudRequest->getVoidOnHighRisk(),
+                'Browser' => [
+                    'CookiesAccepted' => $antiFraudRequest->getBrowserCookiesAccepted(),
+                    'Email' => $antiFraudRequest->getBrowserEmail(),
+                    'HostName' => $antiFraudRequest->getBrowserHostName(),
+                    'IpAddress' => $antiFraudRequest->getBrowserIpAddress(),
+                    'Type' => $antiFraudRequest->getBrowserType()
+                ],
+                'Cart' => [
+                    'IsGift' => $antiFraudRequest->getCartIsGift(),
+                    'ReturnsAccepted' => $antiFraudRequest->getCartReturnsAccepted(),
+                    'Items' => $this->getItems($antiFraudRequest->getCartItems())
+                ],
+                'Shipping' => [
+                    'Addressee' => $antiFraudRequest->getCartShippingAddressee(),
+                    'Method' => $antiFraudRequest->getCartShippingMethod(),
+                    'Phone' => $antiFraudRequest->getCartShippingPhone()
+                ],
+            ];
+        }
+
+        print_r(\json_encode($this->params['body']));
+
         return $this;
+    }
+
+    /**
+     * @param array $items
+     * @return array
+     */
+    private function getItems(array $items = [])
+    {
+        $result  = [];
+        /** @var AntiFraudItemsRequest $item */
+        foreach ($items as $item) {
+
+            if (! $item instanceof AntiFraudItemsRequest) {
+                var_dump('Tratar Erro em: ' . __CLASS__ . ' line: ' . __LINE__);
+                exit();
+            }
+
+            $result[] = [
+                'GiftCategory' => $item->getGiftCategory(),
+                'HostHedge' => $item->getHostHedge(),
+                'NonSensicalHedge' => $item->getNonSensicalHedge(),
+                'ObscenitiesHedge' => $item->getObscenitiesHedge(),
+                'PhoneHedge' => $item->getPhoneHedge(),
+                'Name' => $item->getName(),
+                'Quantity' => $item->getQuantity(),
+                'Sku' => $item->getSku(),
+                'UnitPrice' => $item->getUnitPrice(),
+                'Risk' => $item->getRisk(),
+                'TimeHedge' => $item->getTimeHedge(),
+                'Type' => $item->getType(),
+                'VelocityHedge' => $item->getVelocityHedge(),
+                'Passenger' => [
+                    'Email' => $item->getPassengerEmail(),
+                    'Identity' => $item->getPassengerIdentity(),
+                    'Name' => $item->getPassengerName(),
+                    'Rating' => $item->getPassengerRating(),
+                    'Phone' => $item->getPassengerPhone(),
+                    'Status' => $item->getPassengerStatus()
+                ]
+            ];
+        }
+
+        return $result;
     }
 }

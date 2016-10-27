@@ -1,5 +1,12 @@
 <?php
-
+/**
+ * @author      Webjump Core Team <dev@webjump.com>
+ * @copyright   2016 Webjump (http://www.webjump.com.br)
+ * @license     http://www.webjump.com.br  Copyright
+ *
+ * @link        http://www.webjump.com.br
+ *
+ */
 namespace Webjump\Braspag\Pagador\Transaction\Resource\Facade;
 
 
@@ -14,34 +21,38 @@ use Webjump\Braspag\Pagador\Transaction\Api\Billet\Send\RequestInterface as Bill
 use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Send\RequestInterface as CreditCardRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\Actions\RequestInterface as ActionsPaymentRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\Debit\Send\RequestInterface as DebitRequest;
-use Webjump\Braspag\Factories\SalesCommandFactory as Sales;
+use Webjump\Braspag\Factories\SalesCommandFactory;
+use Webjump\Braspag\Pagador\Transaction\Resource\Command\Sales\CaptureCommand;
+use Webjump\Braspag\Pagador\Transaction\Resource\Command\Sales\GetCommand;
+use Webjump\Braspag\Pagador\Transaction\Resource\Command\Sales\VoidCommand;
+use Webjump\Braspag\Pagador\Transaction\Resource\Command\SalesCommand;
 
 
 class Facade implements FacadeInterface
 {
     /**
      * @param BilletRequest $request
-     * @return BilletRequest
+     * @return SalesCommand
      */
     public function sendBillet(BilletRequest $request)
     {
-        $request = Sales::make(BilletRequestFactory::make($request))->getResult();
+        $request = SalesCommandFactory::make(BilletRequestFactory::make($request))->getResult();
         return $request;
     }
 
     /**
      * @param CreditCardRequest $request
-     * @return CreditCardRequest
+     * @return SalesCommand
      */
     public function sendCreditCard(CreditCardRequest $request)
     {
-        $request = Sales::make(CreditCadRequestFactory::make($request))->getResult();
+        $request = SalesCommandFactory::make(CreditCadRequestFactory::make($request))->getResult();
         return $request;
     }
 
     /**
      * @param ActionsPaymentRequest $request
-     * @return ActionsPaymentRequest
+     * @return CaptureCommand
      */
     public function captureCreditCard(ActionsPaymentRequest $request)
     {
@@ -51,18 +62,18 @@ class Facade implements FacadeInterface
 
     /**
      * @param DebitRequest $request
-     * @return DebitRequest
+     * @return SalesCommand
      */
     public function sendDebit(DebitRequest $request)
     {
-        $request = Sales::make(DebitCardRequestFactory::make($request))->getResult();
+        $request = SalesCommandFactory::make(DebitCardRequestFactory::make($request))->getResult();
         return $request;
     }
 
     /**
      * @param ActionsPaymentRequest $request
      * @param $type
-     * @return ActionsPaymentRequest
+     * @return GetCommand
      */
     public function checkPaymentStatus(ActionsPaymentRequest $request, $type)
     {
@@ -72,7 +83,7 @@ class Facade implements FacadeInterface
 
     /**
      * @param ActionsPaymentRequest $request
-     * @return ActionsPaymentRequest
+     * @return VoidCommand
      */
     public function voidPayment(ActionsPaymentRequest $request)
     {

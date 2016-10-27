@@ -1,5 +1,12 @@
 <?php
-
+/**
+ * @author      Webjump Core Team <dev@webjump.com>
+ * @copyright   2016 Webjump (http://www.webjump.com.br)
+ * @license     http://www.webjump.com.br  Copyright
+ *
+ * @link        http://www.webjump.com.br
+ *
+ */
 require_once("vendor/autoload.php");
 
 
@@ -7,10 +14,10 @@ use Webjump\Braspag\Exemples\DataRequest\Billet;
 use Webjump\Braspag\Exemples\DataRequest\CreditCard;
 use Webjump\Braspag\Exemples\DataRequest\Actions;
 use Webjump\Braspag\Exemples\DataRequest\Debit;
-use Webjump\Braspag\Exemples\DataRequest\Get;
 use Webjump\Braspag\Pagador\Transaction\Resource\Facade\Facade as Facade;
 
 
+$facade = new Facade();
 
 function getData($response)
 {
@@ -28,12 +35,6 @@ function getData($response)
 
     return $result;
 }
-
-$facade = new Facade();
-
-
-
-
 
 
 
@@ -144,10 +145,9 @@ echo '<h1>Consulta Cartão de Debito</h1>';
 $data = new Actions('0cf3ae14-05bc-4fab-8161-5093aef67246');
 $response = $facade->checkPaymentStatus($data, 'debitCard');
 $result = getData($response);
-
+var_dump($result);
 
 echo '<hr />';
-
 
 
 
@@ -158,6 +158,20 @@ echo '<hr />';
 echo '<h1>Cancelar Cartão de Credito Capturado</h1>';
 $data = new Actions($paymentId);
 $response = $facade->voidPayment($data);
+$result = getData($response);
+var_dump($result);
+
+echo '<hr />';
+
+
+
+
+##
+## Consulta Cartao de Credito Capturado
+##
+echo '<h1>Consulta Cartao de Credito Cancelado</h1>';
+$data = new Actions($paymentId);
+$response = $facade->checkPaymentStatus($data, 'creditCard');
 $result = getData($response);
 var_dump($result);
 
