@@ -41,7 +41,7 @@ class Request extends RequestAbstract
                     'Name' => $this->data->getCustomerName(),
                 ],
                 'Payment' => [
-                    'Type' => $this->data->getPaymentType(),
+                    'Type' => Data::PAYMENT_TYPE,
                     'Amount' => $this->data->getPaymentAmount(),
                     'Provider' => $this->data->getPaymentProvider(),
                     'Address' => $this->data->getPaymentAddress(),
