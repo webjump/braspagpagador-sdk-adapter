@@ -10,19 +10,16 @@
 namespace Webjump\Braspag\Pagador\Transaction\Resource;
 
 
-use \Psr\Http\Message\ResponseInterface;
-
 abstract class ResponseAbstract
 {
-    protected $responseInstance;
-    protected $response;
+    protected $response = [];
 
     /**
-     * @param ResponseInterface $response
+     * ResponseAbstract constructor.
+     * @param array $response
      */
-    public function __construct(ResponseInterface $response)
+    public function __construct(array $response = [])
     {
-        $this->responseInstance = $response;
-        $this->response = \json_decode($this->responseInstance->getBody()->getContents(), true);
+        $this->response = $response;
     }
 }

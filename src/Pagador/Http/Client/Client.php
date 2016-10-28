@@ -11,7 +11,6 @@ namespace Webjump\Braspag\Pagador\Http\Client;
 
 
 use Webjump\Braspag\Factories\HttpFactory as HttpClient;
-use Webjump\Braspag\Pagador\Exception\DefaultException;
 use Webjump\Braspag\Pagador\Http\Services\ServiceInterface;
 
 class Client implements ClientInterface

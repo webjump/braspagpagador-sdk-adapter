@@ -24,22 +24,23 @@ class SalesCommand extends CommandAbstract
     {
         $sales = SalesFactory::make($this->request);
         $client = ClientHttpFactory::make();
+        
         $response = $client->request($sales);
 
         $type = '';
 
         if ($this->request instanceof BilletRequest ) {
-            $type = 'billet';
+            $type = ResponseFactory::CLASS_TYPE_BILLET;
         }
 
         if ($this->request instanceof CreditCardRequest) {
-            $type = 'creditCard';
+            $type = ResponseFactory::CLASS_TYPE_CREDIT_CARD;
         }
 
         if ($this->request instanceof DebitRequest) {
-            $type = 'debitCard';
+            $type = ResponseFactory::CLASS_TYPE_DEBIT_CARD;
         }
 
-        $this->result = ResponseFactory::make($response, $type);
+        $this->result = ResponseFactory::make($this->getResponseToArray($response), $type);
     }
 }

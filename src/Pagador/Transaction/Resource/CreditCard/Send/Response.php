@@ -10,6 +10,7 @@
 namespace Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Send;
 
 
+use Webjump\Braspag\Factories\ResponseFactory;
 use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Send\ResponseInterface;
 use Webjump\Braspag\Pagador\Transaction\Resource\ResponseAbstract;
 
@@ -18,7 +19,7 @@ class Response extends ResponseAbstract implements ResponseInterface
     public function getPaymentProofOfSale()
     {
         if (! isset($this->response['Payment']['ProofOfSale'])) {
-            return '';
+            return false;
         }
         return $this->response['Payment']['ProofOfSale'];
     }
@@ -26,7 +27,7 @@ class Response extends ResponseAbstract implements ResponseInterface
     public function getPaymentAcquirerTransactionId()
     {
         if (! isset($this->response['Payment']['AcquirerTransactionId'])) {
-            return '';
+            return false;
         }
         return $this->response['Payment']['AcquirerTransactionId'];
     }
@@ -34,7 +35,7 @@ class Response extends ResponseAbstract implements ResponseInterface
     public function getPaymentAuthorizationCode()
     {
         if (! isset($this->response['Payment']['AuthorizationCode'])) {
-            return '';
+            return false;
         }
         return $this->response['Payment']['AuthorizationCode'];
     }
@@ -42,7 +43,7 @@ class Response extends ResponseAbstract implements ResponseInterface
     public function getPaymentPaymentId()
     {
         if (! isset($this->response['Payment']['PaymentId'])) {
-            return '';
+            return false;
         }
         return $this->response['Payment']['PaymentId'];
     }
@@ -50,7 +51,7 @@ class Response extends ResponseAbstract implements ResponseInterface
     public function getPaymentReceivedDate()
     {
         if (! isset($this->response['Payment']['ReceivedDate'])) {
-            return '';
+            return false;
         }
         return $this->response['Payment']['ReceivedDate'];
     }
@@ -58,7 +59,7 @@ class Response extends ResponseAbstract implements ResponseInterface
     public function getPaymentCapturedDate()
     {
         if (! isset($this->response['Payment']['CapturedDate'])) {
-            return '';
+            return false;
         }
         return $this->response['Payment']['CapturedDate'];
     }
@@ -66,7 +67,7 @@ class Response extends ResponseAbstract implements ResponseInterface
     public function getPaymentStatus()
     {
         if (! isset($this->response['Payment']['Status'])) {
-            return '';
+            return false;
         }
         return $this->response['Payment']['Status'];
     }
@@ -74,7 +75,7 @@ class Response extends ResponseAbstract implements ResponseInterface
     public function getPaymentProviderReturnCode()
     {
         if (! isset($this->response['Payment']['ProviderReturnCode'])) {
-            return '';
+            return false;
         }
         return $this->response['Payment']['ProviderReturnCode'];
     }
@@ -82,7 +83,7 @@ class Response extends ResponseAbstract implements ResponseInterface
     public function getPaymentProviderReturnMessage()
     {
         if (! isset($this->response['Payment']['ProviderReturnMessage'])) {
-            return '';
+            return false;
         }
         return $this->response['Payment']['ProviderReturnMessage'];
     }
@@ -90,8 +91,21 @@ class Response extends ResponseAbstract implements ResponseInterface
     public function getPaymentLinks()
     {
         if (! isset($this->response['Payment']['Links'])) {
-            return '';
+            return false;
         }
         return $this->response['Payment']['Links'];
+    }
+
+    public function getPaymentFraudAnalysis()
+    {
+        if (! isset($this->response['Payment']['FraudAnalysis'])) {
+            return false;
+        }
+
+        if (! is_array($this->response['Payment']['FraudAnalysis'])) {
+            return false;
+        }
+
+        return ResponseFactory::make($this->response['Payment']['FraudAnalysis'], 'antiFraud');
     }
 }

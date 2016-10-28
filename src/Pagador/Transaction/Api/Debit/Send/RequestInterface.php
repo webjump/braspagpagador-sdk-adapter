@@ -14,11 +14,11 @@ use Webjump\Braspag\Pagador\Transaction\Api\AuthRequestInterface;
 
 interface RequestInterface extends AuthRequestInterface
 {
+    CONST PAYMENT_TYPE = 'DebitCard';
+
     public function getMerchantOrderId();
 
     public function getCustomerName();
-
-    public function getPaymentType();
 
     public function getPaymentAmount();
 

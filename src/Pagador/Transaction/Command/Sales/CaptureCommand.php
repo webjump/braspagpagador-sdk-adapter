@@ -12,9 +12,7 @@ namespace Webjump\Braspag\Pagador\Transaction\Command\Sales;
 
 use Webjump\Braspag\Factories\ClientHttpFactory;
 use Webjump\Braspag\Factories\ResponseFactory;
-use \Psr\Http\Message\ResponseInterface;
 use Webjump\Braspag\Factories\SalesFactory;
-use Webjump\Braspag\Pagador\Exception\DefaultException;
 use Webjump\Braspag\Pagador\Transaction\Command\CommandAbstract;
 
 class CaptureCommand extends CommandAbstract
@@ -33,6 +31,6 @@ class CaptureCommand extends CommandAbstract
 
         $response = $client->request($sales, 'PUT', $uriComplement);
 
-        $this->result = ResponseFactory::make($response, 'actions');
+        $this->result = ResponseFactory::make($this->getResponseToArray($response), 'actions');
     }
 }

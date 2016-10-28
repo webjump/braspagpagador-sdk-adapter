@@ -34,11 +34,6 @@ class Billet implements RequestInterface
         return 'Comprador de Testes';
     }
 
-    public function getPaymentType()
-    {
-        return 'Boleto';
-    }
-
     public function getPaymentAmount()
     {
         return 15700;

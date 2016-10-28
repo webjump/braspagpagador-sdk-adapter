@@ -7,7 +7,6 @@
  * @link        http://www.webjump.com.br
  *
  */
-
 namespace Webjump\Braspag\Pagador\Http\Client;
 
 
