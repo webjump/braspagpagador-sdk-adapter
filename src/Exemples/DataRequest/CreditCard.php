@@ -135,11 +135,6 @@ class CreditCard implements RequestInterface
         return 'BRA';
     }
 
-    public function getPaymentType()
-    {
-        return 'CreditCard';
-    }
-
     public function getPaymentAmount()
     {
         return 100;
@@ -236,7 +231,6 @@ class CreditCard implements RequestInterface
 //        if (! rand(0,1)) {
             return false;
 //        }
-
-        return new AntiFraud();
+//        return new AntiFraud();
     }
 }

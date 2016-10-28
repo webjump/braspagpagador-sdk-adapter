@@ -11,7 +11,6 @@ namespace Webjump\Braspag\Exemples\DataRequest;
 
 
 use Webjump\Braspag\Pagador\Transaction\Api\Debit\Send\RequestInterface;
-use Braspag\Model\Payment\Payment;
 
 class Debit implements RequestInterface
 {
@@ -33,11 +32,6 @@ class Debit implements RequestInterface
     public function getCustomerName()
     {
         return 'Comprador de Testes';
-    }
-
-    public function getPaymentType()
-    {
-        return 'DebitCard';
     }
 
     public function getPaymentAmount()

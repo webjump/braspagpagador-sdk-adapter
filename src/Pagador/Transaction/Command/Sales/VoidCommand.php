@@ -37,6 +37,6 @@ class VoidCommand extends CommandAbstract
 
         $response = $client->request($sales, 'PUT', $uriComplement);
 
-        $this->result = ResponseFactory::make($response, 'actions');
+        $this->result = ResponseFactory::make($this->getResponseToArray($response), 'actions');
     }
 }

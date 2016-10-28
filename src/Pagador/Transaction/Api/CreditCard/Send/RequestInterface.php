@@ -14,6 +14,8 @@ use Webjump\Braspag\Pagador\Transaction\Api\AuthRequestInterface;
 
 interface RequestInterface extends AuthRequestInterface
 {
+    CONST PAYMENT_TYPE = 'CreditCard';
+
     public function getMerchantOrderId();
 
     public function getCustomerName();
@@ -57,8 +59,6 @@ interface RequestInterface extends AuthRequestInterface
     public function getCustomerDeliveryAddressState();
 
     public function getCustomerDeliveryAddressCountry();
-
-    public function getPaymentType();
 
     public function getPaymentAmount();
 

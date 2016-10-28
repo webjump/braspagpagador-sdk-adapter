@@ -42,7 +42,7 @@ class Request extends RequestAbstract
                 ],
 
                 'Payment' => [
-                    'Type' => $this->data->getPaymentType(),
+                    'Type' => Data::PAYMENT_TYPE,
                     'Amount' => $this->data->getPaymentAmount(),
                     'Provider' => $this->data->getPaymentProvider(),
                     'ReturnUrl' => $this->data->getPaymentReturnUrl(),

@@ -11,6 +11,7 @@ namespace Webjump\Braspag\Pagador\Transaction\Command;
 
 
 use Webjump\Braspag\Pagador\Transaction\Resource\RequestAbstract;
+use \Psr\Http\Message\ResponseInterface;
 
 abstract class CommandAbstract
 {
@@ -28,5 +29,17 @@ abstract class CommandAbstract
     public function getResult()
     {
         return $this->result;
+    }
+
+    /**
+     * @param ResponseInterface $response
+     * @param bool $assoc
+     * @param int $depth
+     * @param int $options
+     * @return array
+     */
+    public function getResponseToArray(ResponseInterface $response, $assoc = true, $depth = 512, $options = 0)
+    {
+        return \json_decode($response->getBody(), $assoc, $depth, $options);
     }
 }

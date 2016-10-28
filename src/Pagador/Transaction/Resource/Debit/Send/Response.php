@@ -18,7 +18,7 @@ class Response extends ResponseAbstract implements ResponseInterface
     public function getPaymentAuthenticationUrl()
     {
         if (! isset($this->response['Payment']['AuthenticationUrl'])) {
-            return '';
+            return false;
         }
         return $this->response['Payment']['AuthenticationUrl'];
     }
@@ -26,7 +26,7 @@ class Response extends ResponseAbstract implements ResponseInterface
     public function getPaymentAcquirerTransactionId()
     {
         if (! isset($this->response['Payment']['AcquirerTransactionId'])) {
-            return '';
+            return false;
         }
         return $this->response['Payment']['AcquirerTransactionId'];
     }
@@ -34,7 +34,7 @@ class Response extends ResponseAbstract implements ResponseInterface
     public function getPaymentPaymentId()
     {
         if (! isset($this->response['Payment']['PaymentId'])) {
-            return '';
+            return false;
         }
         return $this->response['Payment']['PaymentId'];
     }
@@ -42,7 +42,7 @@ class Response extends ResponseAbstract implements ResponseInterface
     public function getPaymentReceivedDate()
     {
         if (! isset($this->response['Payment']['ReceivedDate'])) {
-            return '';
+            return false;
         }
         return $this->response['Payment']['ReceivedDate'];
     }
@@ -50,7 +50,7 @@ class Response extends ResponseAbstract implements ResponseInterface
     public function getPaymentReasonCode()
     {
         if (! isset($this->response['Payment']['PaymentReasonCode'])) {
-            return '';
+            return false;
         }
         return $this->response['Payment']['PaymentReasonCode'];
     }
@@ -58,7 +58,7 @@ class Response extends ResponseAbstract implements ResponseInterface
     public function getPaymentReasonMessage()
     {
         if (! isset($this->response['Payment']['PaymentReasonMessage'])) {
-            return '';
+            return false;
         }
         return $this->response['Payment']['PaymentReasonMessage'];
     }
@@ -66,7 +66,7 @@ class Response extends ResponseAbstract implements ResponseInterface
     public function getPaymentStatus()
     {
         if (! isset($this->response['Payment']['Status'])) {
-            return '';
+            return false;
         }
         return $this->response['Payment']['Status'];
     }
@@ -74,7 +74,7 @@ class Response extends ResponseAbstract implements ResponseInterface
     public function getPaymentProviderReturnCode()
     {
         if (! isset($this->response['Payment']['ProviderReturnCode'])) {
-            return '';
+            return false;
         }
         return $this->response['Payment']['ProviderReturnCode'];
     }
@@ -82,7 +82,7 @@ class Response extends ResponseAbstract implements ResponseInterface
     public function getPaymentLinks()
     {
         if (! isset($this->response['Payment']['Links'])) {
-            return '';
+            return false;
         }
         return $this->response['Payment']['Links'];
     }

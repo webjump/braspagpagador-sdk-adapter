@@ -18,7 +18,7 @@ class Response extends ResponseAbstract implements ResponseInterface
     public function getStatus()
     {
         if (! isset($this->response['Status'])) {
-            return '';
+            return false;
         }
         
         return $this->response['Status'];
@@ -27,7 +27,7 @@ class Response extends ResponseAbstract implements ResponseInterface
     public function getReasonCode()
     {
         if (! isset($this->response['ReasonCode'])) {
-            return '';
+            return false;
         }
         return $this->response['ReasonCode'];
     }
@@ -35,7 +35,7 @@ class Response extends ResponseAbstract implements ResponseInterface
     public function getReasonMessage()
     {
         if (! isset($this->response['ReasonMessage'])) {
-            return '';
+            return false;
         }
         return $this->response['ReasonMessage'];
     }
@@ -43,7 +43,7 @@ class Response extends ResponseAbstract implements ResponseInterface
     public function getProviderReturnCode()
     {
         if (! isset($this->response['ProviderReturnCode'])) {
-            return '';
+            return false;
         }
         return $this->response['ProviderReturnCode'];
     }
@@ -51,7 +51,7 @@ class Response extends ResponseAbstract implements ResponseInterface
     public function getProviderReturnMessage()
     {
         if (! isset($this->response['ProviderReturnMessage'])) {
-            return '';
+            return false;
         }
         return $this->response['ProviderReturnMessage'];
     }
@@ -59,7 +59,7 @@ class Response extends ResponseAbstract implements ResponseInterface
     public function getLinks()
     {
         if (! isset($this->response['Links'])) {
-            return '';
+            return false;
         }
         return $this->response['Links'];
     }
