@@ -14,12 +14,11 @@ use Webjump\Braspag\Pagador\Transaction\Api\AuthRequestInterface;
 
 interface RequestInterface extends AuthRequestInterface
 {
-
+    const PAYMENT_TYPE = 'Boleto';
+    
     public function getMerchantOrderId();
 
     public function getCustomerName();
-
-    public function getPaymentType();
 
     public function getPaymentAmount();
 
