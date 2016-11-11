@@ -33,4 +33,6 @@ interface ResponseInterface
     public function getPaymentLinks();
 
     public function getPaymentFraudAnalysis();
+
+    public function getPaymentCardToken();
 }
