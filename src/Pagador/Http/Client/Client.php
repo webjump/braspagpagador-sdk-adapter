@@ -9,13 +9,15 @@
  */
 namespace Webjump\Braspag\Pagador\Http\Client;
 
-
 use Webjump\Braspag\Factories\HttpFactory as HttpClient;
 use Webjump\Braspag\Pagador\Http\Services\ServiceInterface;
+use Webjump\Braspag\Factories\HandlerFactory;
 
 class Client implements ClientInterface
 {
     protected $client;
+
+    protected $handler;
 
     /**
      * Client constructor.
@@ -23,6 +25,7 @@ class Client implements ClientInterface
     public function __construct()
     {
         $this->client = HttpClient::make();
+        $this->handler = HandlerFactory::make();
     }
 
     /**
@@ -48,7 +51,8 @@ class Client implements ClientInterface
             $uri,
             [
                 'headers' => $headers,
-                'body' => \json_encode($body)
+                'body' => \json_encode($body),
+                'handler' => $this->handler
             ]
         );
     }
