@@ -39,4 +39,6 @@ interface ResponseInterface
     public function getPaymentCardNumberEncrypted();
 
     public function getPaymentCardBrand();
+
+    public function getPaymentCardProvider();
 }

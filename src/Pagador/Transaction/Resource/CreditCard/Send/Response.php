@@ -120,6 +120,15 @@ class Response extends ResponseAbstract implements ResponseInterface
         return $this->response['Payment']['CreditCard']['Brand'];
     }
 
+    public function getPaymentCardProvider()
+    {
+        if (! isset($this->response['Payment']['Provider'])) {
+            return false;
+        }
+        
+        return $this->response['Payment']['Provider'];
+    }
+
     public function getPaymentFraudAnalysis()
     {
         if (! isset($this->response['Payment']['FraudAnalysis'])) {
