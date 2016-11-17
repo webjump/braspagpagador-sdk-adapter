@@ -37,4 +37,6 @@ interface ResponseInterface
     public function getPaymentCardToken();
 
     public function getPaymentCardNumberEncrypted();
+
+    public function getPaymentCardBrand();
 }
