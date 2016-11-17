@@ -78,14 +78,7 @@ class Request extends RequestAbstract
                     'capture' => $this->data->getPaymentCapture(),
                     'authenticate' => $this->data->getPaymentAuthenticate(),
                     'softDescriptor' => $this->data->getPaymentSoftDescriptor(),
-                    'creditCard' => [
-                        'cardNumber' => $this->data->getPaymentCreditCardCardNumber(),
-                        'holder' => $this->data->getPaymentCreditCardHolder(),
-                        'expirationDate' => $this->data->getPaymentCreditCardExpirationDate(),
-                        'securityCode' => $this->data->getPaymentCreditCardSecurityCode(),
-                        'saveCard' => $this->data->getPaymentCreditCardSaveCard(),
-                        'brand' => $this->data->getPaymentCreditCardBrand(),
-                    ],
+                    'creditCard' => $this->getCreditCardParams(),
                     'extraDataCollection' => $this->data->getPaymentExtraDataCollection()
                 ]
             ]
@@ -98,5 +91,30 @@ class Request extends RequestAbstract
         }
 
         return $this;
+    }
+
+    protected function getCreditCardParams()
+    {
+        if ($this->data->getPaymentCreditCardCardToken()) {
+            return $this->getCreditCardTokenParams();
+        }
+
+        return [
+            'cardNumber' => $this->data->getPaymentCreditCardCardNumber(),
+            'holder' => $this->data->getPaymentCreditCardHolder(),
+            'expirationDate' => $this->data->getPaymentCreditCardExpirationDate(),
+            'securityCode' => $this->data->getPaymentCreditCardSecurityCode(),
+            'saveCard' => $this->data->getPaymentCreditCardSaveCard(),
+            'brand' => $this->data->getPaymentCreditCardBrand(),
+        ];
+    }
+
+    protected function getCreditCardTokenParams()
+    {
+        return [
+            'cardToken' => $this->data->getPaymentCreditCardCardToken(),
+            'securityCode' => $this->data->getPaymentCreditCardSecurityCode(),
+            'brand' => $this->data->getPaymentCreditCardBrand(),
+        ];
     }
 }
