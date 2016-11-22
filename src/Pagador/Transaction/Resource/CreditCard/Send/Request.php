@@ -99,12 +99,24 @@ class Request extends RequestAbstract
             return $this->getCreditCardTokenParams();
         }
 
+        if ($this->data->getPaymentCreditSoptpaymenttoken()) {
+            return $this->getCreditCardSilentOrderPostParams();
+        }
+
         return [
             'cardNumber' => $this->data->getPaymentCreditCardCardNumber(),
             'holder' => $this->data->getPaymentCreditCardHolder(),
             'expirationDate' => $this->data->getPaymentCreditCardExpirationDate(),
             'securityCode' => $this->data->getPaymentCreditCardSecurityCode(),
             'saveCard' => $this->data->getPaymentCreditCardSaveCard(),
+            'brand' => $this->data->getPaymentCreditCardBrand(),
+        ];
+    }
+
+    protected function getCreditCardSilentOrderPostParams()
+    {
+        return [
+            'paymentToken' => $this->data->getPaymentCreditSoptpaymenttoken(),
             'brand' => $this->data->getPaymentCreditCardBrand(),
         ];
     }
