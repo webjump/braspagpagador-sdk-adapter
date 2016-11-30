@@ -217,7 +217,8 @@ class CreditCard implements RequestInterface
 
     public function getAntiFraudRequest()
     {
-        return new AntiFraud();
+        return false;
+//        return new AntiFraud();
     }
 
     public function getPaymentCreditCardCardToken()
@@ -228,5 +229,10 @@ class CreditCard implements RequestInterface
     public function getPaymentCreditSoptpaymenttoken()
     {
 
+    }
+
+    public function getAvs()
+    {
+        return new Avs();
     }
 }

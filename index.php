@@ -35,9 +35,9 @@ function getData($response)
 
     return $result;
 }
-//
-//
-//
+
+
+
 //##
 //## Boleto
 //##

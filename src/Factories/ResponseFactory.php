@@ -14,6 +14,7 @@ use Webjump\Braspag\Pagador\Transaction\Resource\Billet\Send\Response as BilletR
 use Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Send\Response as CreditCardResponse;
 use Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\AntiFraud\Response as CreditCardAntiFraudResponse;
 use Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Response as CreditCardVelocityResponse;
+use Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Avs\Response as CreditCardVAvsResponse;
 use Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Reasons\Response as CreditCardVelocityReasonsResponse;
 use Webjump\Braspag\Pagador\Transaction\Resource\Actions\Response as ActionsCardResponse;
 use Webjump\Braspag\Pagador\Transaction\Resource\Debit\Send\Response as DebitCardResponse;
@@ -27,6 +28,7 @@ class ResponseFactory
     const CLASS_TYPE_CREDIT_CART_ANTI_FRAUD = 'antiFraud';
     const CLASS_TYPE_CREDIT_CART_VELOCITY = 'velocity';
     const CLASS_TYPE_CREDIT_CART_VELOCITY_REASONS = 'velocityReasons';
+    const CLASS_TYPE_CREDIT_CART_AVS = 'avs';
 
     public static function make(array $data, $type)
     {
@@ -56,6 +58,10 @@ class ResponseFactory
 
         if ($type === self::CLASS_TYPE_CREDIT_CART_VELOCITY_REASONS) {
             return new CreditCardVelocityReasonsResponse($data);
+        }
+
+        if ($type === self::CLASS_TYPE_CREDIT_CART_AVS) {
+            return new CreditCardVAvsResponse($data);
         }
     }
 }

@@ -11,6 +11,7 @@ namespace Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Send;
 
 
 use Webjump\Braspag\Factories\CreditCardAntiFraudRequestFactory;
+use Webjump\Braspag\Factories\CreditCardAvsRequestFactory;
 use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\AntiFraud\RequestInterface as AntiFraudRequest;
 use Webjump\Braspag\Pagador\Transaction\Resource\RequestAbstract;
 use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Send\RequestInterface as Data;
@@ -84,10 +85,14 @@ class Request extends RequestAbstract
             ]
         ];
 
-        /** @var AntiFraudRequest $antiFraudRequest */
         if ($antiFraudRequest = $this->data->getAntiFraudRequest()) {
             $antiFraud = CreditCardAntiFraudRequestFactory::make($antiFraudRequest);
             $this->params['body']['payment']['FraudAnalysis'] = $antiFraud->getParams();
+        }
+
+        if ($avsRequest = $this->data->getAvs()) {
+            $avs = CreditCardAvsRequestFactory::make($avsRequest);
+            $this->params['body']['payment']['creditCard']['Avs'] = $avs->getParams();
         }
 
         return $this;

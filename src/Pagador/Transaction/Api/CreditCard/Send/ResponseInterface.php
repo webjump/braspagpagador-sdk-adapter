@@ -43,4 +43,6 @@ interface ResponseInterface
     public function getPaymentCardProvider();
 
     public function getVelocityAnalysis();
+
+    public function getAvs();
 }

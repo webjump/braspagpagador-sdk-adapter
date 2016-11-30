@@ -99,5 +99,7 @@ interface RequestInterface extends AuthRequestInterface
     public function getPaymentCreditCardCardToken();
 
     public function getPaymentCreditSoptpaymenttoken();
+    
+    public function getAvs();
 
 }
