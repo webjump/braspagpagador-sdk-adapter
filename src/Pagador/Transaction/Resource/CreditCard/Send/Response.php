@@ -141,4 +141,17 @@ class Response extends ResponseAbstract implements ResponseInterface
 
         return ResponseFactory::make($this->response['Payment']['FraudAnalysis'], 'antiFraud');
     }
+
+    public function getVelocityAnalysis()
+    {
+        if (! isset($this->response['Payment']['VelocityAnalysis'])) {
+            return false;
+        }
+
+        if (! is_array($this->response['Payment']['VelocityAnalysis'])) {
+            return false;
+        }
+
+        return ResponseFactory::make($this->response['Payment']['VelocityAnalysis'], 'velocity');
+    }
 }

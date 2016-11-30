@@ -25,7 +25,7 @@ class Client implements ClientInterface
     public function __construct()
     {
         $this->client = HttpClient::make();
-        $this->handler = HandlerFactory::make();
+//        $this->handler = HandlerFactory::make();
     }
 
     /**
@@ -52,7 +52,7 @@ class Client implements ClientInterface
             [
                 'headers' => $headers,
                 'body' => \json_encode($body),
-                'handler' => $this->handler
+//                'handler' => $this->handler
             ]
         );
     }

@@ -17,98 +17,85 @@ class AntiFraudItems implements RequestInterface
 {
     public function getGiftCategory()
     {
-        return 'Undefined';
     }
 
     public function getHostHedge()
     {
-        return 'Off';
     }
 
     public function getNonSensicalHedge()
-
     {
-        return 'Off';
     }
 
     public function getObscenitiesHedge()
     {
-        return 'Off';
     }
 
     public function getPhoneHedge()
 
     {
-        return 'Off';
     }
 
     public function getName()
     {
-        return 'ItemTeste';
+        return 'Aim Analog Watch';
     }
 
     public function getQuantity()
     {
-        return 1;
+        return 3;
     }
 
     public function getSku()
     {
-        return '201411170235134521346';
+        return '24-MG04';
     }
 
     public function getUnitPrice()
     {
-        return '123';
+        return '45';
     }
 
     public function getRisk()
     {
-        return 'High';
     }
 
     public function getTimeHedge()
     {
-        return 'Normal';
     }
 
     public function getType()
     {
-        return 'AdultContent';
     }
 
     public function getVelocityHedge()
     {
-        return 'High';
     }
 
     public function getPassengerEmail()
     {
-        return 'compradorteste@live.com';
+        return 'leandro@mailinator.com';
     }
 
     public function getPassengerIdentity()
     {
-        return '1234567890';
+        return '41430366818';
     }
 
     public function getPassengerName()
     {
-        return 'Comprador accept';
+        return 'Leandro Rosa';
     }
 
     public function getPassengerRating()
     {
-        return 'Adult';
     }
 
     public function getPassengerPhone()
     {
-        return '999994444';
     }
 
     public function getPassengerStatus()
     {
-        return 'Accepted';
     }
 }
