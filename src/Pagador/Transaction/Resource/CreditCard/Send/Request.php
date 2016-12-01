@@ -90,7 +90,7 @@ class Request extends RequestAbstract
             $this->params['body']['payment']['FraudAnalysis'] = $antiFraud->getParams();
         }
 
-        if ($avsRequest = $this->data->getAvs()) {
+        if ($avsRequest = $this->data->getAvsRequest()) {
             $avs = CreditCardAvsRequestFactory::make($avsRequest);
             $this->params['body']['payment']['creditCard']['Avs'] = $avs->getParams();
         }
