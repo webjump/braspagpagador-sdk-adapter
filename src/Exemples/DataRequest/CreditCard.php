@@ -231,7 +231,7 @@ class CreditCard implements RequestInterface
 
     }
 
-    public function getAvs()
+    public function getAvsRequest()
     {
         return new Avs();
     }

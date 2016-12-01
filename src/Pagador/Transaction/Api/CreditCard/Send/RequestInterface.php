@@ -100,6 +100,5 @@ interface RequestInterface extends AuthRequestInterface
 
     public function getPaymentCreditSoptpaymenttoken();
     
-    public function getAvs();
-
+    public function getAvsRequest();
 }
