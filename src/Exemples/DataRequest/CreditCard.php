@@ -32,12 +32,12 @@ class CreditCard implements RequestInterface
 
     public function getCustomerName()
     {
-        return 'Comprador de Testes';
+        return 'Leandro Rosa';
     }
 
     public function getCustomerIdentity()
     {
-        return '11225468954';
+        return '41430366818';
     }
 
     public function getCustomerIdentityType()
@@ -47,47 +47,45 @@ class CreditCard implements RequestInterface
 
     public function getCustomerEmail()
     {
-        return 'compradordetestes@braspag.com.br';
+        return 'leandro@mailinator.com';
     }
 
     public function getCustomerBirthDate()
     {
-        return '1991-01-02';
     }
 
     public function getCustomerAddressStreet()
     {
-        return 'Av. Marechal Câmara';
+        return 'Francisco Marengo';
     }
 
     public function getCustomerAddressNumber()
     {
-        return 160;
+        return 1210;
     }
 
     public function getCustomerAddressComplement()
     {
-        return 'Sala 934';
     }
 
     public function getCustomerAddressZipCode()
     {
-        return '20020-080';
+        return '03313001';
     }
 
     public function getCustomerAddressDistrict()
     {
-        return 'Centro';
+        return 'Tatuapé';
     }
 
     public function getCustomerAddressCity()
     {
-        return 'Rio de Janeiro';
+        return 'São Paulo';
     }
 
     public function getCustomerAddressState()
     {
-        return 'RJ';
+        return 'SP';
     }
 
     public function getCustomerAddressCountry()
@@ -97,17 +95,17 @@ class CreditCard implements RequestInterface
 
     public function getCustomerDeliveryAddressStreet()
     {
-        return 'Av. Marechal Câmara';
+        return 'Francisco Marengo';
     }
 
     public function getCustomerDeliveryAddressNumber()
     {
-        return 160;
+        return 1210;
     }
 
     public function getCustomerDeliveryAddressComplement()
     {
-        return 'Sala 934';
+        return '';
     }
 
     public function getCustomerDeliveryAddressZipCode()
@@ -117,17 +115,17 @@ class CreditCard implements RequestInterface
 
     public function getCustomerDeliveryAddressDistrict()
     {
-        return 'Centro';
+        return 'Tatuapé';
     }
 
     public function getCustomerDeliveryAddressCity()
     {
-        return 'Rio de Janeiro';
+        return 'São Paulo';
     }
 
     public function getCustomerDeliveryAddressState()
     {
-        return 'RJ';
+        return 'SP';
     }
 
     public function getCustomerDeliveryAddressCountry()
@@ -162,53 +160,50 @@ class CreditCard implements RequestInterface
 
     public function getPaymentInstallments()
     {
-        return 1;
+        return 2;
     }
-
     public function getPaymentInterest()
     {
-        return Payment::InterestByMerchant;
+        return 'ByMerchant';
     }
 
     public function getPaymentCapture()
     {
-        return 'false';
+        return false;
     }
 
     public function getPaymentAuthenticate()
     {
-        return 'false';
+        return false;
     }
 
     public function getPaymentSoftDescriptor()
     {
-        return 'tst';
     }
 
     public function getPaymentCreditCardCardNumber()
     {
-        return '0000000000000001';
+        return '4539088235753081';
     }
 
 
     public function getPaymentCreditCardHolder()
     {
-        return 'Test T S Testando';
+        return 'Leandro Rosa';
     }
 
     public function getPaymentCreditCardExpirationDate()
     {
-        return '12/2021';
+        return '08/2020';
     }
 
     public function getPaymentCreditCardSecurityCode()
     {
-        return '000';
+        return '999';
     }
 
     public function getPaymentCreditCardSaveCard()
     {
-        return false;
     }
 
     public function getPaymentCreditCardBrand()
@@ -218,19 +213,26 @@ class CreditCard implements RequestInterface
 
     public function getPaymentExtraDataCollection()
     {
-        return [
-            [
-                'name' => 'NomeDoCampo',
-                'value' => '1234567'
-            ]
-        ];
     }
 
     public function getAntiFraudRequest()
     {
-//        if (! rand(0,1)) {
-            return false;
-//        }
+        return false;
 //        return new AntiFraud();
+    }
+
+    public function getPaymentCreditCardCardToken()
+    {
+
+    }
+
+    public function getPaymentCreditSoptpaymenttoken()
+    {
+
+    }
+
+    public function getAvsRequest()
+    {
+        return new Avs();
     }
 }

@@ -23,7 +23,7 @@ class AntiFraud implements RequestInterface
 
     public function getSequenceCriteria()
     {
-        return 'Always';
+        return 'OnSuccess';
     }
 
     public function getFingerPrintId()
@@ -33,27 +33,22 @@ class AntiFraud implements RequestInterface
 
     public function getCaptureOnLowRisk()
     {
-        return false;
     }
 
     public function getVoidOnHighRisk()
     {
-        return false;
     }
 
     public function getBrowserCookiesAccepted()
     {
-        return false;
     }
 
     public function getBrowserEmail()
     {
-        return 'compradorteste@live.com';
     }
 
     public function getBrowserHostName()
     {
-        return 'Teste';
     }
 
     public function getBrowserIpAddress()
@@ -63,17 +58,14 @@ class AntiFraud implements RequestInterface
 
     public function getBrowserType()
     {
-        return 'Chrome';
     }
 
     public function getCartIsGift()
     {
-        return false;
     }
 
     public function getCartReturnsAccepted()
     {
-        return true;
     }
 
     public function getCartItems()
@@ -85,16 +77,14 @@ class AntiFraud implements RequestInterface
 
     public function getCartShippingAddressee()
     {
-        return 'Sr Comprador Teste';
     }
 
     public function getCartShippingMethod()
     {
-        return 'LowCost';
     }
 
     public function getCartShippingPhone()
     {
-        return '21114740';
+        return '5511952224546';
     }
 }

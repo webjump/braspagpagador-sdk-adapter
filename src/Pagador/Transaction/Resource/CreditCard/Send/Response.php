@@ -80,6 +80,14 @@ class Response extends ResponseAbstract implements ResponseInterface
         return $this->response['Payment']['ProviderReturnCode'];
     }
 
+    public function getAuthenticationUrl()
+    {
+        if (! isset($this->response['Payment']['AuthenticationUrl'])) {
+            return false;
+        }
+        return $this->response['Payment']['AuthenticationUrl'];
+    }
+
     public function getPaymentProviderReturnMessage()
     {
         if (! isset($this->response['Payment']['ProviderReturnMessage'])) {
@@ -140,5 +148,31 @@ class Response extends ResponseAbstract implements ResponseInterface
         }
 
         return ResponseFactory::make($this->response['Payment']['FraudAnalysis'], 'antiFraud');
+    }
+
+    public function getVelocityAnalysis()
+    {
+        if (! isset($this->response['Payment']['VelocityAnalysis'])) {
+            return false;
+        }
+
+        if (! is_array($this->response['Payment']['VelocityAnalysis'])) {
+            return false;
+        }
+
+        return ResponseFactory::make($this->response['Payment']['VelocityAnalysis'], 'velocity');
+    }
+
+    public function getAvs()
+    {
+        if (! isset($this->response['Payment']['CreditCard']['Avs'])) {
+            return false;
+        }
+
+        if (! is_array($this->response['Payment']['CreditCard']['Avs'])) {
+            return false;
+        }
+
+        return ResponseFactory::make($this->response['Payment']['CreditCard']['Avs'], 'avs');
     }
 }
