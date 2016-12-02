@@ -80,6 +80,14 @@ class Response extends ResponseAbstract implements ResponseInterface
         return $this->response['Payment']['ProviderReturnCode'];
     }
 
+    public function getAuthenticationUrl()
+    {
+        if (! isset($this->response['Payment']['AuthenticationUrl'])) {
+            return false;
+        }
+        return $this->response['Payment']['AuthenticationUrl'];
+    }
+
     public function getPaymentProviderReturnMessage()
     {
         if (! isset($this->response['Payment']['ProviderReturnMessage'])) {

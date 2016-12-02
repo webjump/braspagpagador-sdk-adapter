@@ -77,6 +77,8 @@ interface RequestInterface extends AuthRequestInterface
     public function getPaymentCapture();
 
     public function getPaymentAuthenticate();
+    
+    public function getReturnUrl();
 
     public function getPaymentSoftDescriptor();
 

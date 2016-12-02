@@ -78,6 +78,7 @@ class Request extends RequestAbstract
                     'interest' => $this->data->getPaymentInterest(),
                     'capture' => $this->data->getPaymentCapture(),
                     'authenticate' => $this->data->getPaymentAuthenticate(),
+                    'returnUrl' => $this->data->getReturnUrl(),
                     'softDescriptor' => $this->data->getPaymentSoftDescriptor(),
                     'creditCard' => $this->getCreditCardParams(),
                     'extraDataCollection' => $this->data->getPaymentExtraDataCollection()

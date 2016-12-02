@@ -40,6 +40,8 @@ interface ResponseInterface
 
     public function getPaymentCardBrand();
 
+    public function getAuthenticationUrl();
+
     public function getPaymentCardProvider();
 
     public function getVelocityAnalysis();
