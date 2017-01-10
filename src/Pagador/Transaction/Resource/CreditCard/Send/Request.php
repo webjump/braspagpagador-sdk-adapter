@@ -124,6 +124,7 @@ class Request extends RequestAbstract
         return [
             'paymentToken' => $this->data->getPaymentCreditSoptpaymenttoken(),
             'brand' => $this->data->getPaymentCreditCardBrand(),
+            'saveCard' => $this->data->getPaymentCreditCardSaveCard(),
         ];
     }
 
