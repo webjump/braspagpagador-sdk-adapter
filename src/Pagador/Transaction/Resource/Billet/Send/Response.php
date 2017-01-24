@@ -94,4 +94,12 @@ class Response extends ResponseAbstract implements ResponseInterface
         }
         return $this->response['Payment']['DigitableLine'];
     }
+
+    public function getExpirationDate()
+    {
+        if (! isset($this->response['Payment']['ExpirationDate'])) {
+            return false;
+        }
+        return $this->response['Payment']['ExpirationDate'];
+    }
 }

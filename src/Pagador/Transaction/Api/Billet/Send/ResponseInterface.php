@@ -31,4 +31,6 @@ interface ResponseInterface
     public function getPaymentLinks();
 
     public function getDigitableLine();
+
+    public function getExpirationDate();
 }
