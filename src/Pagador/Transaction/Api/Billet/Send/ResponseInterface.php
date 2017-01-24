@@ -29,4 +29,6 @@ interface ResponseInterface
     public function getPaymentStatus();
 
     public function getPaymentLinks();
+
+    public function getDigitableLine();
 }
