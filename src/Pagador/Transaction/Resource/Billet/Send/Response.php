@@ -86,4 +86,12 @@ class Response extends ResponseAbstract implements ResponseInterface
         }
         return $this->response['Payment']['Links'];
     }
+
+    public function getDigitableLine()
+    {
+        if (! isset($this->response['Payment']['DigitableLine'])) {
+            return false;
+        }
+        return $this->response['Payment']['DigitableLine'];
+    }
 }
