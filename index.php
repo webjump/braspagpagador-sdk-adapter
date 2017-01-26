@@ -9,7 +9,6 @@
  */
 require_once("vendor/autoload.php");
 
-
 use Webjump\Braspag\Exemples\DataRequest\Billet;
 use Webjump\Braspag\Exemples\DataRequest\CreditCard;
 use Webjump\Braspag\Exemples\DataRequest\Actions;

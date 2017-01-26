@@ -75,6 +75,11 @@ class AntiFraud implements RequestInterface
         ];
     }
 
+    public function getMerchantDefinedFields()
+    {
+        return new GeneralMDD();
+    }
+
     public function getCartShippingAddressee()
     {
     }
