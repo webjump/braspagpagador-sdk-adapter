@@ -217,22 +217,27 @@ class CreditCard implements RequestInterface
 
     public function getAntiFraudRequest()
     {
-        return false;
-//        return new AntiFraud();
+//        return false;
+        return new AntiFraud();
     }
 
     public function getPaymentCreditCardCardToken()
     {
-
+        return null;
     }
 
     public function getPaymentCreditSoptpaymenttoken()
     {
-
+        return null;
     }
 
     public function getAvsRequest()
     {
         return new Avs();
+    }
+
+    public function getReturnUrl()
+    {
+        return 'http://braspag.dev';
     }
 }

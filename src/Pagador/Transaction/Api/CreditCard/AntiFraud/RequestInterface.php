@@ -38,6 +38,8 @@ interface RequestInterface
 
     public function getCartItems();
 
+    public function getMerchantDefinedFields();
+
     public function getCartShippingAddressee();
 
     public function getCartShippingMethod();
