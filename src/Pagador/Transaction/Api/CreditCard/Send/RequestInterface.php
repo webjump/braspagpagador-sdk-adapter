@@ -80,6 +80,8 @@ interface RequestInterface extends AuthRequestInterface
     
     public function getReturnUrl();
 
+    public function getPaymentType();
+
     public function getPaymentSoftDescriptor();
 
     public function getPaymentCreditCardCardNumber();
