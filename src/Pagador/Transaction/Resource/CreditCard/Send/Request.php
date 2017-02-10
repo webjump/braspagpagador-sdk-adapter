@@ -68,7 +68,7 @@ class Request extends RequestAbstract
                     ]
                 ],
                 'payment' => [
-                    'type' => ($this->data->getPaymentAmount()) ?: Data::PAYMENT_TYPE,
+                    'type' => ($this->data->getPaymentType()) ?: Data::PAYMENT_TYPE,
                     'amount' => $this->data->getPaymentAmount(),
                     'currency' => $this->data->getPaymentCurrency(),
                     'country' => $this->data->getPaymentCountry(),
