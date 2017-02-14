@@ -20,6 +20,28 @@ interface RequestInterface extends AuthRequestInterface
 
     public function getCustomerName();
 
+    public function getCustomerIdentity();
+
+    public function getCustomerIdentityType();
+
+    public function getCustomerEmail();
+
+    public function getCustomerBirthDate();
+
+    public function getCustomerAddressStreet();
+
+    public function getCustomerAddressNumber();
+
+    public function getCustomerAddressComplement();
+
+    public function getCustomerAddressZipCode();
+
+    public function getCustomerAddressCity();
+
+    public function getCustomerAddressState();
+
+    public function getCustomerAddressCountry();
+
     public function getPaymentAmount();
 
     public function getPaymentProvider();
