@@ -39,6 +39,19 @@ class Request extends RequestAbstract
                 'MerchantOrderId' => $this->data->getMerchantOrderId(),
                 'Customer' => [
                     'Name' => $this->data->getCustomerName(),
+                    'Identity' => $this->data->getCustomerIdentity(),
+                    'IdentityType' => $this->data->getCustomerIdentityType(),
+                    'Email' => $this->data->getCustomerEmail(),
+                    'BirthDate' => $this->data->getCustomerBirthDate(),
+                    'Address' => [
+                        'Street' => $this->data->getCustomerAddressStreet(),
+                        'Number' => $this->data->getCustomerAddressNumber(),
+                        'Complement' => $this->data->getCustomerAddressComplement(),
+                        'ZipCode' => $this->data->getCustomerAddressZipCode(),
+                        'City' => $this->data->getCustomerAddressCity(),
+                        'State' => $this->data->getCustomerAddressState(),
+                        'Country' => $this->data->getCustomerAddressCountry(),
+                    ]
                 ],
                 'Payment' => [
                     'Type' => Data::PAYMENT_TYPE,

@@ -32,6 +32,11 @@ class Request extends RequestAbstract
      */
     protected function prepareParams()
     {
+        $creditCardParamKey = 'creditCard';
+        if ($this->data->getPaymentType() === 'PrivateLabelCard') {
+            $creditCardParamKey = 'PrivateLabelCard';
+        }
+
         $this->params = [
             'headers' => [
                 'Content-Type' => self::CONTENT_TYPE_APPLICATION_JSON,
@@ -80,7 +85,7 @@ class Request extends RequestAbstract
                     'authenticate' => $this->data->getPaymentAuthenticate(),
                     'returnUrl' => $this->data->getReturnUrl(),
                     'softDescriptor' => $this->data->getPaymentSoftDescriptor(),
-                    'creditCard' => $this->getCreditCardParams(),
+                    $creditCardParamKey => $this->getCreditCardParams(),
                     'extraDataCollection' => $this->data->getPaymentExtraDataCollection()
                 ]
             ]
