@@ -47,6 +47,7 @@ class Request extends RequestAbstract
                         'Street' => $this->data->getCustomerAddressStreet(),
                         'Number' => $this->data->getCustomerAddressNumber(),
                         'Complement' => $this->data->getCustomerAddressComplement(),
+                        'District' => $this->data->getCustomerAddressDistrict(),
                         'ZipCode' => $this->data->getCustomerAddressZipCode(),
                         'City' => $this->data->getCustomerAddressCity(),
                         'State' => $this->data->getCustomerAddressState(),

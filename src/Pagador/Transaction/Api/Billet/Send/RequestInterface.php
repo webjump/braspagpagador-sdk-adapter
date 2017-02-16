@@ -34,6 +34,8 @@ interface RequestInterface extends AuthRequestInterface
 
     public function getCustomerAddressComplement();
 
+    public function getCustomerAddressDistrict();
+
     public function getCustomerAddressZipCode();
 
     public function getCustomerAddressCity();
