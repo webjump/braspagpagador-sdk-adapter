@@ -86,4 +86,13 @@ class Response extends ResponseAbstract implements ResponseInterface
         }
         return $this->response['Payment']['Links'];
     }
+
+    public function getPaymentCardProvider()
+    {
+        if (! isset($this->response['Payment']['Provider'])) {
+            return false;
+        }
+        
+        return $this->response['Payment']['Provider'];
+    }
 }
