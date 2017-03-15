@@ -29,4 +29,6 @@ interface ResponseInterface
     public function getPaymentProviderReturnCode();
 
     public function getPaymentLinks();
+    
+    public function getPaymentCardProvider();
 }
