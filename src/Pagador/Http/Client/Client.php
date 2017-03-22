@@ -32,16 +32,30 @@ class Client implements ClientInterface
      * @param ServiceInterface $service
      * @param string $method
      * @param string $uriComplement
+     * @param bool $isTestEnvironment
      * @return mixed|\Psr\Http\Message\ResponseInterface
      */
-    public function request(ServiceInterface $service, $method = 'POST', $uriComplement = '')
+    public function request(
+        ServiceInterface $service,
+        $method = 'POST',
+        $uriComplement = '',
+        $isTestEnvironment = false
+    )
     {
         $params = $service->getRequest()->getParams();
 
-        $uri = self::API_URI . $service->getEndPoint() . $uriComplement;
+        $apiURI = self::API_URI;
+        $apiConsultURI = self::API_CONSULT_URI;
+
+        if ($isTestEnvironment === true) {
+            $apiURI = self::API_URI_TEST;
+            $apiConsultURI = self::API_CONSULT_URI_TEST;
+        }
+
+        $uri = $apiURI . $service->getEndPoint() . $uriComplement;
 
         if ($method === 'GET') {
-            $uri = self::API_CONSULT_URI . $service->getEndPoint() . $uriComplement;
+            $uri = $apiConsultURI . $service->getEndPoint() . $uriComplement;
         }
 
         $headers = isset($params['headers']) ? $params['headers'] : [];

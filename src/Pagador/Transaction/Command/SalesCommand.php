@@ -24,8 +24,10 @@ class SalesCommand extends CommandAbstract
     {
         $sales = SalesFactory::make($this->request);
         $client = ClientHttpFactory::make();
-        
-        $response = $client->request($sales);
+
+        $isTestEnvironment =  (bool) $this->request->getData()->isTestEnvironment();
+
+        $response = $client->request($sales, 'POST', '', $isTestEnvironment);
 
         $type = '';
 

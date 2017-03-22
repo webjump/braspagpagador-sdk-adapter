@@ -15,4 +15,6 @@ interface AuthRequestInterface
     public function getMerchantId();
 
     public function getMerchantKey();
+
+    public function isTestEnvironment();
 }
