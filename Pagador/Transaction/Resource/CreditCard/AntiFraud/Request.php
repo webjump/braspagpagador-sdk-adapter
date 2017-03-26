@@ -107,65 +107,97 @@ class Request extends RequestAbstract
     {
         $mddCollection = [
             [
+                'Id' => GeneralRequestInterface::MDD_KEY_CUSTOMER_NAME,
+                'Value' => $data->getCustomerName()
+            ],
+            [
                 'Id' => GeneralRequestInterface::MDD_KEY_CUSTOMER_IS_LOGGED,
                 'Value' => $data->getCustomerIsLogged()
             ],
             [
-                'Id' => GeneralRequestInterface::MDD_KEY_CUSTOMER_SINCE_DAYS,
-                'Value' => $data->getCustomerSinceDays()
-            ],
-            [
-                'Id' => GeneralRequestInterface::MDD_KEY_QTY_INSTALLMENTS_ORDER,
-                'Value' => $data->getQtyInstallmentsOrder()
+                'Id' => GeneralRequestInterface::MDD_KEY_PURCHASE_BY_THIRD,
+                'Value' => $data->getPurchaseByThird()
             ],
             [
                 'Id' => GeneralRequestInterface::MDD_KEY_SALES_ORDER_CHANNEL,
                 'Value' => $data->getSalesOrderChannel()
             ],
             [
-                'Id' => GeneralRequestInterface::MDD_KEY_COUPON_CODE,
-                'Value' => $data->getCouponCode()
+                'Id' => GeneralRequestInterface::MDD_KEY_PRODUCT_CATEGORY,
+                'Value' => $data->getProductCategory()
             ],
             [
-                'Id' => GeneralRequestInterface::MDD_KEY_LAST_ORDER_DATE,
-                'Value' => $data->getLastOrderDate()
-            ],
-            [
-                'Id' => GeneralRequestInterface::MDD_KEY_QTY_TRY_ORDER,
-                'Value' => $data->getQtyTryOrder()
+                'Id' => GeneralRequestInterface::MDD_KEY_SHIPPING_METHOD,
+                'Value' => $data->getShippingMethod()
             ],
             [
                 'Id' => GeneralRequestInterface::MDD_KEY_CUSTOMER_FETCH_SELF,
                 'Value' => $data->getCustomerFetchSelf()
             ],
             [
-                'Id' => GeneralRequestInterface::MDD_KEY_VERTICAL_SEGMENT,
-                'Value' => $data->getVerticalSegment()
+                'Id' => GeneralRequestInterface::MDD_KEY_STORE_CODE,
+                'Value' => $data->getStoreCode()
             ],
             [
-                'Id' => GeneralRequestInterface::MDD_KEY_CREDIT_CARD_BIN,
-                'Value' => $data->getCreditCardBin()
-            ],
-            [
-                'Id' => GeneralRequestInterface::MDD_KEY_QTY_TRY_CREDIT_CARD_NUMBER,
-                'Value' => $data->getQtyTryCreditCardNumber()
-            ],
-            [
-                'Id' => GeneralRequestInterface::MDD_KEY_EMAIL_FILL_TYPE,
-                'Value' => $data->getEmailFillType()
-            ],
-            [
-                'Id' => GeneralRequestInterface::MDD_KEY_CREDIT_CARD_NUMBER_FILL_TYPE,
-                'Value' => $data->getCreditCardNumberFillType()
-            ],
-            [
-                'Id' => GeneralRequestInterface::MDD_KEY_CONFIRM_EMAIL_ADDRESS,
-                'Value' => $data->getConfirmEmailAddress()
+                'Id' => GeneralRequestInterface::MDD_KEY_COUPON_CODE,
+                'Value' => $data->getCouponCode()
             ],
             [
                 'Id' => GeneralRequestInterface::MDD_KEY_HAS_GIFT_CARD,
                 'Value' => $data->getHasGiftCard()
-            ]
+            ],
+            [
+                'Id' => GeneralRequestInterface::MDD_KEY_SECOND_PAYMENT_METHOD,
+                'Value' => $data->getSecondPaymentMethod()
+            ],
+            [
+                'Id' => GeneralRequestInterface::MDD_KEY_PAYMENT_METHOD_QTY,
+                'Value' => $data->getPaymentMethodQTY()
+            ],
+            [
+                'Id' => GeneralRequestInterface::MDD_KEY_SHIPPING_METHOD_AMOUNT,
+                'Value' => $data->getShippingMethodAmount()
+            ],
+            [
+                'Id' => GeneralRequestInterface::MDD_KEY_SECOND_PAYMENT_METHOD_AMOUNT,
+                'Value' => $data->getSecondPaymentMethodAmount()
+            ],
+            [
+                'Id' => GeneralRequestInterface::MDD_KEY_SALES_ORDER_AMOUNT,
+                'Value' => $data->getSalesOrderAmount()
+            ],
+            [
+                'Id' => GeneralRequestInterface::MDD_KEY_QTY_INSTALLMENTS_ORDER,
+                'Value' => $data->getQtyInstallmentsOrder()
+            ],
+            [
+                'Id' => GeneralRequestInterface::MDD_KEY_CREDIT_CARD_IS_PRIVATE_LABEL,
+                'Value' => $data->getCreditCardIsPrivateLabel()
+            ],
+            [
+                'Id' => GeneralRequestInterface::MDD_KEY_CUSTOMER_IDENTITY,
+                'Value' => $data->getCustomerIdentity()
+            ],
+            [
+                'Id' => GeneralRequestInterface::MDD_KEY_CUSTOMER_TELEPHONE,
+                'Value' => $data->getCustomerTelephone()
+            ],
+            [
+                'Id' => GeneralRequestInterface::MDD_KEY_STORE_IDENTITY,
+                'Value' => $data->getStoreIdentity()
+            ],
+            [
+                'Id' => GeneralRequestInterface::MDD_KEY_PROVIDER,
+                'Value' => $data->getProvider()
+            ],
+            [
+                'Id' => GeneralRequestInterface::MDD_KEY_CUSTOMER_IS_RISK,
+                'Value' => $data->getCustomerIsRisk()
+            ],
+            [
+                'Id' => GeneralRequestInterface::MDD_KEY_CUSTOMER_IS_VIP,
+                'Value' => $data->getCustomerIsVIP()
+            ],
         ];
 
         $result = [];
