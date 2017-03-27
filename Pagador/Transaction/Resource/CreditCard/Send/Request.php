@@ -51,6 +51,7 @@ class Request extends RequestAbstract
                     'identityType' => $this->data->getCustomerIdentityType(),
                     'email' => $this->data->getCustomerEmail(),
                     'birthDate' => $this->data->getCustomerBirthDate(),
+                    'phone' => $this->data->getCustomerAddressPhone(),
                     'address' => [
                         'street' => $this->data->getCustomerAddressStreet(),
                         'number' => $this->data->getCustomerAddressNumber(),
