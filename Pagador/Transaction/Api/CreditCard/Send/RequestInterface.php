@@ -44,6 +44,8 @@ interface RequestInterface extends AuthRequestInterface
 
     public function getCustomerAddressCountry();
 
+    public function getCustomerAddressPhone();
+
     public function getCustomerDeliveryAddressStreet();
 
     public function getCustomerDeliveryAddressNumber();
@@ -59,6 +61,8 @@ interface RequestInterface extends AuthRequestInterface
     public function getCustomerDeliveryAddressState();
 
     public function getCustomerDeliveryAddressCountry();
+
+    public function getCustomerDeliveryAddressPhone();
 
     public function getPaymentAmount();
 
