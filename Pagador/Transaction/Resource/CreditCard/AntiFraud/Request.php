@@ -188,7 +188,7 @@ class Request extends RequestAbstract
             ],
             [
                 'Id' => GeneralRequestInterface::MDD_KEY_PROVIDER,
-                'Value' => $data->getProvider()
+                'Value' => ($data->getProvider()) ? $data->getProvider() : 'Webjump'
             ],
             [
                 'Id' => GeneralRequestInterface::MDD_KEY_CUSTOMER_IS_RISK,
