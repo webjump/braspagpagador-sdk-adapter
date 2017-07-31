@@ -23,7 +23,7 @@ class CaptureCommand extends CommandAbstract
         $client = ClientHttpFactory::make();
 
         $params = $this->request->getParams();
-        $uriComplement = sprintf('%s', $params['uriComplement']['payment_id']);
+        $uriComplement = sprintf('%s/capture/', $params['uriComplement']['payment_id']);
 
         if (isset($params['uriComplement']['additional'])) {
             $uriComplement .= '?' . \http_build_query($params['uriComplement']['additional']);
