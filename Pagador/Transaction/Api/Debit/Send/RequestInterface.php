@@ -35,4 +35,10 @@ interface RequestInterface extends AuthRequestInterface
     public function getPaymentDebitCardSecurityCode();
 
     public function getPaymentDebitCardBrand();
+
+    public function getPaymentCreditSoptpaymenttoken();
+
+    public function getPaymentCreditCardBrand();
+
+    public function getPaymentCreditCardSaveCard();
 }

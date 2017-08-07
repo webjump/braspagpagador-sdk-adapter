@@ -46,17 +46,30 @@ class Request extends RequestAbstract
                     'Amount' => $this->data->getPaymentAmount(),
                     'Provider' => $this->data->getPaymentProvider(),
                     'ReturnUrl' => $this->data->getPaymentReturnUrl(),
-                    'DebitCard' => [
-                        'CardNumber' => $this->data->getPaymentDebitCardCardNumber(),
-                        'Holder' => $this->data->getPaymentDebitCardHolder(),
-                        'ExpirationDate' => $this->data->getPaymentDebitCardExpirationDate(),
-                        'SecurityCode' => $this->data->getPaymentDebitCardSecurityCode(),
-                        'Brand' => $this->data->getPaymentDebitCardBrand(),
-                    ]
+                    'DebitCard' => $this->getDebitCardParams()
                 ]
             ]
         ];
 
         return $this;
+    }
+
+    protected function getDebitCardParams()
+    {
+        if ($this->data->getPaymentCreditSoptpaymenttoken()) {
+            return [
+                'paymentToken' => $this->data->getPaymentCreditSoptpaymenttoken(),
+                'brand' => $this->data->getPaymentCreditCardBrand(),
+                'saveCard' => $this->data->getPaymentCreditCardSaveCard(),
+            ];
+        }
+
+        return [
+            'CardNumber' => $this->data->getPaymentDebitCardCardNumber(),
+            'Holder' => $this->data->getPaymentDebitCardHolder(),
+            'ExpirationDate' => $this->data->getPaymentDebitCardExpirationDate(),
+            'SecurityCode' => $this->data->getPaymentDebitCardSecurityCode(),
+            'Brand' => $this->data->getPaymentDebitCardBrand(),
+        ];
     }
 }
