@@ -14,8 +14,24 @@ use Webjump\Braspag\Factories\ResponseFactory;
 use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Send\ResponseInterface;
 use Webjump\Braspag\Pagador\Transaction\Resource\ResponseAbstract;
 
+/**
+ * Class Response
+ * @package Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Send
+ */
 class Response extends ResponseAbstract implements ResponseInterface
 {
+
+    /**
+     * @return mixed
+     */
+    public function getPayment()
+    {
+        return $this->response['Payment'];
+    }
+
+    /**
+     * @return bool
+     */
     public function getPaymentProofOfSale()
     {
         if (! isset($this->response['Payment']['ProofOfSale'])) {
@@ -24,6 +40,9 @@ class Response extends ResponseAbstract implements ResponseInterface
         return $this->response['Payment']['ProofOfSale'];
     }
 
+    /**
+     * @return bool
+     */
     public function getPaymentAcquirerTransactionId()
     {
         if (! isset($this->response['Payment']['AcquirerTransactionId'])) {
@@ -32,6 +51,9 @@ class Response extends ResponseAbstract implements ResponseInterface
         return $this->response['Payment']['AcquirerTransactionId'];
     }
 
+    /**
+     * @return bool
+     */
     public function getPaymentAuthorizationCode()
     {
         if (! isset($this->response['Payment']['AuthorizationCode'])) {
@@ -40,6 +62,9 @@ class Response extends ResponseAbstract implements ResponseInterface
         return $this->response['Payment']['AuthorizationCode'];
     }
 
+    /**
+     * @return bool
+     */
     public function getPaymentPaymentId()
     {
         if (! isset($this->response['Payment']['PaymentId'])) {
@@ -48,6 +73,9 @@ class Response extends ResponseAbstract implements ResponseInterface
         return $this->response['Payment']['PaymentId'];
     }
 
+    /**
+     * @return bool
+     */
     public function getPaymentReceivedDate()
     {
         if (! isset($this->response['Payment']['ReceivedDate'])) {
@@ -56,6 +84,9 @@ class Response extends ResponseAbstract implements ResponseInterface
         return $this->response['Payment']['ReceivedDate'];
     }
 
+    /**
+     * @return bool
+     */
     public function getPaymentCapturedDate()
     {
         if (! isset($this->response['Payment']['CapturedDate'])) {
@@ -64,6 +95,9 @@ class Response extends ResponseAbstract implements ResponseInterface
         return $this->response['Payment']['CapturedDate'];
     }
 
+    /**
+     * @return bool
+     */
     public function getPaymentStatus()
     {
         if (! isset($this->response['Payment']['Status'])) {
@@ -72,6 +106,9 @@ class Response extends ResponseAbstract implements ResponseInterface
         return $this->response['Payment']['Status'];
     }
 
+    /**
+     * @return bool
+     */
     public function getPaymentProviderReturnCode()
     {
         if (! isset($this->response['Payment']['ProviderReturnCode'])) {
@@ -80,6 +117,9 @@ class Response extends ResponseAbstract implements ResponseInterface
         return $this->response['Payment']['ProviderReturnCode'];
     }
 
+    /**
+     * @return bool
+     */
     public function getAuthenticationUrl()
     {
         if (! isset($this->response['Payment']['AuthenticationUrl'])) {
@@ -88,6 +128,9 @@ class Response extends ResponseAbstract implements ResponseInterface
         return $this->response['Payment']['AuthenticationUrl'];
     }
 
+    /**
+     * @return bool
+     */
     public function getPaymentProviderReturnMessage()
     {
         if (! isset($this->response['Payment']['ProviderReturnMessage'])) {
@@ -96,6 +139,9 @@ class Response extends ResponseAbstract implements ResponseInterface
         return $this->response['Payment']['ProviderReturnMessage'];
     }
 
+    /**
+     * @return bool
+     */
     public function getPaymentLinks()
     {
         if (! isset($this->response['Payment']['Links'])) {
@@ -104,6 +150,9 @@ class Response extends ResponseAbstract implements ResponseInterface
         return $this->response['Payment']['Links'];
     }
 
+    /**
+     * @return bool
+     */
     public function getPaymentCardToken()
     {
         if (! isset($this->response['Payment']['CreditCard']['CardToken'])) {
@@ -112,6 +161,9 @@ class Response extends ResponseAbstract implements ResponseInterface
         return $this->response['Payment']['CreditCard']['CardToken'];
     }
 
+    /**
+     * @return bool
+     */
     public function getPaymentCardNumberEncrypted()
     {
         if (! isset($this->response['Payment']['CreditCard']['CardNumber'])) {
@@ -120,6 +172,9 @@ class Response extends ResponseAbstract implements ResponseInterface
         return $this->response['Payment']['CreditCard']['CardNumber'];
     }
 
+    /**
+     * @return bool
+     */
     public function getPaymentCardBrand()
     {
         if (! isset($this->response['Payment']['CreditCard']['Brand'])) {
@@ -128,15 +183,21 @@ class Response extends ResponseAbstract implements ResponseInterface
         return $this->response['Payment']['CreditCard']['Brand'];
     }
 
+    /**
+     * @return bool
+     */
     public function getPaymentCardProvider()
     {
         if (! isset($this->response['Payment']['Provider'])) {
             return false;
         }
-        
+
         return $this->response['Payment']['Provider'];
     }
 
+    /**
+     * @return bool|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\AntiFraud\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Avs\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Reasons\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Response
+     */
     public function getPaymentFraudAnalysis()
     {
         if (! isset($this->response['Payment']['FraudAnalysis'])) {
@@ -150,6 +211,9 @@ class Response extends ResponseAbstract implements ResponseInterface
         return ResponseFactory::make($this->response['Payment']['FraudAnalysis'], 'antiFraud');
     }
 
+    /**
+     * @return bool|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\AntiFraud\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Avs\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Reasons\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Response
+     */
     public function getVelocityAnalysis()
     {
         if (! isset($this->response['Payment']['VelocityAnalysis'])) {
@@ -163,6 +227,9 @@ class Response extends ResponseAbstract implements ResponseInterface
         return ResponseFactory::make($this->response['Payment']['VelocityAnalysis'], 'velocity');
     }
 
+    /**
+     * @return bool|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\AntiFraud\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Avs\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Reasons\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Response
+     */
     public function getAvs()
     {
         if (! isset($this->response['Payment']['CreditCard']['Avs'])) {
