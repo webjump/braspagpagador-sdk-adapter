@@ -18,7 +18,7 @@ class HandlerFactory implements HandlerFactoryInterface
         public static function make()
         {
                 $stack = \GuzzleHttp\HandlerStack::create();
-                $streamHandler = new \Monolog\Handler\StreamHandler(getcwd() . '/var/log/webjump-braspag-transaction-' . date('Y-m-d') . '.log');
+                $streamHandler = new \Monolog\Handler\StreamHandler(BP . '/var/log/webjump-braspag-transaction-' . date('Y-m-d') . '.log');
                 $logger = new \Monolog\Logger('logger');
                 $logger->pushHandler($streamHandler);
                 $messageFormatter = new \GuzzleHttp\MessageFormatter(\GuzzleHttp\MessageFormatter::CLF . "\n" . \GuzzleHttp\MessageFormatter::DEBUG);
