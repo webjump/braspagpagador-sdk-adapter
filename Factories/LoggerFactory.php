@@ -45,9 +45,10 @@ class LoggerFactory implements LoggerFactoryInterface
         foreach ($request->getHeaders() as $name => $values) {
             $headers .= $name .": " . implode(", ", $values);
         }
-        $bodyString = preg_replace('/\"creditCard\"\:\{\"cardNumber\"\:\"(.*?)(\d{4})\",\"holder\"\:(.*?)\,\"expirationDate\"\:(.*?),\"securityCode\"\:(.*?)\,\"saveCard\"\:(.*?)\,\"brand\"\:(.*?)\}/is',
-            '"creditCard":{"cardNumber":"************$2","holder":$3,"expirationDate":"$4","securityCode":"***","saveCard":"$6","brand":$7}',
-            $request->getBody()->__toString());
+        $patterns = array('#\"cardNumber\"\:\"(.*?)(\d{4})\"\,#', '#\"securityCode\":\"(.*?)\"\,#');
+        $replacements = array('"cardNumber":"************$2",', '"securityCode":"***",');
+
+        $bodyString = preg_replace($patterns, $replacements, $request->getBody()->__toString());
         return $request->getRequestTarget()." >>>>>>>> ".$request->getMethod(). " " . $headers . " " .$bodyString."\n";
     }
 

@@ -13,7 +13,7 @@ namespace Webjump\Braspag\Factories;
  */
 interface LoggerFactoryInterface
 {
-	public static function make($message);
+    public static function make($message);
 
     public static function makeLogRequest(\Psr\Http\Message\RequestInterface $request);
 
