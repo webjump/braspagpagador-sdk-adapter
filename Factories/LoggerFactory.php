@@ -43,7 +43,7 @@ class LoggerFactory implements LoggerFactoryInterface
     {
         $headers = "";
         foreach ($request->getHeaders() as $name => $values) {
-            $headers .= $name .": " . implode(", ", $values);
+            $headers .= $name ." : " . implode(", ", $values)." ";
         }
         $patterns = array('#\"cardNumber\"\:\"(.*?)(\d{4})\"\,#', '#\"securityCode\":\"(.*?)\"\,#');
         $replacements = array('"cardNumber":"************$2",', '"securityCode":"***",');
@@ -60,7 +60,7 @@ class LoggerFactory implements LoggerFactoryInterface
     {
         $headers = "";
         foreach ($response->getHeaders() as $name => $values) {
-            $headers .= $name .": " . implode(", ", $values);
+            $headers .= $name ." : " . implode(", ", $values)." ";
         }
         return $response->getStatusCode()." <<<<<<<< ". " " . $headers . " " .$response->getBody()->__toString()."\n";
     }
