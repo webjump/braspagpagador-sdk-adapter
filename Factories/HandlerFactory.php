@@ -5,7 +5,7 @@ namespace Webjump\Braspag\Factories;
 use Webjump\Braspag\Factories\HandlerFactoryInterface;
 
 /**
- * 
+ *
  *
  * @author      Webjump Core Team <dev@webjump.com>
  * @copyright   2016 Webjump (http://www.webjump.com.br)
@@ -15,16 +15,20 @@ use Webjump\Braspag\Factories\HandlerFactoryInterface;
  */
 class HandlerFactory implements HandlerFactoryInterface
 {
-        public static function make()
-        {
-                $stack = \GuzzleHttp\HandlerStack::create();
-                $streamHandler = new \Monolog\Handler\StreamHandler(BP . '/var/log/webjump-braspag-transaction-' . date('Y-m-d') . '.log');
-                $logger = new \Monolog\Logger('logger');
-                $logger->pushHandler($streamHandler);
-                $messageFormatter = new \GuzzleHttp\MessageFormatter(\GuzzleHttp\MessageFormatter::CLF . "\n" . \GuzzleHttp\MessageFormatter::DEBUG);
-                $guzzleMiddleware = \GuzzleHttp\Middleware::log($logger, $messageFormatter);
-                $stack->push($guzzleMiddleware);
+    public static function make()
+    {
+        $stack = \GuzzleHttp\HandlerStack::create();
 
-                return $stack;
-        }
+        $stack->push(\GuzzleHttp\Middleware::mapRequest(function (\Psr\Http\Message\RequestInterface $request) {
+            \Webjump\Braspag\Factories\LoggerFactory::make($request);
+            return $request;
+        }), 'format_request_log');
+
+        $stack->push(\GuzzleHttp\Middleware::mapResponse(function (\Psr\Http\Message\ResponseInterface $response) {
+            \Webjump\Braspag\Factories\LoggerFactory::make($response);
+            return $response;
+        }), 'format_response_log');
+
+        return $stack;
+    }
 }
