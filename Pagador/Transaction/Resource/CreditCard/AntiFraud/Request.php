@@ -108,95 +108,95 @@ class Request extends RequestAbstract
         $mddCollection = [
             [
                 'Id' => GeneralRequestInterface::MDD_KEY_CUSTOMER_NAME,
-                'Value' => substr($data->getCustomerName(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
+                'Value' => $data->getCustomerName()
             ],
             [
                 'Id' => GeneralRequestInterface::MDD_KEY_CUSTOMER_IS_LOGGED,
-                'Value' => substr($data->getCustomerIsLogged(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
+                'Value' => $data->getCustomerIsLogged()
             ],
             [
                 'Id' => GeneralRequestInterface::MDD_KEY_PURCHASE_BY_THIRD,
-                'Value' => substr($data->getPurchaseByThird(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
+                'Value' => $data->getPurchaseByThird()
             ],
             [
                 'Id' => GeneralRequestInterface::MDD_KEY_SALES_ORDER_CHANNEL,
-                'Value' => substr($data->getSalesOrderChannel(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
+                'Value' => $data->getSalesOrderChannel()
             ],
             [
                 'Id' => GeneralRequestInterface::MDD_KEY_PRODUCT_CATEGORY,
-                'Value' => substr($data->getProductCategory(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
+                'Value' => $data->getProductCategory()
             ],
             [
                 'Id' => GeneralRequestInterface::MDD_KEY_SHIPPING_METHOD,
-                'Value' => substr($data->getShippingMethod(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
+                'Value' => $data->getShippingMethod()
             ],
             [
                 'Id' => GeneralRequestInterface::MDD_KEY_CUSTOMER_FETCH_SELF,
-                'Value' => substr($data->getCustomerFetchSelf(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
+                'Value' => $data->getCustomerFetchSelf()
             ],
             [
                 'Id' => GeneralRequestInterface::MDD_KEY_STORE_CODE,
-                'Value' => substr($data->getStoreCode(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
+                'Value' => $data->getStoreCode()
             ],
             [
                 'Id' => GeneralRequestInterface::MDD_KEY_COUPON_CODE,
-                'Value' => substr($data->getCouponCode(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
+                'Value' => $data->getCouponCode()
             ],
             [
                 'Id' => GeneralRequestInterface::MDD_KEY_HAS_GIFT_CARD,
-                'Value' => substr($data->getHasGiftCard(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
+                'Value' => $data->getHasGiftCard()
             ],
             [
                 'Id' => GeneralRequestInterface::MDD_KEY_SECOND_PAYMENT_METHOD,
-                'Value' => substr($data->getSecondPaymentMethod(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
+                'Value' => $data->getSecondPaymentMethod()
             ],
             [
                 'Id' => GeneralRequestInterface::MDD_KEY_PAYMENT_METHOD_QTY,
-                'Value' => substr($data->getPaymentMethodQTY(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
+                'Value' => $data->getPaymentMethodQTY()
             ],
             [
                 'Id' => GeneralRequestInterface::MDD_KEY_SHIPPING_METHOD_AMOUNT,
-                'Value' => substr($data->getShippingMethodAmount(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
+                'Value' => $data->getShippingMethodAmount()
             ],
             [
                 'Id' => GeneralRequestInterface::MDD_KEY_SECOND_PAYMENT_METHOD_AMOUNT,
-                'Value' => substr($data->getSecondPaymentMethodAmount(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
+                'Value' => $data->getSecondPaymentMethodAmount()
             ],
             [
                 'Id' => GeneralRequestInterface::MDD_KEY_SALES_ORDER_AMOUNT,
-                'Value' => substr($data->getSalesOrderAmount(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
+                'Value' => $data->getSalesOrderAmount()
             ],
             [
                 'Id' => GeneralRequestInterface::MDD_KEY_QTY_INSTALLMENTS_ORDER,
-                'Value' => substr($data->getQtyInstallmentsOrder(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
+                'Value' => $data->getQtyInstallmentsOrder()
             ],
             [
                 'Id' => GeneralRequestInterface::MDD_KEY_CREDIT_CARD_IS_PRIVATE_LABEL,
-                'Value' => substr($data->getCreditCardIsPrivateLabel(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
+                'Value' => $data->getCreditCardIsPrivateLabel()
             ],
             [
                 'Id' => GeneralRequestInterface::MDD_KEY_CUSTOMER_IDENTITY,
-                'Value' => substr($data->getCustomerIdentity(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
+                'Value' => $data->getCustomerIdentity()
             ],
             [
                 'Id' => GeneralRequestInterface::MDD_KEY_CUSTOMER_TELEPHONE,
-                'Value' => substr($data->getCustomerTelephone(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
+                'Value' => $data->getCustomerTelephone()
             ],
             [
                 'Id' => GeneralRequestInterface::MDD_KEY_STORE_IDENTITY,
-                'Value' => substr($data->getStoreIdentity(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
+                'Value' => $data->getStoreIdentity()
             ],
             [
                 'Id' => GeneralRequestInterface::MDD_KEY_PROVIDER,
-                'Value' => substr((($data->getProvider()) ? $data->getProvider() : 'Webjump'), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
+                'Value' => (($data->getProvider()) ? $data->getProvider() : 'Webjump')
             ],
             [
                 'Id' => GeneralRequestInterface::MDD_KEY_CUSTOMER_IS_RISK,
-                'Value' => substr($data->getCustomerIsRisk(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
+                'Value' => $data->getCustomerIsRisk()
             ],
             [
                 'Id' => GeneralRequestInterface::MDD_KEY_CUSTOMER_IS_VIP,
-                'Value' => substr($data->getCustomerIsVIP(), 0, GeneralRequestInterface::MDD_KEY_LIMIT_CHARACTERS)
+                'Value' => $data->getCustomerIsVIP()
             ],
         ];
 
