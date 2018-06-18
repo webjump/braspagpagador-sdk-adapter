@@ -5,6 +5,7 @@ namespace Webjump\Braspag\Pagador\Transaction\Api\CreditCard\AntiFraud\MDD;
 
 interface GeneralRequestInterface
 {
+    const MDD_KEY_LIMIT_CHARACTERS = 255;
     const MDD_KEY_CUSTOMER_NAME = 1;
     const MDD_KEY_CUSTOMER_IS_LOGGED = 2;
     const MDD_KEY_PURCHASE_BY_THIRD = 3;
