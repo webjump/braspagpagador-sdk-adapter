@@ -120,23 +120,56 @@ class Response extends ResponseAbstract implements ResponseInterface
     /**
      * @return bool
      */
-    public function getAuthenticationUrl()
-    {
-        if (! isset($this->response['Payment']['AuthenticationUrl'])) {
-            return false;
-        }
-        return $this->response['Payment']['AuthenticationUrl'];
-    }
-
-    /**
-     * @return bool
-     */
     public function getPaymentProviderReturnMessage()
     {
         if (! isset($this->response['Payment']['ProviderReturnMessage'])) {
             return false;
         }
         return $this->response['Payment']['ProviderReturnMessage'];
+    }
+
+    /**
+     * @return bool
+     */
+    public function getPaymentAuthenticate()
+    {
+        if (! isset($this->response['Payment']['Authenticate'])) {
+            return false;
+        }
+        return $this->response['Payment']['Authenticate'];
+    }
+
+    /**
+     * @return bool
+     */
+    public function getPaymentReasonCode()
+    {
+        if (! isset($this->response['Payment']['ReasonCode'])) {
+            return false;
+        }
+        return $this->response['Payment']['ReasonCode'];
+    }
+
+    /**
+     * @return bool
+     */
+    public function getPaymentReasonMessage()
+    {
+        if (! isset($this->response['Payment']['ReasonMessage'])) {
+            return false;
+        }
+        return $this->response['Payment']['ReasonMessage'];
+    }
+
+    /**
+     * @return bool
+     */
+    public function getAuthenticationUrl()
+    {
+        if (! isset($this->response['Payment']['AuthenticationUrl'])) {
+            return false;
+        }
+        return $this->response['Payment']['AuthenticationUrl'];
     }
 
     /**

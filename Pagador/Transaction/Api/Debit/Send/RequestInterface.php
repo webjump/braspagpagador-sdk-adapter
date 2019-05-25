@@ -30,6 +30,8 @@ interface RequestInterface extends AuthRequestInterface
 
     public function getPaymentDebitCardHolder();
 
+    public function getPaymentAuthenticate();
+
     public function getPaymentDebitCardExpirationDate();
 
     public function getPaymentDebitCardSecurityCode();
@@ -41,4 +43,16 @@ interface RequestInterface extends AuthRequestInterface
     public function getPaymentCreditCardBrand();
 
     public function getPaymentCreditCardSaveCard();
+
+    public function getPaymentExternalAuthenticationFailureType();
+
+    public function getPaymentExternalAuthenticationCavv();
+
+    public function getPaymentExternalAuthenticationXid();
+
+    public function getPaymentExternalAuthenticationEci();
+
+    public function getPaymentCardExternalAuthenticationVersion();
+
+    public function getPaymentExternalAuthenticationReferenceId();
 }

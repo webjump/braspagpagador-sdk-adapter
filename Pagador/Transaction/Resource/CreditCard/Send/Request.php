@@ -87,6 +87,7 @@ class Request extends RequestAbstract
                     'returnUrl' => $this->data->getReturnUrl(),
                     'softDescriptor' => $this->data->getPaymentSoftDescriptor(),
                     $creditCardParamKey => $this->getCreditCardParams(),
+                    'externalAuthentication' => $this->getExternalAuthenticationParams(),
                     'extraDataCollection' => $this->data->getPaymentExtraDataCollection()
                 ]
             ]
@@ -122,6 +123,17 @@ class Request extends RequestAbstract
             'securityCode' => $this->data->getPaymentCreditCardSecurityCode(),
             'saveCard' => $this->data->getPaymentCreditCardSaveCard(),
             'brand' => $this->data->getPaymentCreditCardBrand(),
+        ];
+    }
+
+    protected function getExternalAuthenticationParams()
+    {
+        return [
+           "Cavv" => $this->data->getPaymentExternalAuthenticationCavv(),
+           "Xid" => $this->data->getPaymentExternalAuthenticationXid(),
+           "Eci" => $this->data->getPaymentExternalAuthenticationEci(),
+           "Version" => $this->data->getPaymentCardExternalAuthenticationVersion(),
+           "ReferenceID" => $this->data->getPaymentExternalAuthenticationReferenceId()
         ];
     }
 

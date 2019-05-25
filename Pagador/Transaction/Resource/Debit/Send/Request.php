@@ -46,7 +46,9 @@ class Request extends RequestAbstract
                     'Amount' => $this->data->getPaymentAmount(),
                     'Provider' => $this->data->getPaymentProvider(),
                     'ReturnUrl' => $this->data->getPaymentReturnUrl(),
-                    'DebitCard' => $this->getDebitCardParams()
+                    'DebitCard' => $this->getDebitCardParams(),
+                    'Authenticate' => $this->data->getPaymentAuthenticate(),
+                    'externalAuthentication' => $this->getExternalAuthenticationParams()
                 ]
             ]
         ];
@@ -70,6 +72,17 @@ class Request extends RequestAbstract
             'ExpirationDate' => $this->data->getPaymentDebitCardExpirationDate(),
             'SecurityCode' => $this->data->getPaymentDebitCardSecurityCode(),
             'Brand' => $this->data->getPaymentDebitCardBrand(),
+        ];
+    }
+
+    protected function getExternalAuthenticationParams()
+    {
+        return [
+            "Cavv" => $this->data->getPaymentExternalAuthenticationCavv(),
+            "Xid" => $this->data->getPaymentExternalAuthenticationXid(),
+            "Eci" => $this->data->getPaymentExternalAuthenticationEci(),
+            "Version" => $this->data->getPaymentCardExternalAuthenticationVersion(),
+            "ReferenceID" => $this->data->getPaymentExternalAuthenticationReferenceId()
         ];
     }
 }

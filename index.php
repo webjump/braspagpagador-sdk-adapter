@@ -9,10 +9,10 @@
  */
 require_once("vendor/autoload.php");
 
-use Webjump\Braspag\Exemples\DataRequest\Billet;
-use Webjump\Braspag\Exemples\DataRequest\CreditCard;
-use Webjump\Braspag\Exemples\DataRequest\Actions;
-use Webjump\Braspag\Exemples\DataRequest\Debit;
+use Webjump\Braspag\Examples\DataRequest\Billet;
+use Webjump\Braspag\Examples\DataRequest\CreditCard;
+use Webjump\Braspag\Examples\DataRequest\Actions;
+use Webjump\Braspag\Examples\DataRequest\Debit;
 use Webjump\Braspag\Pagador\Transaction\BraspagFacade;
 
 

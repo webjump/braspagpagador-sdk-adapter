@@ -9,8 +9,7 @@
  */
 namespace Webjump\Braspag\Pagador\Transaction;
 
-
-
+use Webjump\Braspag\Pagador\Transaction\Api\Auth\Token\RequestInterface as ActionsAuthRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\Billet\Send\RequestInterface as BilletRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Send\RequestInterface as CreditCardRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\Actions\RequestInterface as ActionsPaymentRequest;
@@ -22,6 +21,12 @@ use Webjump\Braspag\Pagador\Transaction\Command\SalesCommand;
 
 interface FacadeInterface
 {
+    /**
+     * @param ActionsAuthRequest $request
+     * @return mixed
+     */
+    public function getToken(ActionsAuthRequest $request);
+    
     /**
      * @param BilletRequest $request
      * @return SalesCommand

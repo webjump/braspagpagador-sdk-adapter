@@ -18,6 +18,8 @@ interface ClientInterface
     const API_CONSULT_URI       = 'https://apiquery.braspag.com.br/v2';
     const API_URI_TEST          = 'https://apisandbox.braspag.com.br/v2';
     const API_CONSULT_URI_TEST  = 'https://apiquerysandbox.braspag.com.br/v2';
+    const API_URI_AUTH          = 'https://mpi.braspag.com.br/v2';
+    const API_URI_AUTH_TEST     = 'https://mpisandbox.braspag.com.br/v2';
 
     public function request(ServiceInterface $service, $method = 'POST', $uriComplement = '');
 }
