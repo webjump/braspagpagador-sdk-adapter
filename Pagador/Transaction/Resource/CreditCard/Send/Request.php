@@ -106,7 +106,6 @@ class Request extends RequestAbstract
             $this->params['body']['payment']['externalAuthentication'] = $this->getExternalAuthenticationParams();
         }
 
-
         return $this;
     }
 

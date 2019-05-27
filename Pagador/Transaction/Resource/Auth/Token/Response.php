@@ -9,7 +9,6 @@
  */
 namespace Webjump\Braspag\Pagador\Transaction\Resource\Auth\Token;
 
-
 use Webjump\Braspag\Pagador\Transaction\Api\Auth\Token\ResponseInterface;
 use Webjump\Braspag\Pagador\Transaction\Resource\ResponseAbstract;
 
