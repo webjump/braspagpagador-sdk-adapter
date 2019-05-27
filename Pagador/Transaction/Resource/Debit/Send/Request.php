@@ -47,11 +47,14 @@ class Request extends RequestAbstract
                     'Provider' => $this->data->getPaymentProvider(),
                     'ReturnUrl' => $this->data->getPaymentReturnUrl(),
                     'DebitCard' => $this->getDebitCardParams(),
-                    'Authenticate' => $this->data->getPaymentAuthenticate(),
-                    'externalAuthentication' => $this->getExternalAuthenticationParams()
+                    'Authenticate' => $this->data->getPaymentAuthenticate()
                 ]
             ]
         ];
+
+        if ($this->data->getPaymentAuthenticate()) {
+            $this->params['body']['Payment']['externalAuthentication'] = $this->getExternalAuthenticationParams();
+        }
 
         return $this;
     }

@@ -87,7 +87,6 @@ class Request extends RequestAbstract
                     'returnUrl' => $this->data->getReturnUrl(),
                     'softDescriptor' => $this->data->getPaymentSoftDescriptor(),
                     $creditCardParamKey => $this->getCreditCardParams(),
-                    'externalAuthentication' => $this->getExternalAuthenticationParams(),
                     'extraDataCollection' => $this->data->getPaymentExtraDataCollection()
                 ]
             ]
@@ -102,6 +101,11 @@ class Request extends RequestAbstract
             $avs = CreditCardAvsRequestFactory::make($avsRequest);
             $this->params['body']['payment']['creditCard']['Avs'] = $avs->getParams();
         }
+
+        if ($this->data->getPaymentAuthenticate()) {
+            $this->params['body']['payment']['externalAuthentication'] = $this->getExternalAuthenticationParams();
+        }
+
 
         return $this;
     }
