@@ -16,7 +16,7 @@ use Webjump\Braspag\Pagador\Transaction\Command\CommandAbstract;
 
 /**
  * Class TokenCommand
- * @package Webjump\Braspag\Pagador\Transaction\Command\Auth
+ * @package Webjump\Braspag\Pagador\Transaction\Command\Auth3Ds20
  */
 class TokenCommand extends CommandAbstract
 {
@@ -25,11 +25,11 @@ class TokenCommand extends CommandAbstract
      */
     protected function execute()
     {
-        $auth = AuthTokenFactory::make($this->request);
-        $client = AuthClientHttpFactory::make();
+        $auth = Auth3Ds20TokenFactory::make($this->request);
+        $client = Auth3Ds20ClientHttpFactory::make();
 
         $params = $this->request->getParams();
-        $isTestEnvironment =  (bool) $this->request->getData()->isTestEnvironment();
+        $isTestEnvironment =  (bool) $this->request->getData()->getIsTestEnvironment();
 
         $response = $client->request($auth, 'POST', '', $isTestEnvironment);
 

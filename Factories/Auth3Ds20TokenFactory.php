@@ -9,11 +9,10 @@
  */
 namespace Webjump\Braspag\Factories;
 
-
-use Webjump\Braspag\Pagador\Http\Services\Auth\Token as Token;
+use Webjump\Braspag\Pagador\Http\Services\Auth3Ds20\Token as Token;
 use Webjump\Braspag\Pagador\Transaction\Resource\RequestAbstract;
 
-class AuthTokenFactory
+class Auth3Ds20TokenFactory
 {
     /**
      * @param RequestAbstract $request

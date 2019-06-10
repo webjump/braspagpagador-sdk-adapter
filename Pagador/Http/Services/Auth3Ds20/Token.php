@@ -7,7 +7,7 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Pagador\Http\Services\Auth;
+namespace Webjump\Braspag\Pagador\Http\Services\Auth3Ds20;
 
 use Webjump\Braspag\Pagador\Http\Services\ServiceAbstract;
 use Webjump\Braspag\Pagador\Http\Services\ServiceInterface;

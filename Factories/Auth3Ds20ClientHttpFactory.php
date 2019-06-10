@@ -9,10 +9,9 @@
  */
 namespace Webjump\Braspag\Factories;
 
+use Webjump\Braspag\Pagador\Http\Client\Auth3Ds20Client as ClientHttp;
 
-use Webjump\Braspag\Pagador\Http\Client\AuthClient as ClientHttp;
-
-class AuthClientHttpFactory
+class Auth3Ds20ClientHttpFactory
 {
     /**
      * @return ClientHttp

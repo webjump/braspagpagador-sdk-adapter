@@ -7,14 +7,14 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Pagador\Transaction\Resource\Auth\Token;
+namespace Webjump\Braspag\Pagador\Transaction\Resource\Auth3Ds20\Token;
 
-use Webjump\Braspag\Pagador\Transaction\Api\Auth\Token\ResponseInterface;
+use Webjump\Braspag\Pagador\Transaction\Api\Auth3Ds20\Token\ResponseInterface;
 use Webjump\Braspag\Pagador\Transaction\Resource\ResponseAbstract;
 
 class Response extends ResponseAbstract implements ResponseInterface
 {
-    public function getAccessToken()
+    public function getToken()
     {
         if (! isset($this->response['access_token'])) {
             return false;

@@ -13,7 +13,7 @@ use Webjump\Braspag\Factories\HttpFactory as HttpClient;
 use Webjump\Braspag\Pagador\Http\Services\ServiceInterface;
 use Webjump\Braspag\Factories\HandlerFactory;
 
-class AuthClient implements ClientInterface
+class Auth3Ds20Client implements ClientInterface
 {
     protected $client;
 
@@ -44,10 +44,10 @@ class AuthClient implements ClientInterface
     {
         $params = $service->getRequest()->getParams();
 
-        $apiURI = self::API_URI_AUTH;
+        $apiURI = self::API_URI_AUTH_3DS_20;
 
         if ($isTestEnvironment === true) {
-            $apiURI = self::API_URI_AUTH_TEST;
+            $apiURI = self::API_URI_AUTH_3DS_20_TEST;
         }
 
         $uri = $apiURI . $service->getEndPoint() . $uriComplement;

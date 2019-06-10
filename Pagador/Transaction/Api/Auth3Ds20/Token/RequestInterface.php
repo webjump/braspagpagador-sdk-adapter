@@ -7,15 +7,9 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Pagador\Transaction\Api\Auth\Token;
+namespace Webjump\Braspag\Pagador\Transaction\Api\Auth3Ds20\Token;
 
 interface RequestInterface
 {
-    public function getAuthenticationBasicToken();
-
-    public function getEstablishmentCode();
-
-    public function getMerchantName();
-
-    public function getMCC();
+    public function getAccessToken();
 }
