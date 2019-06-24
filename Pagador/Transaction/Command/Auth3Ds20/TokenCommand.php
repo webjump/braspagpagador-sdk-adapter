@@ -9,9 +9,9 @@
  */
 namespace Webjump\Braspag\Pagador\Transaction\Command\Auth;
 
-use Webjump\Braspag\Factories\AuthClientHttpFactory;
+use Webjump\Braspag\Factories\Auth3Ds20ClientHttpFactory;
 use Webjump\Braspag\Factories\ResponseFactory;
-use Webjump\Braspag\Factories\AuthTokenFactory;
+use Webjump\Braspag\Factories\Auth3Ds20TokenFactory;
 use Webjump\Braspag\Pagador\Transaction\Command\CommandAbstract;
 
 /**
