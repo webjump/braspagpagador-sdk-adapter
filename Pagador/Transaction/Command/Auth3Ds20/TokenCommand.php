@@ -7,7 +7,7 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Pagador\Transaction\Command\Auth;
+namespace Webjump\Braspag\Pagador\Transaction\Command\Auth3Ds20;
 
 use Webjump\Braspag\Factories\Auth3Ds20ClientHttpFactory;
 use Webjump\Braspag\Factories\ResponseFactory;
