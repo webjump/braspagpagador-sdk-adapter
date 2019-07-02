@@ -44,8 +44,8 @@ class Request extends RequestAbstract
         $this->params = [
             'headers' => [
                 'Content-Type' => self::CONTENT_TYPE_APPLICATION_JSON,
-                'MerchantId' => $this->data->getMerchantId(),
-                'MerchantKey' => $this->data->getMerchantKey()
+                'MerchantId' => $this->data->getMerchantId($this->data->getStoreId()),
+                'MerchantKey' => $this->data->getMerchantKey($this->data->getStoreId())
             ],
             'uriComplement' => [
                 'payment_id' => $this->data->getPaymentId(),
