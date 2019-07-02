@@ -9,7 +9,6 @@
  */
 namespace Webjump\Braspag\Pagador\Transaction\Api;
 
-
 interface AuthRequestInterface
 {
     public function getMerchantId();

@@ -32,6 +32,14 @@ class Response extends ResponseAbstract implements ResponseInterface
         return $this->response['ReasonCode'];
     }
 
+    public function getPaymentAuthenticate()
+    {
+        if (! isset($this->response['Authenticate'])) {
+            return false;
+        }
+        return $this->response['Authenticate'];
+    }
+
     public function getReasonMessage()
     {
         if (! isset($this->response['ReasonMessage'])) {

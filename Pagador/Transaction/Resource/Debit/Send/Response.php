@@ -15,6 +15,14 @@ use Webjump\Braspag\Pagador\Transaction\Resource\ResponseAbstract;
 
 class Response extends ResponseAbstract implements ResponseInterface
 {
+    /**
+     * @return mixed
+     */
+    public function getPayment()
+    {
+        return $this->response['Payment'];
+    }
+
     public function getPaymentAuthenticationUrl()
     {
         if (! isset($this->response['Payment']['AuthenticationUrl'])) {
@@ -49,18 +57,18 @@ class Response extends ResponseAbstract implements ResponseInterface
 
     public function getPaymentReasonCode()
     {
-        if (! isset($this->response['Payment']['PaymentReasonCode'])) {
+        if (! isset($this->response['Payment']['ReasonCode'])) {
             return false;
         }
-        return $this->response['Payment']['PaymentReasonCode'];
+        return $this->response['Payment']['ReasonCode'];
     }
 
     public function getPaymentReasonMessage()
     {
-        if (! isset($this->response['Payment']['PaymentReasonMessage'])) {
+        if (! isset($this->response['Payment']['ReasonMessage'])) {
             return false;
         }
-        return $this->response['Payment']['PaymentReasonMessage'];
+        return $this->response['Payment']['ReasonMessage'];
     }
 
     public function getPaymentStatus()
@@ -71,12 +79,28 @@ class Response extends ResponseAbstract implements ResponseInterface
         return $this->response['Payment']['Status'];
     }
 
+    public function getPaymentAuthenticate()
+    {
+        if (! isset($this->response['Payment']['Authenticate'])) {
+            return false;
+        }
+        return (bool) $this->response['Payment']['Authenticate'];
+    }
+
     public function getPaymentProviderReturnCode()
     {
         if (! isset($this->response['Payment']['ProviderReturnCode'])) {
             return false;
         }
         return $this->response['Payment']['ProviderReturnCode'];
+    }
+
+    public function getPaymentProviderReturnMessage()
+    {
+        if (! isset($this->response['Payment']['ProviderReturnMessage'])) {
+            return false;
+        }
+        return $this->response['Payment']['ProviderReturnMessage'];
     }
 
     public function getPaymentLinks()
