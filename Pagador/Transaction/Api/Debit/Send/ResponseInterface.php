@@ -26,7 +26,11 @@ interface ResponseInterface
 
     public function getPaymentStatus();
 
+    public function getPaymentAuthenticate();
+
     public function getPaymentProviderReturnCode();
+
+    public function getPaymentProviderReturnMessage();
 
     public function getPaymentLinks();
     

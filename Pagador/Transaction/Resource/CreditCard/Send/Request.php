@@ -92,7 +92,7 @@ class Request extends RequestAbstract
             ]
         ];
 
-        if ($antiFraudRequest = $this->data->getAntiFraudRequest()) {
+        if (($antiFraudRequest = $this->data->getAntiFraudRequest()) && !$this->data->getPaymentAuthenticate()) {
             $antiFraud = CreditCardAntiFraudRequestFactory::make($antiFraudRequest);
             $this->params['body']['payment']['FraudAnalysis'] = $antiFraud->getParams();
         }
@@ -100,6 +100,10 @@ class Request extends RequestAbstract
         if ($avsRequest = $this->data->getAvsRequest()) {
             $avs = CreditCardAvsRequestFactory::make($avsRequest);
             $this->params['body']['payment']['creditCard']['Avs'] = $avs->getParams();
+        }
+
+        if ($this->data->getPaymentAuthenticate()) {
+            $this->params['body']['payment']['externalAuthentication'] = $this->getExternalAuthenticationParams();
         }
 
         return $this;
@@ -122,6 +126,17 @@ class Request extends RequestAbstract
             'securityCode' => $this->data->getPaymentCreditCardSecurityCode(),
             'saveCard' => $this->data->getPaymentCreditCardSaveCard(),
             'brand' => $this->data->getPaymentCreditCardBrand(),
+        ];
+    }
+
+    protected function getExternalAuthenticationParams()
+    {
+        return [
+           "Cavv" => $this->data->getPaymentExternalAuthenticationCavv(),
+           "Xid" => $this->data->getPaymentExternalAuthenticationXid(),
+           "Eci" => $this->data->getPaymentExternalAuthenticationEci(),
+           "Version" => $this->data->getPaymentCardExternalAuthenticationVersion(),
+           "ReferenceID" => $this->data->getPaymentExternalAuthenticationReferenceId()
         ];
     }
 
