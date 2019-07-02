@@ -7,11 +7,10 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Pagador\Transaction\Resource\Actions;
-
+namespace Webjump\Braspag\Pagador\Transaction\Resource\Auth3Ds20\Token;
 
 use Webjump\Braspag\Pagador\Transaction\Resource\RequestAbstract;
-use Webjump\Braspag\Pagador\Transaction\Api\Actions\RequestInterface as Data;
+use Webjump\Braspag\Pagador\Transaction\Api\Auth3Ds20\Token\RequestInterface as Data;
 
 class Request extends RequestAbstract
 {
@@ -44,12 +43,12 @@ class Request extends RequestAbstract
         $this->params = [
             'headers' => [
                 'Content-Type' => self::CONTENT_TYPE_APPLICATION_JSON,
-                'MerchantId' => $this->data->getMerchantId($this->data->getStoreId()),
-                'MerchantKey' => $this->data->getMerchantKey($this->data->getStoreId())
+                'Authorization' => "Bearer ".$this->data->getAccessToken()
             ],
-            'uriComplement' => [
-                'payment_id' => $this->data->getPaymentId(),
-                'additional' => $this->data->getAdditionalRequest()
+            'body' => [
+                'EstablishmentCode' => $this->data->getEstablishmentCode(),
+                'MerchantName' => $this->data->getMerchantName(),
+                'MCC' => $this->data->getMCC()
             ]
         ];
 

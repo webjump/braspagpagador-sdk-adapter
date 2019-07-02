@@ -7,7 +7,7 @@
  * @link        http://www.webjump.com.br
  *
  */
-namespace Webjump\Braspag\Exemples\DataRequest;
+namespace Webjump\Braspag\Examples\DataRequest;
 
 
 class Auth

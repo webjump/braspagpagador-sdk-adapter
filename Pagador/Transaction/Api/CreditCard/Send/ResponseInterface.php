@@ -12,6 +12,8 @@ namespace Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Send;
 
 interface ResponseInterface
 {
+    public function getPayment();
+
     public function getPaymentProofOfSale();
 
     public function getPaymentAcquirerTransactionId();
@@ -25,6 +27,12 @@ interface ResponseInterface
     public function getPaymentCapturedDate();
 
     public function getPaymentStatus();
+
+    public function getPaymentAuthenticate();
+
+    public function getPaymentReasonCode();
+
+    public function getPaymentReasonMessage();
 
     public function getPaymentProviderReturnCode();
 
