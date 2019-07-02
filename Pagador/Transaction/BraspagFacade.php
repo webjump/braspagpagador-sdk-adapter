@@ -10,6 +10,8 @@
 namespace Webjump\Braspag\Pagador\Transaction;
 
 
+use Webjump\Braspag\Factories\Auth3Ds20TokenCommandFactory;
+use Webjump\Braspag\Factories\Auth3Ds20TokenRequestFactory;
 use Webjump\Braspag\Factories\BilletRequestFactory;
 use Webjump\Braspag\Factories\PaymentRequestFactory;
 use Webjump\Braspag\Factories\CreditCadRequestFactory;
@@ -20,6 +22,7 @@ use Webjump\Braspag\Factories\VoidCommandFactory;
 use Webjump\Braspag\Pagador\Transaction\Api\Billet\Send\RequestInterface as BilletRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Send\RequestInterface as CreditCardRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\Actions\RequestInterface as ActionsPaymentRequest;
+use Webjump\Braspag\Pagador\Transaction\Api\Auth3Ds20\Token\RequestInterface as Auth3Ds20TokenRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\Debit\Send\RequestInterface as DebitRequest;
 use Webjump\Braspag\Factories\SalesCommandFactory;
 use Webjump\Braspag\Pagador\Transaction\Command\Sales\CaptureCommand;
@@ -30,6 +33,17 @@ use Webjump\Braspag\Pagador\Transaction\Command\SalesCommand;
 
 class BraspagFacade implements FacadeInterface
 {
+    /**
+     * @param ActionsAuthenticateRequest $request
+     * @return AuthenticateCommand
+     */
+    public function getToken(Auth3Ds20TokenRequest $request)
+    {
+        $request = Auth3Ds20TokenCommandFactory::make(Auth3Ds20TokenRequestFactory::make($request))->getResult();
+
+        return $request;
+    }
+
     /**
      * @param BilletRequest $request
      * @return SalesCommand

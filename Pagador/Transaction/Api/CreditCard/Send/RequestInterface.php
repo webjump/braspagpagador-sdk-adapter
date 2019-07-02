@@ -100,6 +100,18 @@ interface RequestInterface extends AuthRequestInterface
 
     public function getPaymentCreditCardBrand();
 
+    public function getPaymentExternalAuthenticationFailureType();
+
+    public function getPaymentExternalAuthenticationCavv();
+
+    public function getPaymentExternalAuthenticationXid();
+
+    public function getPaymentExternalAuthenticationEci();
+
+    public function getPaymentCardExternalAuthenticationVersion();
+
+    public function getPaymentExternalAuthenticationReferenceId();
+
     public function getPaymentExtraDataCollection();
 
     public function getAntiFraudRequest();

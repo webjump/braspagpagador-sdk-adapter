@@ -14,6 +14,8 @@ interface ResponseInterface
 {
     public function getStatus();
 
+    public function getPaymentAuthenticate();
+
     public function getReasonCode();
 
     public function getReasonMessage();
