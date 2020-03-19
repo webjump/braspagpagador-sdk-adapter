@@ -9,9 +9,9 @@
  */
 namespace Webjump\Braspag\Pagador\Transaction\Resource\Debit\Send;
 
-
 use Webjump\Braspag\Pagador\Transaction\Api\Debit\Send\ResponseInterface;
 use Webjump\Braspag\Pagador\Transaction\Resource\ResponseAbstract;
+use Webjump\Braspag\Factories\ResponseFactory;
 
 class Response extends ResponseAbstract implements ResponseInterface
 {
@@ -118,5 +118,21 @@ class Response extends ResponseAbstract implements ResponseInterface
         }
         
         return $this->response['Payment']['Provider'];
+    }
+
+    /**
+     * @return bool|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\AntiFraud\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Avs\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Reasons\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Response
+     */
+    public function getPaymentSplitPayments()
+    {
+        if (! isset($this->response['Payment']['SplitPayments'])) {
+            return false;
+        }
+
+        if (! is_array($this->response['Payment']['SplitPayments'])) {
+            return false;
+        }
+
+        return ResponseFactory::make($this->response['Payment']['SplitPayments'], 'debitCardPaymentSplit');
     }
 }

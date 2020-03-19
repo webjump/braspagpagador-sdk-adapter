@@ -9,9 +9,9 @@
  */
 namespace Webjump\Braspag\Pagador\Transaction\Resource\Debit\Send;
 
-
 use Webjump\Braspag\Pagador\Transaction\Resource\RequestAbstract;
 use Webjump\Braspag\Pagador\Transaction\Api\Debit\Send\RequestInterface as Data;
+use Webjump\Braspag\Factories\DebitCardPaymentSplitRequestFactory;
 
 class Request extends RequestAbstract
 {
@@ -47,10 +47,18 @@ class Request extends RequestAbstract
                     'Provider' => $this->data->getPaymentProvider(),
                     'ReturnUrl' => $this->data->getPaymentReturnUrl(),
                     'DebitCard' => $this->getDebitCardParams(),
-                    'Authenticate' => $this->data->getPaymentAuthenticate()
+                    'Authenticate' => true
                 ]
             ]
         ];
+
+        $paymentSplitRequest = $this->data->getPaymentSplitRequest();
+
+        if ($paymentSplitRequest) {
+            $paymentSplit = DebitCardPaymentSplitRequestFactory::make($paymentSplitRequest);
+            $this->params['body']['Payment']['SplitPayments'] = $paymentSplit->getParams();
+            $this->params['body']['Payment']['DoSplit'] = true;
+        }
 
         if ($this->data->getPaymentAuthenticate()) {
             $this->params['body']['Payment']['externalAuthentication'] = $this->getExternalAuthenticationParams();
@@ -64,7 +72,7 @@ class Request extends RequestAbstract
         if ($this->data->getPaymentCreditSoptpaymenttoken()) {
             return [
                 'paymentToken' => $this->data->getPaymentCreditSoptpaymenttoken(),
-                'brand' => $this->data->getPaymentCreditCardBrand(),
+                'brand' => empty($this->data->getPaymentCreditCardBrand()) ? 'Visa' : $this->data->getPaymentCreditCardBrand(),
                 'saveCard' => $this->data->getPaymentCreditCardSaveCard(),
             ];
         }
@@ -74,7 +82,7 @@ class Request extends RequestAbstract
             'Holder' => $this->data->getPaymentDebitCardHolder(),
             'ExpirationDate' => $this->data->getPaymentDebitCardExpirationDate(),
             'SecurityCode' => $this->data->getPaymentDebitCardSecurityCode(),
-            'Brand' => $this->data->getPaymentDebitCardBrand(),
+            'Brand' => empty($this->data->getPaymentDebitCardBrand()) ? 'Visa' : $this->data->getPaymentDebitCardBrand(),
         ];
     }
 

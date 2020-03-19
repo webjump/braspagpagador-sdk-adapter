@@ -236,6 +236,11 @@ class CreditCard implements RequestInterface
         return new Avs();
     }
 
+    public function getPaymentSplitRequest()
+    {
+        return new PaymentSplit();
+    }
+
     public function getReturnUrl()
     {
         return 'http://braspag.dev';

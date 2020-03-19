@@ -13,6 +13,7 @@ namespace Webjump\Braspag\Pagador\Transaction\Resource;
 abstract class RequestAbstract
 {
     const CONTENT_TYPE_APPLICATION_JSON = 'application/json';
+    const CONTENT_TYPE_APPLICATION_X_WWW_FORM_URLENCODED = 'application/x-www-form-urlencoded';
     
     protected $data;
     protected $params = [];
