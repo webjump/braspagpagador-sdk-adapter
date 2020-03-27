@@ -12,6 +12,7 @@ namespace Webjump\Braspag\Pagador\Transaction;
 use Webjump\Braspag\Pagador\Transaction\Api\Auth3Ds20\Token\RequestInterface as ActionsAuthRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\Billet\Send\RequestInterface as BilletRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Send\RequestInterface as CreditCardRequest;
+use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\PaymentSplit\RequestInterface as PaymentSplitTransactionPostRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\Actions\RequestInterface as ActionsPaymentRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\Debit\Send\RequestInterface as DebitRequest;
 use Webjump\Braspag\Pagador\Transaction\Command\Sales\CaptureCommand;
@@ -38,6 +39,12 @@ interface FacadeInterface
      * @return SalesCommand
      */
     public function sendCreditCard(CreditCardRequest $request);
+
+    /**
+     * @param CreditCardRequest $request
+     * @return SalesCommand
+     */
+    public function sendCreditCardSplitPaymentTransactionPost(PaymentSplitTransactionPostRequest $request);
 
     /**
      * @param ActionsPaymentRequest $request
