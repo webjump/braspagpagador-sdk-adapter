@@ -12,6 +12,7 @@ namespace Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Send;
 
 use Webjump\Braspag\Factories\CreditCardAntiFraudRequestFactory;
 use Webjump\Braspag\Factories\CreditCardAvsRequestFactory;
+use Webjump\Braspag\Factories\CreditCardPaymentSplitRequestFactory;
 use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\AntiFraud\RequestInterface as AntiFraudRequest;
 use Webjump\Braspag\Pagador\Transaction\Resource\RequestAbstract;
 use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Send\RequestInterface as Data;
@@ -100,6 +101,17 @@ class Request extends RequestAbstract
         if ($avsRequest = $this->data->getAvsRequest()) {
             $avs = CreditCardAvsRequestFactory::make($avsRequest);
             $this->params['body']['payment']['creditCard']['Avs'] = $avs->getParams();
+        }
+
+        $paymentSplitRequest = $this->data->getPaymentSplitRequest();
+
+        if ($paymentSplitRequest && $antiFraudRequest) {
+            $paymentSplit = CreditCardPaymentSplitRequestFactory::make($paymentSplitRequest);
+
+            $splitData = $paymentSplit->getParams();
+
+            $this->params['body']['payment']['SplitPayments'] = $splitData['body'];
+            $this->params['body']['payment']['DoSplit'] = true;
         }
 
         if ($this->data->getPaymentAuthenticate()) {

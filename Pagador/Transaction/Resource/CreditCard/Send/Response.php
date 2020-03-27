@@ -247,6 +247,22 @@ class Response extends ResponseAbstract implements ResponseInterface
     /**
      * @return bool|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\AntiFraud\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Avs\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Reasons\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Response
      */
+    public function getPaymentSplitPayments()
+    {
+        if (! isset($this->response['Payment']['SplitPayments'])) {
+            return false;
+        }
+
+        if (! is_array($this->response['Payment']['SplitPayments'])) {
+            return false;
+        }
+
+        return ResponseFactory::make($this->response['Payment']['SplitPayments'], 'paymentSplit');
+    }
+
+    /**
+     * @return bool|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\AntiFraud\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Avs\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Reasons\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Response
+     */
     public function getVelocityAnalysis()
     {
         if (! isset($this->response['Payment']['VelocityAnalysis'])) {

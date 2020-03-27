@@ -9,14 +9,13 @@
  */
 namespace Webjump\Braspag\Pagador\Transaction\Command;
 
-
 use Webjump\Braspag\Factories\ClientHttpFactory;
 use Webjump\Braspag\Factories\ResponseFactory;
 use Webjump\Braspag\Factories\SalesFactory;
 use Webjump\Braspag\Pagador\Transaction\Resource\Billet\Send\Request as BilletRequest;
 use Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Send\Request as CreditCardRequest;
+use Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\PaymentSplit\Request as SplitPaymentTransactionPostRequest;
 use Webjump\Braspag\Pagador\Transaction\Resource\Debit\Send\Request as DebitRequest;
-
 
 class SalesCommand extends CommandAbstract
 {
@@ -37,6 +36,10 @@ class SalesCommand extends CommandAbstract
 
         if ($this->request instanceof CreditCardRequest) {
             $type = ResponseFactory::CLASS_TYPE_CREDIT_CARD;
+        }
+
+        if ($this->request instanceof SplitPaymentTransactionPostRequest) {
+            $type = ResponseFactory::CLASS_TYPE_CREDIT_CART_PAYMENT_SPLIT;
         }
 
         if ($this->request instanceof DebitRequest) {

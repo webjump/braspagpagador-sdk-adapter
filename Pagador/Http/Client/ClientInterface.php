@@ -21,5 +21,11 @@ interface ClientInterface
     const API_URI_AUTH_3DS_20          = 'https://mpi.braspag.com.br/v2';
     const API_URI_AUTH_3DS_20_TEST     = 'https://mpisandbox.braspag.com.br/v2';
 
+    const API_URI_OAUTH2          = 'https://auth.braspag.com.br/';
+    const API_URI_OAUTH2_TEST     = 'https://authsandbox.braspag.com.br/';
+
+    const API_URI_PAYMENT_SPLIT          = 'https://split.braspag.com.br/';
+    const API_URI_PAYMENT_SPLIT_TEST     = 'https://splitsandbox.braspag.com.br/';
+
     public function request(ServiceInterface $service, $method = 'POST', $uriComplement = '');
 }
