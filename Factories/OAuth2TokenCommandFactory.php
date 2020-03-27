@@ -9,17 +9,17 @@
  */
 namespace Webjump\Braspag\Factories;
 
-use Webjump\Braspag\Pagador\Transaction\Command\SalesCommand;
+use Webjump\Braspag\Pagador\Transaction\Command\OAuth2\TokenCommand;
 use Webjump\Braspag\Pagador\Transaction\Resource\RequestAbstract;
 
-class SalesCommandFactory
+class OAuth2TokenCommandFactory
 {
     /**
      * @param RequestAbstract $request
-     * @return SalesCommand
+     * @return GetTokenCommand
      */
     public static function make(RequestAbstract $request)
     {
-        return new SalesCommand($request);
+        return new TokenCommand($request);
     }
 }

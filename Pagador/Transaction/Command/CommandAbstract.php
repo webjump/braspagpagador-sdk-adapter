@@ -9,7 +9,6 @@
  */
 namespace Webjump\Braspag\Pagador\Transaction\Command;
 
-
 use Webjump\Braspag\Pagador\Transaction\Resource\RequestAbstract;
 use \Psr\Http\Message\ResponseInterface;
 

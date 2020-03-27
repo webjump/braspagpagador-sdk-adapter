@@ -9,17 +9,17 @@
  */
 namespace Webjump\Braspag\Factories;
 
-use Webjump\Braspag\Pagador\Transaction\Command\SalesCommand;
+use Webjump\Braspag\Pagador\Transaction\Command\PaymentSplit\TransactionPostCommand;
 use Webjump\Braspag\Pagador\Transaction\Resource\RequestAbstract;
 
-class SalesCommandFactory
+class PaymentSplitTransactionPostCommandFactory
 {
     /**
      * @param RequestAbstract $request
-     * @return SalesCommand
+     * @return TransactionPostCommand
      */
     public static function make(RequestAbstract $request)
     {
-        return new SalesCommand($request);
+        return new TransactionPostCommand($request);
     }
 }
