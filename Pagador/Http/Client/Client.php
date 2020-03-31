@@ -60,6 +60,7 @@ class Client implements ClientInterface
 
         $headers = isset($params['headers']) ? $params['headers'] : [];
         $body = isset($params['body']) ? $params['body'] : [];
+
         return $this->client->request(
             $method,
             $uri,

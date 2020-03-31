@@ -16,17 +16,19 @@ use Webjump\Braspag\Factories\Auth3Ds20TokenRequestFactory;
 use Webjump\Braspag\Factories\OAuth2TokenRequestFactory;
 use Webjump\Braspag\Factories\BilletRequestFactory;
 use Webjump\Braspag\Factories\PaymentRequestFactory;
-use Webjump\Braspag\Factories\CreditCadRequestFactory;
+use Webjump\Braspag\Factories\CreditCardRequestFactory;
 use Webjump\Braspag\Factories\CreditCardPaymentSplitRequestFactory;
+use Webjump\Braspag\Factories\DebitCardPaymentSplitRequestFactory;
 use Webjump\Braspag\Factories\CaptureCommandFactory;
 use Webjump\Braspag\Factories\DebitCardRequestFactory;
 use Webjump\Braspag\Factories\GetCommandFactory;
 use Webjump\Braspag\Factories\VoidCommandFactory;
 use Webjump\Braspag\Pagador\Transaction\Api\Billet\Send\RequestInterface as BilletRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Send\RequestInterface as CreditCardRequest;
-use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\PaymentSplit\RequestInterface as PaymentSplitTransactionPostRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\Actions\RequestInterface as ActionsPaymentRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\Auth3Ds20\Token\RequestInterface as Auth3Ds20TokenRequest;
+use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\PaymentSplit\RequestInterface as PaymentSplitCreditCardTransactionPostRequest;
+use Webjump\Braspag\Pagador\Transaction\Api\Debit\PaymentSplit\RequestInterface as PaymentSplitDebitCardTransactionPostRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\OAuth2\Token\RequestInterface as OAuth2TokenRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\Debit\Send\RequestInterface as DebitRequest;
 use Webjump\Braspag\Factories\SalesCommandFactory;
@@ -75,7 +77,7 @@ class BraspagFacade implements FacadeInterface
      */
     public function sendCreditCard(CreditCardRequest $request)
     {
-        $request = SalesCommandFactory::make(CreditCadRequestFactory::make($request))->getResult();
+        $request = SalesCommandFactory::make(CreditCardRequestFactory::make($request))->getResult();
         return $request;
     }
 
@@ -83,9 +85,19 @@ class BraspagFacade implements FacadeInterface
      * @param CreditCardRequest $request
      * @return SalesCommand
      */
-    public function sendCreditCardSplitPaymentTransactionPost(PaymentSplitTransactionPostRequest $request)
+    public function sendCreditCardSplitPaymentTransactionPost(PaymentSplitCreditCardTransactionPostRequest $request)
     {
         $request = PaymentSplitTransactionPostCommandFactory::make(CreditCardPaymentSplitRequestFactory::make($request))->getResult();
+        return $request;
+    }
+
+    /**
+     * @param PaymentSplitDebitCardTransactionPostRequest $request
+     * @return PaymentSplitDebitCardTransactionPostRequest|SalesCommand
+     */
+    public function sendDebitCardSplitPaymentTransactionPost(PaymentSplitDebitCardTransactionPostRequest $request)
+    {
+        $request = PaymentSplitTransactionPostCommandFactory::make(DebitCardPaymentSplitRequestFactory::make($request))->getResult();
         return $request;
     }
 
