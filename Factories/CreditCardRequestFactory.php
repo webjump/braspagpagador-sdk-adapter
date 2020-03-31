@@ -13,7 +13,7 @@ namespace Webjump\Braspag\Factories;
 use Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Send\Request;
 use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Send\RequestInterface as Data;
 
-class CreditCadRequestFactory
+class CreditCardRequestFactory
 {
     /**
      * @param Data $data

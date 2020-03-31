@@ -10,6 +10,7 @@
 namespace Webjump\Braspag\Pagador\Transaction\Resource\Actions;
 
 
+use Webjump\Braspag\Factories\ResponseFactory;
 use Webjump\Braspag\Pagador\Transaction\Api\Actions\Capture\ResponseInterface;
 use Webjump\Braspag\Pagador\Transaction\Resource\ResponseAbstract;
 
@@ -70,5 +71,18 @@ class Response extends ResponseAbstract implements ResponseInterface
             return false;
         }
         return $this->response['Links'];
+    }
+
+    public function getPaymentSplitPayments()
+    {
+        if (! isset($this->response['SplitPayments'])) {
+            return false;
+        }
+
+        if (! is_array($this->response['SplitPayments'])) {
+            return false;
+        }
+
+        return ResponseFactory::make($this->response['SplitPayments'], 'paymentSplit');
     }
 }

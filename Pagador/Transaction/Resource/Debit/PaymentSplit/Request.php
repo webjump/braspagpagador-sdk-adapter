@@ -43,7 +43,16 @@ class Request extends RequestAbstract
             ];
         }
 
-        $this->params = $subordinates;
+        $this->params['body'] = $subordinates;
+
+        if (!empty($this->data->getOrderTransactionId())) {
+            $this->params['headers'] = [
+                'Content-Type' => "application/json",
+                'Authorization' => "Bearer ".$this->data->getAccessToken(),
+            ];
+
+            $this->params['orderPaymentTransactionId'] = $this->data->getOrderTransactionId();
+        }
 
         return $this;
     }
