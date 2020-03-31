@@ -105,7 +105,7 @@ class Request extends RequestAbstract
 
         $paymentSplitRequest = $this->data->getPaymentSplitRequest();
 
-        if ($paymentSplitRequest && $antiFraudRequest) {
+        if ($paymentSplitRequest && $antiFraudRequest && $this->data->getPaymentCapture()) {
             $paymentSplit = CreditCardPaymentSplitRequestFactory::make($paymentSplitRequest);
 
             $splitData = $paymentSplit->getParams();

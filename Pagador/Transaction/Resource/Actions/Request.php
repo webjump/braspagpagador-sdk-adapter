@@ -50,8 +50,13 @@ class Request extends RequestAbstract
             'uriComplement' => [
                 'payment_id' => $this->data->getPaymentId(),
                 'additional' => $this->data->getAdditionalRequest()
-            ]
+            ],
+
         ];
+
+        if (!empty($this->data->getRequestDataBody())) {
+            $this->params['body'] = $this->data->getRequestDataBody();
+        }
 
         return $this;
     }

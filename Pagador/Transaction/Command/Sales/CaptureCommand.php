@@ -9,7 +9,6 @@
  */
 namespace Webjump\Braspag\Pagador\Transaction\Command\Sales;
 
-
 use Webjump\Braspag\Factories\ClientHttpFactory;
 use Webjump\Braspag\Factories\ResponseFactory;
 use Webjump\Braspag\Factories\SalesFactory;
