@@ -9,7 +9,6 @@
  */
 namespace Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Send;
 
-
 use Webjump\Braspag\Factories\ResponseFactory;
 use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Send\ResponseInterface;
 use Webjump\Braspag\Pagador\Transaction\Resource\ResponseAbstract;

@@ -47,7 +47,8 @@ class Request extends RequestAbstract
 
         if (!empty($this->data->getOrderTransactionId())) {
             $this->params['headers'] = [
-                'Authorization' => "Bearer ".$this->data->getAccessToken()
+                'Content-Type' => "application/json",
+                'Authorization' => "Bearer ".$this->data->getAccessToken(),
             ];
 
             $this->params['orderPaymentTransactionId'] = $this->data->getOrderTransactionId();

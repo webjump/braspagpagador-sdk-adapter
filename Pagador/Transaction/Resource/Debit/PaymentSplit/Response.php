@@ -16,9 +16,17 @@ class Response extends ResponseAbstract implements ResponseInterface
 {
     public function getSplits()
     {
-        if (! isset($this->response)) {
+        if (!isset($this->response['SplitPayments'])) {
+            return $this->response;
+        }
+        return $this->response['SplitPayments'];
+    }
+
+    public function getPaymentId()
+    {
+        if (!isset($this->response['PaymentId'])) {
             return false;
         }
-        return $this->response;
+        return $this->response['PaymentId'];
     }
 }
