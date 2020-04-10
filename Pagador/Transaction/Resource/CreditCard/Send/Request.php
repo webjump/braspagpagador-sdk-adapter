@@ -84,6 +84,7 @@ class Request extends RequestAbstract
                     'installments' => $this->data->getPaymentInstallments(),
                     'interest' => $this->data->getPaymentInterest(),
                     'capture' => $this->data->getPaymentCapture(),
+                    'doSplit' => $this->data->getPaymentDoSplit(),
                     'authenticate' => $this->data->getPaymentAuthenticate(),
                     'returnUrl' => $this->data->getReturnUrl(),
                     'softDescriptor' => $this->data->getPaymentSoftDescriptor(),
@@ -106,12 +107,12 @@ class Request extends RequestAbstract
         $paymentSplitRequest = $this->data->getPaymentSplitRequest();
 
         if ($paymentSplitRequest && $antiFraudRequest && $this->data->getPaymentCapture()) {
-            $paymentSplit = CreditCardPaymentSplitRequestFactory::make($paymentSplitRequest);
+            $splitData = CreditCardPaymentSplitRequestFactory::make($paymentSplitRequest)->getParams();
+            $this->params['body']['payment']['SplitPayments'] = $splitData['body']['SplitPayments'];
+        }
 
-            $splitData = $paymentSplit->getParams();
-
-            $this->params['body']['payment']['SplitPayments'] = $splitData['body'];
-            $this->params['body']['payment']['DoSplit'] = true;
+        if (!$antiFraudRequest) {
+            $this->params['body']['payment']['doSplit'] = false;
         }
 
         if ($this->data->getPaymentAuthenticate()) {
