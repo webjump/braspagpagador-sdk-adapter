@@ -47,6 +47,7 @@ class Request extends RequestAbstract
                     'Provider' => $this->data->getPaymentProvider(),
                     'ReturnUrl' => $this->data->getPaymentReturnUrl(),
                     'DebitCard' => $this->getDebitCardParams(),
+                    'doSplit' => $this->data->getPaymentDoSplit(),
                     'Authenticate' => true
                 ]
             ]
@@ -55,9 +56,8 @@ class Request extends RequestAbstract
         $paymentSplitRequest = $this->data->getPaymentSplitRequest();
 
         if ($paymentSplitRequest) {
-            $paymentSplit = DebitCardPaymentSplitRequestFactory::make($paymentSplitRequest);
-            $this->params['body']['Payment']['SplitPayments'] = $paymentSplit->getParams();
-            $this->params['body']['Payment']['DoSplit'] = true;
+            $paymentSplit = DebitCardPaymentSplitRequestFactory::make($paymentSplitRequest)->getParams();
+            $this->params['body']['Payment']['SplitPayments'] = $paymentSplit['body']['SplitPayments'];
         }
 
         if ($this->data->getPaymentAuthenticate()) {

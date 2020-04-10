@@ -60,7 +60,7 @@ class PaymentSplitClient implements ClientInterface
             $uri,
             [
                 'headers' => $headers,
-                'body' => \json_encode($body),
+                'body' => \json_encode([$body]),
                 'handler' => $this->handler
             ]
         );
