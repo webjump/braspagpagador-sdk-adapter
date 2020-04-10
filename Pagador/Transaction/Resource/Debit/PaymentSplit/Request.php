@@ -43,7 +43,7 @@ class Request extends RequestAbstract
             ];
         }
 
-        $this->params['body'] = $subordinates;
+        $this->params['body'] = ['SplitPayments' => $subordinates];
 
         if (!empty($this->data->getOrderTransactionId())) {
             $this->params['headers'] = [
