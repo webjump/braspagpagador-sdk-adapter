@@ -81,7 +81,7 @@ interface RequestInterface extends AuthRequestInterface
     public function getPaymentCapture();
 
     public function getPaymentAuthenticate();
-    
+
     public function getReturnUrl();
 
     public function getPaymentType();
@@ -121,6 +121,6 @@ interface RequestInterface extends AuthRequestInterface
     public function getPaymentCreditCardCardToken();
 
     public function getPaymentCreditSoptpaymenttoken();
-    
+
     public function getAvsRequest();
 }

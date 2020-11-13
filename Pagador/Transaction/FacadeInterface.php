@@ -10,12 +10,11 @@
 namespace Webjump\Braspag\Pagador\Transaction;
 
 use Webjump\Braspag\Pagador\Transaction\Api\Auth3Ds20\Token\RequestInterface as ActionsAuthRequest;
-use Webjump\Braspag\Pagador\Transaction\Api\Billet\Send\RequestInterface as BilletRequest;
+use Webjump\Braspag\Pagador\Transaction\Api\Boleto\Send\RequestInterface as BoletoRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Send\RequestInterface as CreditCardRequest;
-use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\PaymentSplit\RequestInterface as PaymentSplitCreditCardTransactionPostRequest;
-use Webjump\Braspag\Pagador\Transaction\Api\Debit\PaymentSplit\RequestInterface as PaymentSplitDebitCardTransactionPostRequest;
+use Webjump\Braspag\Pagador\Transaction\Api\PaymentSplit\RequestInterface as PaymentSplitTransactionPostRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\Actions\RequestInterface as ActionsPaymentRequest;
-use Webjump\Braspag\Pagador\Transaction\Api\Debit\Send\RequestInterface as DebitRequest;
+use Webjump\Braspag\Pagador\Transaction\Api\DebitCard\Send\RequestInterface as DebitRequest;
 use Webjump\Braspag\Pagador\Transaction\Command\Sales\CaptureCommand;
 use Webjump\Braspag\Pagador\Transaction\Command\Sales\GetCommand;
 use Webjump\Braspag\Pagador\Transaction\Command\Sales\VoidCommand;
@@ -28,12 +27,12 @@ interface FacadeInterface
      * @return mixed
      */
     public function getToken(ActionsAuthRequest $request);
-    
+
     /**
-     * @param BilletRequest $request
+     * @param BoletoRequest $request
      * @return SalesCommand
      */
-    public function sendBillet(BilletRequest $request);
+    public function sendBoleto(BoletoRequest $request);
 
     /**
      * @param CreditCardRequest $request
@@ -42,16 +41,10 @@ interface FacadeInterface
     public function sendCreditCard(CreditCardRequest $request);
 
     /**
-     * @param CreditCardRequest $request
-     * @return SalesCommand
-     */
-    public function sendCreditCardSplitPaymentTransactionPost(PaymentSplitCreditCardTransactionPostRequest $request);
-
-    /**
      * @param DebitCardRequest $request
      * @return SalesCommand
      */
-    public function sendDebitCardSplitPaymentTransactionPost(PaymentSplitDebitCardTransactionPostRequest $request);
+    public function sendSplitPaymentTransactionPost(PaymentSplitTransactionPostRequest $request);
 
     /**
      * @param ActionsPaymentRequest $request

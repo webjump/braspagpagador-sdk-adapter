@@ -11,26 +11,28 @@ namespace Webjump\Braspag\Pagador\Transaction;
 
 use Webjump\Braspag\Factories\Auth3Ds20TokenCommandFactory;
 use Webjump\Braspag\Factories\OAuth2TokenCommandFactory;
+use Webjump\Braspag\Factories\PaymentSplitLockCommandFactory;
 use Webjump\Braspag\Factories\PaymentSplitTransactionPostCommandFactory;
+use Webjump\Braspag\Factories\PaymentSplitLockFactory;
+use Webjump\Braspag\Factories\PaymentSplitLockRequestFactory;
 use Webjump\Braspag\Factories\Auth3Ds20TokenRequestFactory;
 use Webjump\Braspag\Factories\OAuth2TokenRequestFactory;
-use Webjump\Braspag\Factories\BilletRequestFactory;
+use Webjump\Braspag\Factories\BoletoRequestFactory;
 use Webjump\Braspag\Factories\PaymentRequestFactory;
 use Webjump\Braspag\Factories\CreditCardRequestFactory;
-use Webjump\Braspag\Factories\CreditCardPaymentSplitRequestFactory;
-use Webjump\Braspag\Factories\DebitCardPaymentSplitRequestFactory;
+use Webjump\Braspag\Factories\PaymentSplitRequestFactory;
 use Webjump\Braspag\Factories\CaptureCommandFactory;
 use Webjump\Braspag\Factories\DebitCardRequestFactory;
 use Webjump\Braspag\Factories\GetCommandFactory;
 use Webjump\Braspag\Factories\VoidCommandFactory;
-use Webjump\Braspag\Pagador\Transaction\Api\Billet\Send\RequestInterface as BilletRequest;
+use Webjump\Braspag\Pagador\Transaction\Api\Boleto\Send\RequestInterface as BoletoRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Send\RequestInterface as CreditCardRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\Actions\RequestInterface as ActionsPaymentRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\Auth3Ds20\Token\RequestInterface as Auth3Ds20TokenRequest;
-use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\PaymentSplit\RequestInterface as PaymentSplitCreditCardTransactionPostRequest;
-use Webjump\Braspag\Pagador\Transaction\Api\Debit\PaymentSplit\RequestInterface as PaymentSplitDebitCardTransactionPostRequest;
+use Webjump\Braspag\Pagador\Transaction\Api\PaymentSplit\RequestInterface as PaymentSplitTransactionPostRequest;
+use Webjump\Braspag\Pagador\Transaction\Api\PaymentSplit\Lock\RequestInterface as PaymentSplitLockRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\OAuth2\Token\RequestInterface as OAuth2TokenRequest;
-use Webjump\Braspag\Pagador\Transaction\Api\Debit\Send\RequestInterface as DebitRequest;
+use Webjump\Braspag\Pagador\Transaction\Api\DebitCard\Send\RequestInterface as DebitRequest;
 use Webjump\Braspag\Factories\SalesCommandFactory;
 use Webjump\Braspag\Pagador\Transaction\Command\Sales\CaptureCommand;
 use Webjump\Braspag\Pagador\Transaction\Command\Sales\GetCommand;
@@ -62,12 +64,12 @@ class BraspagFacade implements FacadeInterface
     }
 
     /**
-     * @param BilletRequest $request
+     * @param BoletoRequest $request
      * @return SalesCommand
      */
-    public function sendBillet(BilletRequest $request)
+    public function sendBoleto(BoletoRequest $request)
     {
-        $request = SalesCommandFactory::make(BilletRequestFactory::make($request))->getResult();
+        $request = SalesCommandFactory::make(BoletoRequestFactory::make($request))->getResult();
         return $request;
     }
 
@@ -82,22 +84,22 @@ class BraspagFacade implements FacadeInterface
     }
 
     /**
-     * @param CreditCardRequest $request
-     * @return SalesCommand
+     * @param PaymentSplitTransactionPostRequest $request
+     * @return PaymentSplitTransactionPostRequest|SalesCommand
      */
-    public function sendCreditCardSplitPaymentTransactionPost(PaymentSplitCreditCardTransactionPostRequest $request)
+    public function sendSplitPaymentTransactionPost(PaymentSplitTransactionPostRequest $request)
     {
-        $request = PaymentSplitTransactionPostCommandFactory::make(CreditCardPaymentSplitRequestFactory::make($request))->getResult();
+        $request = PaymentSplitTransactionPostCommandFactory::make(PaymentSplitRequestFactory::make($request))->getResult();
         return $request;
     }
 
     /**
-     * @param PaymentSplitDebitCardTransactionPostRequest $request
-     * @return PaymentSplitDebitCardTransactionPostRequest|SalesCommand
+     * @param PaymentSplitLockRequest $request
+     * @return mixed
      */
-    public function sendDebitCardSplitPaymentTransactionPost(PaymentSplitDebitCardTransactionPostRequest $request)
+    public function sendSplitPaymentLock(PaymentSplitLockRequest $request)
     {
-        $request = PaymentSplitTransactionPostCommandFactory::make(DebitCardPaymentSplitRequestFactory::make($request))->getResult();
+        $request =  PaymentSplitLockCommandFactory::make(PaymentSplitLockRequestFactory::make($request))->getResult();
         return $request;
     }
 

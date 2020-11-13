@@ -10,7 +10,7 @@
 namespace Webjump\Braspag\Examples\DataRequest;
 
 
-use Webjump\Braspag\Pagador\Transaction\Api\Debit\Send\RequestInterface;
+use Webjump\Braspag\Pagador\Transaction\Api\DebitCard\Send\RequestInterface;
 
 class Debit implements RequestInterface
 {

@@ -15,8 +15,8 @@ use Webjump\Braspag\Factories\ResponseFactory;
 use Webjump\Braspag\Factories\SalesFactory;
 use Webjump\Braspag\Pagador\Transaction\Command\CommandAbstract;
 use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Send\RequestInterface as CreditCardData;
-use Webjump\Braspag\Pagador\Transaction\Api\Billet\Send\RequestInterface as BilletCardData;
-use Webjump\Braspag\Pagador\Transaction\Api\Debit\Send\RequestInterface as DebitCardData;
+use Webjump\Braspag\Pagador\Transaction\Api\Boleto\Send\RequestInterface as BoletoCardData;
+use Webjump\Braspag\Pagador\Transaction\Api\DebitCard\Send\RequestInterface as DebitCardData;
 class GetCommand extends CommandAbstract
 {
     protected function execute()
@@ -47,8 +47,8 @@ class GetCommand extends CommandAbstract
             $type = ResponseFactory::CLASS_TYPE_CREDIT_CARD;
         }
 
-        if ($data['Payment']['Type'] === BilletCardData::PAYMENT_TYPE) {
-            $type = ResponseFactory::CLASS_TYPE_BILLET;
+        if ($data['Payment']['Type'] === BoletoCardData::PAYMENT_TYPE) {
+            $type = ResponseFactory::CLASS_TYPE_BOLETO;
         }
 
         if ($data['Payment']['Type'] === DebitCardData::PAYMENT_TYPE) {
