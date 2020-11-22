@@ -9,25 +9,23 @@
  */
 namespace Webjump\Braspag\Factories;
 
-
-use Webjump\Braspag\Pagador\Transaction\Resource\Billet\Send\Response as BilletResponse;
+use Webjump\Braspag\Pagador\Transaction\Resource\Boleto\Send\Response as BoletoResponse;
 use Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Send\Response as CreditCardResponse;
-use Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\AntiFraud\Response as CreditCardAntiFraudResponse;
-use Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\PaymentSplit\Response as CreditCardPaymentSplitResponse;
+use Webjump\Braspag\Pagador\Transaction\Resource\AntiFraud\Response as CreditCardAntiFraudResponse;
 use Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Response as CreditCardVelocityResponse;
 use Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Avs\Response as CreditCardVAvsResponse;
 use Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Reasons\Response as CreditCardVelocityReasonsResponse;
 use Webjump\Braspag\Pagador\Transaction\Resource\Actions\Response as ActionsCardResponse;
 use Webjump\Braspag\Pagador\Transaction\Resource\Auth3Ds20\Token\Response as Auth3Ds20TokenResponse;
 use Webjump\Braspag\Pagador\Transaction\Resource\OAuth2\Token\Response as OAuth2TokenResponse;
-use Webjump\Braspag\Pagador\Transaction\Resource\Debit\Send\Response as DebitCardResponse;
-use Webjump\Braspag\Pagador\Transaction\Resource\Debit\PaymentSplit\Response as DebitCardPaymentSplitResponse;
+use Webjump\Braspag\Pagador\Transaction\Resource\DebitCard\Send\Response as DebitCardResponse;
+use Webjump\Braspag\Pagador\Transaction\Resource\PaymentSplit\Response as PaymentSplitResponse;
 
 class ResponseFactory
 {
     const CLASS_TYPE_AUTH_TOKEN = 'auth-token';
     const CLASS_TYPE_OAUTH2_TOKEN = 'oauth2-token';
-    const CLASS_TYPE_BILLET = 'billet';
+    const CLASS_TYPE_BOLETO = 'boleto';
     const CLASS_TYPE_CREDIT_CARD = 'creditCard';
     const CLASS_TYPE_ACTIONS = 'actions';
     const CLASS_TYPE_DEBIT_CARD = 'debitCard';
@@ -37,11 +35,12 @@ class ResponseFactory
     const CLASS_TYPE_CREDIT_CART_VELOCITY = 'velocity';
     const CLASS_TYPE_CREDIT_CART_VELOCITY_REASONS = 'velocityReasons';
     const CLASS_TYPE_CREDIT_CART_AVS = 'avs';
+    const CLASS_TYPE_BOLETO_PAYMENT_SPLIT = 'boletoPaymentSplit';
 
     public static function make(array $data, $type)
     {
-        if ($type === self::CLASS_TYPE_BILLET) {
-            return new BilletResponse($data);
+        if ($type === self::CLASS_TYPE_BOLETO) {
+            return new BoletoResponse($data);
         }
 
         if ($type === self::CLASS_TYPE_CREDIT_CARD) {
@@ -69,11 +68,15 @@ class ResponseFactory
         }
 
         if ($type === self::CLASS_TYPE_DEBIT_CARD_PAYMENT_SPLIT) {
-            return new DebitCardPaymentSplitResponse($data);
+            return new PaymentSplitResponse($data);
         }
 
         if ($type === self::CLASS_TYPE_CREDIT_CART_PAYMENT_SPLIT) {
-            return new CreditCardPaymentSplitResponse($data);
+            return new PaymentSplitResponse($data);
+        }
+
+        if ($type === self::CLASS_TYPE_BOLETO_PAYMENT_SPLIT) {
+            return new PaymentSplitResponse($data);
         }
 
         if ($type === self::CLASS_TYPE_CREDIT_CART_VELOCITY) {

@@ -228,7 +228,7 @@ class Response extends ResponseAbstract implements ResponseInterface
     }
 
     /**
-     * @return bool|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\AntiFraud\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Avs\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Reasons\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Response
+     * @return bool|\Webjump\Braspag\Pagador\Transaction\Resource\AntiFraud\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Avs\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Reasons\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Response
      */
     public function getPaymentFraudAnalysis()
     {
@@ -244,7 +244,7 @@ class Response extends ResponseAbstract implements ResponseInterface
     }
 
     /**
-     * @return bool|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\AntiFraud\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Avs\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Reasons\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Response
+     * @return bool|\Webjump\Braspag\Pagador\Transaction\Resource\AntiFraud\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Avs\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Reasons\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Response
      */
     public function getPaymentSplitPayments()
     {
@@ -260,7 +260,7 @@ class Response extends ResponseAbstract implements ResponseInterface
     }
 
     /**
-     * @return bool|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\AntiFraud\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Avs\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Reasons\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Response
+     * @return bool|\Webjump\Braspag\Pagador\Transaction\Resource\AntiFraud\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Avs\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Reasons\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Response
      */
     public function getVelocityAnalysis()
     {
@@ -276,7 +276,7 @@ class Response extends ResponseAbstract implements ResponseInterface
     }
 
     /**
-     * @return bool|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\AntiFraud\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Avs\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Reasons\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Response
+     * @return bool|\Webjump\Braspag\Pagador\Transaction\Resource\AntiFraud\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Avs\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Reasons\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Response
      */
     public function getAvs()
     {

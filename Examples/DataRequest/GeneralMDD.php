@@ -3,7 +3,7 @@
 namespace Webjump\Braspag\Examples\DataRequest;
 
 
-use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\AntiFraud\MDD\GeneralRequestInterface;
+use Webjump\Braspag\Pagador\Transaction\Api\AntiFraud\MDD\GeneralRequestInterface;
 
 class GeneralMDD implements GeneralRequestInterface
 {

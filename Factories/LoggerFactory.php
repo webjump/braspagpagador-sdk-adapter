@@ -48,7 +48,8 @@ class LoggerFactory implements LoggerFactoryInterface
         $patterns = array('#\"cardNumber\"\:\"(.*?)(\d{4})\"\,#', '#\"securityCode\":\"(.*?)\"\,#');
         $replacements = array('"cardNumber":"************$2",', '"securityCode":"***",');
 
-        $bodyString = preg_replace($patterns, $replacements, $request->getBody()->__toString());
+        $bodyString = $request->getBody()->__toString();
+//        $bodyString = preg_replace($patterns, $replacements, $request->getBody()->__toString());
         return $request->getRequestTarget()." >>>>>>>> ".$request->getMethod(). " " . $headers . " " .$bodyString."\n";
     }
 
