@@ -11,7 +11,7 @@
 namespace Webjump\Braspag\Examples\DataRequest;
 
 
-use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\PaymentSplit\RequestInterface;
+use Webjump\Braspag\Pagador\Transaction\Api\PaymentSplit\RequestInterface;
 
 class PaymentSplit implements RequestInterface
 {

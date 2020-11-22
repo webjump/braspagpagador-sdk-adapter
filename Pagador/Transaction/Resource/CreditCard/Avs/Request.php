@@ -10,7 +10,7 @@
 namespace Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Avs;
 
 
-use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\AntiFraud\Items\RequestInterface as AntiFraudItemsRequest;
+use Webjump\Braspag\Pagador\Transaction\Api\AntiFraud\Items\RequestInterface as AntiFraudItemsRequest;
 use Webjump\Braspag\Pagador\Transaction\Resource\RequestAbstract;
 use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Avs\RequestInterface as Data;
 

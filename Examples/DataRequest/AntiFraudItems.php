@@ -11,7 +11,7 @@
 namespace Webjump\Braspag\Examples\DataRequest;
 
 
-use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\AntiFraud\Items\RequestInterface;
+use Webjump\Braspag\Pagador\Transaction\Api\AntiFraud\Items\RequestInterface;
 
 class AntiFraudItems implements RequestInterface
 {

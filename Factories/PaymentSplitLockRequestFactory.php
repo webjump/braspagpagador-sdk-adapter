@@ -9,11 +9,10 @@
  */
 namespace Webjump\Braspag\Factories;
 
+use Webjump\Braspag\Pagador\Transaction\Resource\PaymentSplit\Lock\Request;
+use Webjump\Braspag\Pagador\Transaction\Api\PaymentSplit\Lock\RequestInterface as Data;
 
-use Webjump\Braspag\Pagador\Transaction\Resource\DebitCard\Send\Request;
-use Webjump\Braspag\Pagador\Transaction\Api\DebitCard\Send\RequestInterface as Data;
-
-class DebitCardRequestFactory
+class PaymentSplitLockRequestFactory
 {
     /**
      * @param Data $data

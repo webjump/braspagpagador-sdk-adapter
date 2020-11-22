@@ -10,10 +10,10 @@
 namespace Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Send;
 
 
-use Webjump\Braspag\Factories\CreditCardAntiFraudRequestFactory;
+use Webjump\Braspag\Factories\AntiFraudRequestFactory;
 use Webjump\Braspag\Factories\CreditCardAvsRequestFactory;
-use Webjump\Braspag\Factories\CreditCardPaymentSplitRequestFactory;
-use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\AntiFraud\RequestInterface as AntiFraudRequest;
+use Webjump\Braspag\Factories\PaymentSplitRequestFactory;
+use Webjump\Braspag\Pagador\Transaction\Api\AntiFraud\RequestInterface as AntiFraudRequest;
 use Webjump\Braspag\Pagador\Transaction\Resource\RequestAbstract;
 use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Send\RequestInterface as Data;
 
@@ -95,7 +95,7 @@ class Request extends RequestAbstract
         ];
 
         if (($antiFraudRequest = $this->data->getAntiFraudRequest()) && !$this->data->getPaymentAuthenticate()) {
-            $antiFraud = CreditCardAntiFraudRequestFactory::make($antiFraudRequest);
+            $antiFraud = AntiFraudRequestFactory::make($antiFraudRequest);
             $this->params['body']['payment']['FraudAnalysis'] = $antiFraud->getParams();
         }
 
@@ -107,7 +107,7 @@ class Request extends RequestAbstract
         $paymentSplitRequest = $this->data->getPaymentSplitRequest();
 
         if ($paymentSplitRequest && $antiFraudRequest && $this->data->getPaymentCapture()) {
-            $splitData = CreditCardPaymentSplitRequestFactory::make($paymentSplitRequest)->getParams();
+            $splitData = PaymentSplitRequestFactory::make($paymentSplitRequest)->getParams();
             $this->params['body']['payment']['SplitPayments'] = $splitData['body']['SplitPayments'];
         }
 

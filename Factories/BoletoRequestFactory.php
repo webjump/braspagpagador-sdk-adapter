@@ -10,10 +10,10 @@
 namespace Webjump\Braspag\Factories;
 
 
-use Webjump\Braspag\Pagador\Transaction\Resource\DebitCard\Send\Request;
-use Webjump\Braspag\Pagador\Transaction\Api\DebitCard\Send\RequestInterface as Data;
+use Webjump\Braspag\Pagador\Transaction\Resource\Boleto\Send\Request;
+use Webjump\Braspag\Pagador\Transaction\Api\Boleto\Send\RequestInterface as Data;
 
-class DebitCardRequestFactory
+class BoletoRequestFactory
 {
     /**
      * @param Data $data

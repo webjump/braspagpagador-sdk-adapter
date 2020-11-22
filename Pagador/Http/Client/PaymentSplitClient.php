@@ -40,8 +40,7 @@ class PaymentSplitClient implements ClientInterface
         $method = 'POST',
         $uriComplement = '',
         $isTestEnvironment = false
-    )
-    {
+    ) {
         $params = $service->getRequest()->getParams();
 
         $apiURI = self::API_URI_PAYMENT_SPLIT;
@@ -60,7 +59,7 @@ class PaymentSplitClient implements ClientInterface
             $uri,
             [
                 'headers' => $headers,
-                'body' => \json_encode([$body]),
+                'body' => (is_array($body) ? \json_encode([$body]) : $body),
                 'handler' => $this->handler
             ]
         );

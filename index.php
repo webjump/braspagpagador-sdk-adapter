@@ -9,7 +9,7 @@
  */
 require_once("vendor/autoload.php");
 
-use Webjump\Braspag\Examples\DataRequest\Billet;
+use Webjump\Braspag\Examples\DataRequest\Boleto;
 use Webjump\Braspag\Examples\DataRequest\CreditCard;
 use Webjump\Braspag\Examples\DataRequest\Actions;
 use Webjump\Braspag\Examples\DataRequest\Debit;
@@ -41,8 +41,8 @@ function getData($response)
 //## Boleto
 //##
 //echo '<h1>Boleto</h1>';
-//$data = new Billet();
-//$response = $facade->sendBillet($data);
+//$data = new Boleto();
+//$response = $facade->sendBoleto($data);
 //
 //if (is_object($response)) {
 //    echo "<a target='_blank' href='{$response->getPaymentUrl()}'>Gerar Boleto</a>";
@@ -145,7 +145,7 @@ echo '<hr />';
 //##
 //echo '<h1>Consulta Boleto</h1>';
 //$data = new Actions('662e9450-0fc7-464f-aeed-5a81643e717a');
-//$response = $facade->checkPaymentStatus($data, 'billet');
+//$response = $facade->checkPaymentStatus($data, 'boleto');
 //$result = getData($response);
 //echo '<pre>';
 //print_r($result);
