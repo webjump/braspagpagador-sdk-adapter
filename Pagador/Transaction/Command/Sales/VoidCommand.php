@@ -23,20 +23,13 @@ class VoidCommand extends CommandAbstract
         $client = ClientHttpFactory::make();
 
         $params = $this->request->getParams();
-        $uriComplement = sprintf('%s/void', $params['uriComplement']['payment_id']);
+        $uriComplement = sprintf('%s/void/', $params['uriComplement']['payment_id']);
 
-        if (isset($params['uriComplement']['additional']) &&
-            ! empty($params['uriComplement']['additional']) &&
-            is_array($params['uriComplement']['additional'])
-        ) {
-            if(! isset($params['uriComplement']['additional']['amount'])) {
-                throw new \Exception ('additional params not valid, is necessary the key "amount"');
-            }
+        if (isset($params['uriComplement']['additional'])) {
             $uriComplement .= '?' . \http_build_query($params['uriComplement']['additional']);
         }
 
         $isTestEnvironment =  (bool) $this->request->getData()->isTestEnvironment();
-
 
         $response = $client->request($sales, 'PUT', $uriComplement, $isTestEnvironment);
 
