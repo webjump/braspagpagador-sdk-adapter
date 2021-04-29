@@ -15,7 +15,7 @@ use Webjump\Braspag\Pagador\Transaction\Resource\AntiFraud\Response as CreditCar
 use Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Response as CreditCardVelocityResponse;
 use Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Avs\Response as CreditCardVAvsResponse;
 use Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Reasons\Response as CreditCardVelocityReasonsResponse;
-use Webjump\Braspag\Pagador\Transaction\Resource\Actions\Response as ActionsCardResponse;
+use Webjump\Braspag\Pagador\Transaction\Resource\Actions\Response as ActionsResponse;
 use Webjump\Braspag\Pagador\Transaction\Resource\Auth3Ds20\Token\Response as Auth3Ds20TokenResponse;
 use Webjump\Braspag\Pagador\Transaction\Resource\OAuth2\Token\Response as OAuth2TokenResponse;
 use Webjump\Braspag\Pagador\Transaction\Resource\DebitCard\Send\Response as DebitCardResponse;
@@ -56,7 +56,7 @@ class ResponseFactory
         }
 
         if ($type === self::CLASS_TYPE_ACTIONS) {
-            return new ActionsCardResponse($data);
+            return new ActionsResponse($data);
         }
 
         if ($type === self::CLASS_TYPE_DEBIT_CARD) {
