@@ -23,6 +23,17 @@ class Response extends ResponseAbstract implements ResponseInterface
         return $this->response['Payment'];
     }
 
+    /**
+     * @return bool
+     */
+    public function getPaymentProofOfSale()
+    {
+        if (! isset($this->response['Payment']['ProofOfSale'])) {
+            return false;
+        }
+        return $this->response['Payment']['ProofOfSale'];
+    }
+
     public function getPaymentAuthenticationUrl()
     {
         if (! isset($this->response['Payment']['AuthenticationUrl'])) {

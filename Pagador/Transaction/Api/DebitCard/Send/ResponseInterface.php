@@ -16,6 +16,8 @@ interface ResponseInterface
 
     public function getPaymentAcquirerTransactionId();
 
+    public function getPaymentProofOfSale();
+
     public function getPaymentPaymentId();
 
     public function getPaymentReceivedDate();
