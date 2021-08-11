@@ -35,14 +35,19 @@ class Request extends RequestAbstract
 
             $subordinateData =  [
                 "SubordinateMerchantId" => $subordinate['subordinate_merchant_id'],
-                "Amount" => $subordinate['amount']
+                "Amount" => $subordinate['amount'],
+                "Fares" => []
             ];
 
             if (isset($subordinate['fares'])) {
-                $subordinateData["Fares"] = [
-                    "Mdr" => $subordinate['fares']['mdr'],
-                    "Fee" => $subordinate['fares']['fee']
-                ];
+
+                if (!empty($subordinate['fares']['mdr'])) {
+                    $subordinateData["Fares"]['Mdr'] = $subordinate['fares']['mdr'];
+                }
+
+                if (!empty($subordinate['fares']['fee'])) {
+                    $subordinateData["Fares"]['Fee'] = $subordinate['fares']['fee'];
+                }
             }
 
             $subordinates[] = $subordinateData;

@@ -61,13 +61,9 @@ class Request extends RequestAbstract
 
         $paymentSplitRequest = $this->data->getPaymentSplitRequest();
 
-        if ($paymentSplitRequest && $antiFraudRequest) {
+        if ($paymentSplitRequest) {
             $splitData = PaymentSplitRequestFactory::make($paymentSplitRequest)->getParams();
             $this->params['body']['Payment']['SplitPayments'] = $splitData['body']['SplitPayments'];
-        }
-
-        if (!$antiFraudRequest) {
-            $this->params['body']['Payment']['doSplit'] = false;
         }
 
         if ($this->data->getPaymentAuthenticate()) {
