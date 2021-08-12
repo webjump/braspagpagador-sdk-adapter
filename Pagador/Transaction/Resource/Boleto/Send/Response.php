@@ -106,7 +106,7 @@ class Response extends ResponseAbstract implements ResponseInterface
 
 
     /**
-     * @return bool|\Webjump\Braspag\Pagador\Transaction\Resource\Actions\Response|\Webjump\Braspag\Pagador\Transaction\Resource\Auth3Ds20\Token\Response|Response|\Webjump\Braspag\Pagador\Transaction\Resource\AntiFraud\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Avs\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\PaymentSplit\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Send\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Reasons\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Response|\Webjump\Braspag\Pagador\Transaction\Resource\PaymentSplit\Response|\Webjump\Braspag\Pagador\Transaction\Resource\DebitCard\Send\Response|\Webjump\Braspag\Pagador\Transaction\Resource\OAuth2\Token\Response
+     * @return bool|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Avs\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Reasons\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Response|\Webjump\Braspag\Pagador\Transaction\Resource\PaymentSplit\Response
      */
     public function getPaymentSplitPayments()
     {

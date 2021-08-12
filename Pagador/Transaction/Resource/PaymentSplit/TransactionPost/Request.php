@@ -33,14 +33,28 @@ class Request extends RequestAbstract
         $subordinates = [];
         foreach ($splits->getSubordinates() as $subordinate) {
 
-            $subordinates[] = [
+            $subordinateData =  [
                 "SubordinateMerchantId" => $subordinate['subordinate_merchant_id'],
                 "Amount" => $subordinate['amount'],
-                "Fares" => [
-                    "Mdr" => $subordinate['fares']['mdr'],
-                    "Fee" => $subordinate['fares']['fee']
-                ]
+                "Fares" => []
             ];
+
+            if (isset($subordinate['fares'])) {
+
+                if (!empty($subordinate['fares']['mdr'])) {
+                    $subordinateData["Fares"]['Mdr'] = $subordinate['fares']['mdr'];
+                }
+
+                if (!empty($subordinate['fares']['fee'])) {
+                    $subordinateData["Fares"]['Fee'] = $subordinate['fares']['fee'];
+                }
+            }
+
+            if (empty($subordinateData["Fares"])) {
+                unset($subordinateData["Fares"]);
+            }
+
+            $subordinates[] = $subordinateData;
         }
 
         $this->params['body'] = ['SplitPayments' => $subordinates];
