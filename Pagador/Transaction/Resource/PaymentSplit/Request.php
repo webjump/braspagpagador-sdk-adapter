@@ -50,6 +50,10 @@ class Request extends RequestAbstract
                 }
             }
 
+            if (empty($subordinateData["Fares"])) {
+                unset($subordinateData["Fares"]);
+            }
+
             $subordinates[] = $subordinateData;
         }
 
