@@ -11,7 +11,6 @@ namespace Webjump\Braspag\Pagador\Transaction\Resource\Boleto\Send;
 
 use Webjump\Braspag\Pagador\Transaction\Resource\RequestAbstract;
 use Webjump\Braspag\Pagador\Transaction\Api\Boleto\Send\RequestInterface as Data;
-use Webjump\Braspag\Factories\AntiFraudRequestFactory;
 use Webjump\Braspag\Factories\PaymentSplitRequestFactory;
 
 class Request extends RequestAbstract
@@ -73,11 +72,6 @@ class Request extends RequestAbstract
 
         if ($this->data->getPaymentProvider() === 'Braspag') {
             $this->params['body']['Payment']['Bank'] = $this->data->getPaymentBank();
-        }
-
-        if (($antiFraudRequest = $this->data->getAntiFraudRequest())) {
-            $antiFraud = AntiFraudRequestFactory::make($antiFraudRequest);
-            $this->params['body']['Payment']['FraudAnalysis'] = $antiFraud->getParams();
         }
 
         $paymentSplitRequest = $this->data->getPaymentSplitRequest();
