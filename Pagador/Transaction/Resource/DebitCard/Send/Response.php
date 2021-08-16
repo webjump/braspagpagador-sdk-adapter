@@ -136,14 +136,14 @@ class Response extends ResponseAbstract implements ResponseInterface
      */
     public function getPaymentSplitPayments()
     {
-        if (! isset($this->response['Payment']['SplitPayments'])) {
+        if (! isset($this->response['Payment']['SplitTransaction'])) {
             return false;
         }
 
-        if (! is_array($this->response['Payment']['SplitPayments'])) {
+        if (! is_array($this->response['Payment']['SplitTransaction'])) {
             return false;
         }
 
-        return ResponseFactory::make($this->response['Payment']['SplitPayments'], 'debitCardPaymentSplit');
+        return ResponseFactory::make($this->response['Payment']['SplitTransaction'], 'debitCardPaymentSplit');
     }
 }

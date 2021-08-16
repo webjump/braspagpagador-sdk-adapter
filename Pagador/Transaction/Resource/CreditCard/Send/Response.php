@@ -244,19 +244,19 @@ class Response extends ResponseAbstract implements ResponseInterface
     }
 
     /**
-     * @return bool|\Webjump\Braspag\Pagador\Transaction\Resource\AntiFraud\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Avs\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Reasons\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Response
+     * @return bool|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Avs\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Reasons\Response|\Webjump\Braspag\Pagador\Transaction\Resource\CreditCard\Velocity\Response|\Webjump\Braspag\Pagador\Transaction\Resource\PaymentSplit\Response
      */
     public function getPaymentSplitPayments()
     {
-        if (! isset($this->response['Payment']['SplitPayments'])) {
+        if (! isset($this->response['Payment']['SplitTransaction'])) {
             return false;
         }
 
-        if (! is_array($this->response['Payment']['SplitPayments'])) {
+        if (! is_array($this->response['Payment']['SplitTransaction'])) {
             return false;
         }
 
-        return ResponseFactory::make($this->response['Payment']['SplitPayments'], 'paymentSplit');
+        return ResponseFactory::make($this->response['Payment']['SplitTransaction'], 'paymentSplit');
     }
 
     /**
