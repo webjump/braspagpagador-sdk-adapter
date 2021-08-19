@@ -57,7 +57,7 @@ class Request extends RequestAbstract
             $subordinates[] = $subordinateData;
         }
 
-        $this->params['body'] = json_encode($subordinates);
+        $this->params['body'] = ['SplitPayments' => $subordinates];
 
         if (!empty($this->data->getOrderTransactionId())) {
             $this->params['headers'] = [
