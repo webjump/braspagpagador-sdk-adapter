@@ -78,7 +78,9 @@ class Request extends RequestAbstract
 
         if ($paymentSplitRequest) {
             $splitData = PaymentSplitRequestFactory::make($paymentSplitRequest)->getParams();
+
             $this->params['body']['Payment']['SplitPayments'] = $splitData['body']['SplitPayments'];
+            $this->params['body']['Payment']['SplitTransaction'] = $splitData['body']['SplitTransaction'];
         }
 
         return $this;

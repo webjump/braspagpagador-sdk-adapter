@@ -13,7 +13,7 @@ use Webjump\Braspag\Factories\HttpFactory as HttpClient;
 use Webjump\Braspag\Pagador\Http\Services\ServiceInterface;
 use Webjump\Braspag\Factories\HandlerFactory;
 
-class PaymentSplitClient implements ClientInterface
+class PaymentSplitOnboardingClient implements ClientInterface
 {
     protected $client;
 
@@ -44,10 +44,10 @@ class PaymentSplitClient implements ClientInterface
     ) {
         $params = $service->getRequest()->getParams();
 
-        $apiURI = self::API_URI_PAYMENT_SPLIT;
+        $apiURI = self::API_URI_PAYMENT_SPLIT_ONBOARDING;
 
         if ($isTestEnvironment === true) {
-            $apiURI = self::API_URI_PAYMENT_SPLIT_TEST;
+            $apiURI = self::API_URI_PAYMENT_SPLIT_ONBOARDING_TEST;
         }
 
         $uri = $apiURI . $service->getEndPoint() . $uriComplement;
@@ -60,7 +60,7 @@ class PaymentSplitClient implements ClientInterface
             $uri,
             [
                 'headers' => $headers,
-                'body' => (is_array($body) ? \json_encode([$body]) : $body),
+                'body' => \json_encode($body),
                 'handler' => $this->handler
             ]
         );

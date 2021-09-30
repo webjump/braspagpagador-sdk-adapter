@@ -20,6 +20,7 @@ use Webjump\Braspag\Pagador\Transaction\Resource\Auth3Ds20\Token\Response as Aut
 use Webjump\Braspag\Pagador\Transaction\Resource\OAuth2\Token\Response as OAuth2TokenResponse;
 use Webjump\Braspag\Pagador\Transaction\Resource\DebitCard\Send\Response as DebitCardResponse;
 use Webjump\Braspag\Pagador\Transaction\Resource\PaymentSplit\Response as PaymentSplitResponse;
+use Webjump\Braspag\Pagador\Transaction\Resource\PaymentSplit\GetSubordinate\Response as PaymentSplitGetSubordinateResponse;
 
 class ResponseFactory
 {
@@ -32,6 +33,7 @@ class ResponseFactory
     const CLASS_TYPE_DEBIT_CARD_PAYMENT_SPLIT = 'debitCardPaymentSplit';
     const CLASS_TYPE_CREDIT_CART_ANTI_FRAUD = 'antiFraud';
     const CLASS_TYPE_CREDIT_CART_PAYMENT_SPLIT = 'paymentSplit';
+    const CLASS_TYPE_BOLETO_PAYMENT_SPLIT_GET_SUBORDINATE = 'paymentSplitGetSubordinate';
     const CLASS_TYPE_CREDIT_CART_VELOCITY = 'velocity';
     const CLASS_TYPE_CREDIT_CART_VELOCITY_REASONS = 'velocityReasons';
     const CLASS_TYPE_CREDIT_CART_AVS = 'avs';
@@ -73,6 +75,10 @@ class ResponseFactory
 
         if ($type === self::CLASS_TYPE_CREDIT_CART_PAYMENT_SPLIT) {
             return new PaymentSplitResponse($data);
+        }
+
+        if ($type === self::CLASS_TYPE_BOLETO_PAYMENT_SPLIT_GET_SUBORDINATE) {
+            return new PaymentSplitGetSubordinateResponse($data);
         }
 
         if ($type === self::CLASS_TYPE_BOLETO_PAYMENT_SPLIT) {

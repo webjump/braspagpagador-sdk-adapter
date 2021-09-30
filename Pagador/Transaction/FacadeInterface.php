@@ -13,6 +13,8 @@ use Webjump\Braspag\Pagador\Transaction\Api\Auth3Ds20\Token\RequestInterface as 
 use Webjump\Braspag\Pagador\Transaction\Api\Boleto\Send\RequestInterface as BoletoRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\CreditCard\Send\RequestInterface as CreditCardRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\PaymentSplit\RequestInterface as PaymentSplitTransactionPostRequest;
+use Webjump\Braspag\Pagador\Transaction\Api\PaymentSplit\CreateSubordinate\RequestInterface as PaymentSplitCreateSubordinateRequest;
+use Webjump\Braspag\Pagador\Transaction\Api\PaymentSplit\GetSubordinate\RequestInterface as PaymentSplitGetSubordinateRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\Actions\RequestInterface as ActionsPaymentRequest;
 use Webjump\Braspag\Pagador\Transaction\Api\DebitCard\Send\RequestInterface as DebitRequest;
 use Webjump\Braspag\Pagador\Transaction\Command\Sales\CaptureCommand;
@@ -70,4 +72,16 @@ interface FacadeInterface
      * @return VoidCommand
      */
     public function voidPayment(ActionsPaymentRequest $request);
+
+    /**
+     * @param PaymentSplitCreateSubordinateRequest $request
+     * @return mixed
+     */
+    public function sendSplitPaymentCreateSubordinate(PaymentSplitCreateSubordinateRequest $request);
+
+    /**
+     * @param PaymentSplitGetSubordinateRequest $request
+     * @return mixed
+     */
+    public function sendSplitPaymentGetSubordinate(PaymentSplitGetSubordinateRequest $request);
 }

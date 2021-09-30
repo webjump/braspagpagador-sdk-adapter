@@ -82,4 +82,69 @@ class Boleto implements RequestInterface
     {
         return 'Aceitar somente até a data de vencimento, após essa data juros de 1% dia.';
     }
+
+    public function isTestEnvironment()
+    {
+        return true;
+    }
+
+    public function getCustomerIdentity()
+    {
+        return '1234567895';
+    }
+
+    public function getCustomerIdentityType()
+    {
+        return 'CPF';
+    }
+
+    public function getCustomerEmail()
+    {
+        return 'teste@teste.cds.br';
+    }
+
+    public function getCustomerBirthDate()
+    {
+        return '';
+    }
+
+    public function getCustomerAddressStreet()
+    {
+        return 'rua teste';
+    }
+
+    public function getCustomerAddressNumber()
+    {
+        return '123';
+    }
+
+    public function getCustomerAddressComplement()
+    {
+        return 'teste';
+    }
+
+    public function getCustomerAddressDistrict()
+    {
+        return 'teste';
+    }
+
+    public function getCustomerAddressZipCode()
+    {
+        return '45678945';
+    }
+
+    public function getCustomerAddressCity()
+    {
+        return 'teste';
+    }
+
+    public function getCustomerAddressState()
+    {
+        return 'SP';
+    }
+
+    public function getCustomerAddressCountry()
+    {
+        return 'BRA';
+    }
 }
