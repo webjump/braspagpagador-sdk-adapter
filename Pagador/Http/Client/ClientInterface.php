@@ -12,6 +12,10 @@ namespace Webjump\Braspag\Pagador\Http\Client;
 
 use Webjump\Braspag\Pagador\Http\Services\ServiceInterface;
 
+/**
+ * Interface ClientInterface
+ * @package Webjump\Braspag\Pagador\Http\Client
+ */
 interface ClientInterface
 {
     const API_URI               = 'https://api.braspag.com.br/v2';
@@ -26,6 +30,9 @@ interface ClientInterface
 
     const API_URI_PAYMENT_SPLIT          = 'https://split.braspag.com.br/';
     const API_URI_PAYMENT_SPLIT_TEST     = 'https://splitsandbox.braspag.com.br/';
+
+    const API_URI_PAYMENT_SPLIT_ONBOARDING          = 'https://splitonboarding.braspag.com.br/';
+    const API_URI_PAYMENT_SPLIT_ONBOARDING_TEST     = 'https://splitonboardingsandbox.braspag.com.br/';
 
     public function request(ServiceInterface $service, $method = 'POST', $uriComplement = '');
 }

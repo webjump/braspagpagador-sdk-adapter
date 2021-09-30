@@ -16,6 +16,14 @@ use Webjump\Braspag\Pagador\Transaction\Resource\ResponseAbstract;
 
 class Response extends ResponseAbstract implements ResponseInterface
 {
+    public function getPayment()
+    {
+        if (! isset($this->response['Payment'])) {
+            return false;
+        }
+        return $this->response['Payment'];
+    }
+
     public function getPaymentUrl()
     {
         if (! isset($this->response['Payment']['Url'])) {
