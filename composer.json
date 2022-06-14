@@ -1,6 +1,5 @@
 {
   "name": "webjump/braspagpagador-sdk-adapter",
-  "minimum-stability": "dev",
   "type": "library",
   "description": "Braspag API PHP SDK",
   "keywords": [
@@ -20,6 +19,7 @@
       "email": "dev@webjump.com.br"
     }
   ],
+  "minimum-stability": "dev",
   "require": {
     "php": ">=5.5",
     "guzzlehttp/guzzle": "~6.0||~7.0.0"
