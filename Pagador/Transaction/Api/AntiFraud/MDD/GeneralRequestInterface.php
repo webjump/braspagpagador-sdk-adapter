@@ -13,7 +13,7 @@ interface GeneralRequestInterface
     const MDD_KEY_PRODUCT_CATEGORY = 5;
     const MDD_KEY_SHIPPING_METHOD = 7;
     const MDD_KEY_CUSTOMER_FETCH_SELF = 9;
-    const MDD_KEY_STORE_CODE = 10;
+    const MDD_KEY_STORE_CODE = 22;
     const MDD_KEY_COUPON_CODE = 12;
     const MDD_KEY_HAS_GIFT_CARD = 13;
     const MDD_KEY_SECOND_PAYMENT_METHOD = 14;
@@ -24,7 +24,7 @@ interface GeneralRequestInterface
     const MDD_KEY_QTY_INSTALLMENTS_ORDER = 19;
     const MDD_KEY_CARD_IS_PRIVATE_LABEL = 20;
     const MDD_KEY_CUSTOMER_IDENTITY = 21;
-    const MDD_KEY_CUSTOMER_TELEPHONE = 22;
+    const MDD_KEY_CUSTOMER_TELEPHONE = 38;
     const MDD_KEY_STORE_IDENTITY = 23;
     const MDD_KEY_PROVIDER = 24;
     const MDD_KEY_CUSTOMER_IS_RISK = 25;
